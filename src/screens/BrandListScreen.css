@@ -1,0 +1,168 @@
+.container {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    }
+
+.brandListCon{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.insideBrandListCon{
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 20px;
+}
+
+.brandLinkCon{
+    height: 100px;
+    width: 170px;
+    border: 1px solid gray;
+}
+
+.brandLinkCon img{
+    width: 100%;
+    height: 100%;
+}
+
+.breadcrumbContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.insideBreadcrumb{
+    width: 70%;
+    display: flex;
+    justify-content: left;
+    
+}
+
+ul.breadcrumblist{
+    padding: 10px 10px;
+    list-style: none;
+    background-color: inherit;
+}    
+
+
+ul.breadcrumblist li{
+    display: inline;
+}
+
+ul.breadcrumblist li+li::before {
+    padding: 8px;
+    content: ">\00a0";
+}
+
+.breadcrumbLink{
+    color: black;
+    text-decoration: none;
+}
+
+.activeBreadcrumb{
+    color: grey;
+    text-decoration: none;
+    cursor: text;
+}
+
+.breadcrumbLink:hover{
+    color: #c2365c;
+}
+
+.titleCon{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insideTitleCon{
+    width: 70%;
+    justify-content: left;
+    padding-left: 20px;
+}
+
+@media (max-width: 1200px) {
+    .insideBrandListCon{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-gap: 20px;
+    }
+    .insideBreadcrumb{
+        width: 90%;
+        display: flex;
+        justify-content: left;
+        
+    }
+    .insideTitleCon{
+        width: 90%;
+        justify-content: left;
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .insideBrandListCon{
+        width: 70%;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 20px;
+    }
+    .insideBreadcrumb{
+        width: 90%;
+        display: flex;
+        justify-content: left;
+        
+    }
+    .insideTitleCon{
+        width: 70%;
+        justify-content: left;
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .insideBrandListCon{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 20px;
+    }
+
+    .insideBreadcrumb{
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        
+    }
+
+    .insideTitleCon{
+        width: 90%;
+        justify-content: left;
+        padding-left: 20px;
+    }
+
+    .brandLinkCon{
+        height: 100px;
+        width: 85%;
+        border: 1px solid gray;
+    }
+    
+    .brandLinkCon img{
+        width: 100%;
+        height: 100%;
+    }
+}

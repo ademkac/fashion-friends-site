@@ -1,0 +1,74 @@
+.cont {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    overflow: hidden;
+
+}
+.podCont {
+    background-color: #f6f6f8;
+    text-align: center;
+    font-size: 12px;
+    padding: 20px 20px 0;
+}
+
+.podCont p {
+    font-style: italic;
+}
+
+.tab ul  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: inherit;
+}
+
+.productList li  {
+    float: left;
+    margin-right: 2rem;
+}
+
+button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.tab {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.tablink{
+    color: #878787;
+}
+
+.tablink:hover {
+    color: black;
+}
+
+.tablink.active {
+    border: 2px solid black;
+    border-radius: 40px;
+    font-weight: bold;
+    background-color: inherit;
+    color: black;
+    height: 30px;
+    cursor: default;
+}
+
+.tabContent{
+    width: 100%;
+    height: 100%;
+    margin-top: 2rem;
+}
+
+@media (max-width: 990px) {
+    .productList li  {
+        float: left;
+        margin-right: 2rem;
+        margin-bottom: 1rem;
+    }
+}

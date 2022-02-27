@@ -1,0 +1,178 @@
+.footerContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+.insideFooterCon{
+    display: grid;
+    grid-template-columns: 25% 16.6% 16.6% 16.6% 25%;
+    grid-gap: 20px;
+    width: 70%;
+    height: 100%;
+}
+.insideFooterCon h3{
+    margin-top: 25px;
+}
+.spanCol{
+    color: #c2365c;
+}
+
+.firstFooterCon{
+    text-align: left;
+    font-size: 12px;
+}
+.firstFooterCon h2{
+    font-weight: bold;
+}
+.socialList{
+    display: flex;
+    float: left;
+}
+.socialLine{
+    display: flex;
+    justify-content: left;
+}
+
+.instaFirstRow{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 2px;
+}
+.instaSecondRow{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 2px;
+}
+
+.instaFirstRow img{
+    width: 60px;
+    height: 60px;
+
+}
+
+.instaFirstRow img:hover{
+   background: black;
+   opacity: 1;
+}
+
+.instaSecondRow img{
+    width: 60px;
+    height: 60px;
+}
+
+.instaSecondRow img:hover{
+    background: black;
+    opacity: 1;
+}
+
+.secondFooterCon {
+    text-align: left;
+    font-size: 12px;
+}
+
+.thirdFooterCon{
+    text-align: left;
+    font-size: 12px;
+}
+
+.fourthFooterCon {
+    text-align: left;
+    font-size: 12px;
+}
+
+.linkIt{
+    display: block;
+    text-decoration: none;
+    color: grey;
+    margin-bottom: 5px;
+}
+
+.linkIt:hover{
+    color: #c2365c;
+}
+
+.cardsPic{
+    margin-top: 40px;
+}
+
+.cardsPic img {
+    width: 200px;
+    height: 30px;
+}
+
+.footerInfoCon{
+    width: 100%;
+    height: 40px;
+    background-color: dimgrey;
+    padding-left: 230px;
+    padding-top: 4px;
+}
+
+.footerInfoCon p{
+    color: white;
+    font-size: 12px;
+}
+
+@media (max-width: 870px) {
+    .insideFooterCon{
+        display: grid;
+        grid-template-columns: repeat(2,auto);
+        grid-gap: 20px;
+        width: 80%;
+        height: 100%;
+    }
+    .socialLine{
+        display: flex;
+        justify-content: left;
+    }
+}
+
+@media (max-width: 770px) {
+    .insideFooterCon{
+        display: grid;
+        grid-template-columns: repeat(1,auto);
+        grid-gap: 20px;
+        width: 60%;
+        height: 100%;
+    }
+
+    .socialList{
+        display: flex;
+        float: left;
+        margin-left: 120px;
+    }
+
+    .socialLine{
+        display: flex;
+        justify-content: center;
+    }
+
+    .firstFooterCon{
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .secondFooterCon {
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    .thirdFooterCon{
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    .fourthFooterCon {
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .fas{
+        padding-top: 12px;
+    }
+}

@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import './App.css';
+import BrandListScreen from './screens/BrandListScreen';
+import BrandScreen from './screens/BrandScreen';
+import HomeScreen from './screens/HomeScreen';
+import MensScreen from './screens/MensScreen';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='main'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomeScreen />} />
+          <Route path='/zene' element={<HomeScreen />}/>
+          <Route path='/muskarci' element={<MensScreen />}/>
+          <Route path='/deca' element={<HomeScreen />}/>
+          <Route path='/brendovi' element={<BrandListScreen />} />
+          <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
+          <Route
+        path="*"
+        element={<Navigate to="/" />}
+    />
+        </Routes>
+        
+      </BrowserRouter>
+    </main>
   );
 }
 

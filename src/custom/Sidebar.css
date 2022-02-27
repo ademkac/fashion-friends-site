@@ -1,0 +1,211 @@
+.sidebar-active{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  background: rgba(0,0,0,.7);
+  opacity: 1;
+  display: flex;
+}
+
+.tabSidebar {
+  width: 100%;
+  height: 40px;
+}
+
+.tabSidebar ul {
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ulList li{
+  float: left;
+  width: 33%;
+  height: 100%;
+  text-align: center;
+}
+
+.tabButton{
+  color: black;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.tabButton.active{
+  background-color: #dbdcde
+}
+
+.sidebarContent{
+  height: auto;
+  width: 300px;
+  background-color: white;
+  
+}
+
+.fa-times{
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 30px;
+  color: white;
+}
+
+.tabSidebarContent{
+  width: 100%;
+  height: 95%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.tabSidebarContent ul{
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.listSidebarContent li{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  background-color: #e4e5e7;
+  background-image: linear-gradient(to right, #dbdcde , #f6f6f8);
+  margin-bottom: 15px;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.listSidebarItem img {
+  width: 60px;
+  height: 60px;
+}
+
+.linkSidebarItem{
+  text-decoration: none;
+  color: #111111;
+}
+
+.kidsItemContent ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.kidsListItem1{
+  padding-left: 10px;
+  padding-top: 15px;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #EAEEF5;
+  color: #000;
+  font-size: 12px;
+}
+
+.kidsListItem{
+  width: 100%;
+  min-height: 60px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  border-bottom: 1px solid #EAEEF5;
+
+}
+
+.kidsListLink1{
+  text-decoration: none;
+}
+
+.kidsListLInk{
+  text-decoration: none;
+  color: #000;
+  text-align: left;
+  padding-top: 15px;
+  padding-left: 10px;
+  font-size: 12px;
+
+}
+
+.kidsListItem button {
+  width: 100%;
+  background-color: #f6f6f8;
+  text-align: center;
+  border: none;
+}
+
+.itemClickedHeader{
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid black;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: left;
+  cursor: pointer;
+}
+
+.itemClickedHeader i{
+  margin-top: 24px;
+}
+
+.dropContentKids{
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
+}
+
+ul.aksesoariList{
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  transition: all .5s ease;
+}
+
+li.aksesoariListItem{
+  width: 100%;
+  height: 50px;
+  padding-left: 15px;
+  padding-top: 15px;
+  background-color: #f6f6f8;
+  font-size: 12px;
+  margin-bottom: 3px;
+  border-radius: 0;
+  color: #000;
+} 
+
+ul.obucaList{
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  transition: all .5s ease;
+}
+
+li.obucaListItem{
+  width: 100%;
+  height: 50px;
+  padding-left: 15px;
+  padding-top: 15px;
+  background-color: #f6f6f8;
+  font-size: 12px;
+  margin-bottom: 3px;
+  border-radius: 0;
+  color: #000;
+} 

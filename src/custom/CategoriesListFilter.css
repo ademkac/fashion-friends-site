@@ -1,0 +1,42 @@
+.containerCategories{
+    width: 100%;
+    height: auto;
+}
+
+ul .listContainerCategories{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li .itemContainerCategories{
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-bottom: 0.5rem;
+}
+
+.itemLinkCat{
+    color: gray;
+    text-decoration: none;
+}
+
+.itemLinkCat:hover{
+    color: #c2365c;
+}
+
+.seasonFilter{
+    width: 100%;
+    height: auto;
+}
+
+.seasonLink{
+    text-decoration: none;
+    color: gray;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.seasonLink:hover{
+    color: #c2365c;
+}

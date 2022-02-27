@@ -1,0 +1,162 @@
+.containerGridUnder{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.insideGridUnder{
+    width: 65%;
+    height: auto;
+    
+}
+
+.titleGridUnder{
+   
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+}
+
+.titleGridUnder h3{
+    font-weight: bold;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+.titleGridUnder p{
+    text-align: center;
+    font-style: italic;
+    color: #878787;
+}
+
+.imageGridUnder{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 1rem;
+    
+}
+
+.leftGridUnder{
+    width: 95%;
+    height: 600px;
+}
+
+.leftGridUnder img{
+    width: 100%;
+    height: 100%;
+}
+
+.rightGridUnder{
+    width: 95%;
+    height: 600px;
+}
+
+.rightGridUnder img{
+    width: 100%;
+    height: 100%;
+}
+
+.trussardiGrid{
+    width: 95%;
+    height: 600px;
+}
+
+.underSliderLink{
+    color: black;
+    border: 2px solid black;
+    border-radius: 40px;
+    text-decoration: none;
+    padding: 7px 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.underSliderLink:hover{
+    background-color: black;
+    color: white;
+}
+
+.underGridSlider{
+    margin-top: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+ /*    transform: translate3d(-2400px, 0px, 0px);
+    transition: all 0.25s ease 0s; */
+}
+
+.sliderLink{
+    text-decoration: none;
+    color: black;
+}
+
+.rightGridUnder p{
+    font-size: 14px;
+    text-align: justify;
+}
+
+.itemContTruss{
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 70%;
+    opacity: 1;
+}
+
+.nonActive{
+    display: none
+}
+
+.itemContTruss:hover +button.leftButtonLink +button.rightButtonLink{
+    display: block;
+}
+
+img.imgItem{
+    width: 100%;
+}
+
+.textCont{
+    width: 100%;
+    padding: 0 auto;
+}
+
+.textCont p{
+    text-align: center;
+    font-size: 12px;
+}
+
+.leftButtonLink{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: 120px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+.leftButtonLink:hover{
+    background: #c2365c;
+    color: white;
+}
+
+.rightButtonLink{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: 120px;
+    margin-left: -50px;
+    position: absolute;
+}
+
+.rightButtonLink:hover{
+    background: #c2365c;
+    color: white;
+}
