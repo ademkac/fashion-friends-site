@@ -104,7 +104,7 @@ const GridUnderSlider = (props) => {
                             {listOfItems.map((obj, idx) => {
                                 return(
                                    <MultipleItemsSlider
-                                   idx={idx}
+                                   idx={idx} 
                                    itemIndex={itemIndex}
                                    itemIn={itemIn}
                                    to={`/${obj.opis}`}
