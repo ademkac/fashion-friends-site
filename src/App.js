@@ -4,6 +4,7 @@ import './App.css';
 import BrandListScreen from './screens/BrandListScreen';
 import BrandScreen from './screens/BrandScreen';
 import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
 import MensScreen from './screens/MensScreen';
 import ProductInfoScreen from './screens/ProductInfoScreen';
 
@@ -14,6 +15,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomeScreen />} />
+          <Route path='/customer/login' element={<LoginScreen />} />
           <Route path='/:productInfo' element={<ProductInfoScreen />}/>
           <Route path='/zene' element={<HomeScreen />}/>
           <Route path='/muskarci' element={<MensScreen />}/>

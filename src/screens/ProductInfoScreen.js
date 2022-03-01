@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import {useSwipeable} from 'react-swipeable'
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
 import Footer from "../components/HomeScreen/Footer";
 import FooterInfo from "../components/HomeScreen/FooterInfo";
@@ -24,7 +25,7 @@ const listOfSizes = [
     },
 ]
 
-const listOfLinkedProducts = [
+ const listOfLinkedProducts = [
     {
         slika: slika,
         opis: "colmar",
@@ -58,7 +59,31 @@ const listOfLinkedProducts = [
 ]
 
 const listOfRecentlyViewed = [
-    
+    {
+        slika: slika,
+        opis: "colmar2",
+        cena: 5000
+    },
+    {
+        slika: slika,
+        opis: "colmar3",
+        cena: 5000
+    },
+    {
+        slika: slika,
+        opis: "colmar4",
+        cena: 5000
+    },
+     {
+        slika: slika,
+        opis: "colmar5",
+        cena: 5000
+    },
+    {
+        slika: slika,
+        opis: "colmar6",
+        cena: 5000
+    },
 ]
 
 const ProductInfoScreen = () => {
@@ -67,6 +92,7 @@ const ProductInfoScreen = () => {
     const [kolicina, setKolicina] = useState(10)
     const [openedDetails, setOpenedDetails] = useState(false)
     const [openedInfo, setOpenedInfo] = useState(false)
+    const [paused, setPaused] = useState(false)
     const [linkedPr1, setLinkedPr1] = useState(1)
     const [linkedPr2, setLinkedPr2] = useState(2)
     const [linkedPr3, setLinkedPr3] = useState(3)
@@ -75,6 +101,8 @@ const ProductInfoScreen = () => {
     const [recentlyViewedPr2, setrecentlyViewedPr2] = useState(2)
     const [recentlyViewedPr3, setrecentlyViewedPr3] = useState(3)
     const [recentlyViewedPr4, setrecentlyViewedPr4] = useState(4)
+
+    
 
     const sizeHandler = (name) => {
         setChosenSize(name)
@@ -118,6 +146,16 @@ const ProductInfoScreen = () => {
         setrecentlyViewedPr4(recentlyViewedPr4+1)
     }
 
+    const handlers = useSwipeable({
+        onSwipedLeft: ()=> nextItemHandler(),
+        onSwipedRight: ()=> prevItemHandler()
+    })
+
+    const handlers1 = useSwipeable({
+        onSwipedLeft: ()=> nextItemHandler1(),
+        onSwipedRight: ()=> prevItemHandler1()
+    })
+
     useEffect(()=>{
         if(chosenSize != ''){
             const chosen = listOfSizes.find((obj)=>obj.name == chosenSize);
@@ -151,6 +189,19 @@ const ProductInfoScreen = () => {
             }
         }
 
+       /*  const interval = setInterval(()=> {
+            if(!paused){
+                nextItemHandler()
+                
+            }
+        }, 3000);
+        return () => {
+            if(interval){
+                clearInterval(interval)
+            }
+        }     */
+
+
     }, [chosenSize, linkedPr1, linkedPr4, recentlyViewedPr1, recentlyViewedPr4, listOfRecentlyViewed])
 
     return(
@@ -174,8 +225,11 @@ const ProductInfoScreen = () => {
                     <div className="productiInfoImage">
                         <img src={slika} alt=""/>
                         <div className="listOfOtherPic">
+                            <button className="prevPic">&#10094;</button>
                                 <img src={slika} alt="" />
                                 <img src={slika} alt="" />
+                               
+                            <button className="nextPic">&#10095;</button>
                         </div>
                     </div>
                     <div className="productInfoData">
@@ -248,6 +302,7 @@ const ProductInfoScreen = () => {
                 {openedInfo && (
                          <div className="infoInfo">
                              <table className="tableInfo">
+                                 <tbody>
                                  <tr>
                                      <td className="infoTitle">Sifra artikla</td>
                                      <td>CO7526-6SH-99</td>
@@ -268,6 +323,7 @@ const ProductInfoScreen = () => {
                                      <td className="infoTitle">Materijal</td>
                                      <td>100% pamuk</td>
                                  </tr>
+                                 </tbody>
                              </table>
                          </div>
                      )}
@@ -276,7 +332,11 @@ const ProductInfoScreen = () => {
             <div className="linkedProducts">
                 <div className="insideLinkedProducts">
                     <h4>Povezani proizvodi</h4>
-                    <div className="listOfLinkedProducts">
+                    <div
+                    {...handlers}
+                    onMouseEnter={()=>setPaused(true)}
+                    onMouseLeave={()=>setPaused(false)}
+                    className="listOfLinkedProducts">
                         
                         {
                             listOfLinkedProducts.map((obj, idx) => {
@@ -309,7 +369,9 @@ const ProductInfoScreen = () => {
                 <div className="recentlyViewed">
                 <div className="insideRecentlyViewed">
                 <h4>Nedavno pregledani</h4>
-                <div className="listOfRecentlyViewedProducts">
+                <div
+                {...handlers1}
+                className="listOfRecentlyViewedProducts">
                         
                         {
                             listOfRecentlyViewed.map((obj, idx) => {
