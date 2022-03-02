@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './HomeScreen.css';
 import SocialInfo from "../components/HomeScreen/SocialInfo";
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
@@ -66,7 +66,7 @@ const HomeScreen = () => {
     return(
         <div id="home" className="container">
             <SocialInfo />
-            <Header pageId="home" />
+            <Header  />
             <DropdownMeni />
             <Carousel dataSlider={dataSlider} />
             <Autoscroll />

@@ -311,3 +311,58 @@ input[type="range"]::-moz-range-progress {
   input[type="range"]::-ms-fill-upper {  
     background-color: #9a905d;
   }
+
+  .arrayOfFilters{
+      width: 100%;
+      height: auto;
+      
+  }
+
+  .arrayOfFilters h4{
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 0.5rem;
+  }
+
+  .insideArrayOfFilters{
+      width: 100%;
+      min-height: 50px;
+      max-height: 100px;
+      padding: 10px 15px;
+  }
+
+  .itemOfArray{
+      height: 30px;
+      width: auto;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 5px 12px;
+      display: inline;
+      float: left;
+      margin: 6px 10px;
+      cursor: pointer;
+  }
+
+  .itemOfArray:hover{
+      border: 1px solid black;
+  }
+
+  .itemOfArray span{
+      font-size: 14px;
+      display: inline;
+      float: left;
+      color: gray;
+  }
+
+  .itemOfArray i{
+      font-size: 14px;
+      display: inline;
+      float: left;
+      color: #333333;
+  }
+
+  .bottomBorder{
+      width: 100%;
+      height: 1px;
+      background-color: #333333;
+  }

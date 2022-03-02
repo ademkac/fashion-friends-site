@@ -10,7 +10,26 @@ import slika2 from '../assets/ckGridB.png'
 import slika3 from '../assets/gridCkRight.png'
 
 
-
+const arrayOfFilters = [
+    /* {
+        kategorija: 'Sezona', podkategorija: 'Jesen-Zima'
+    },
+    {
+        kategorija: 'Brend', podkategorija: 'Paciotti'
+    },
+    {
+        kategorija: 'Pol', podkategorija: 'Muski'
+    },
+    {
+        kategorija: 'Sezona', podkategorija: 'Jesen-Zima'
+    },
+    {
+        kategorija: 'Brend', podkategorija: 'Paciotti'
+    },
+    {
+        kategorija: 'Pol', podkategorija: 'Muski'
+    } */
+]
 
 const filterItems = [
     {
@@ -177,7 +196,26 @@ const BrandScreen = (props) => {
                                 }
                             </ul>
                         </div>
-                        <div className='listOfProducts'></div>
+                        <div className='listOfProducts'>
+                            {arrayOfFilters.length > 0 && (
+                                <div className='arrayOfFilters'>
+                                <h4>Trenutna kupovina po</h4>
+                                <div className='insideArrayOfFilters'>
+                                    {arrayOfFilters.map((obj, idx)=>{
+                                        return (
+                                            <div key={idx} className='itemOfArray'>
+                                                <span><b>{obj.kategorija}:</b> {obj.podkategorija}</span>
+                                                <i  className="fas fa-times"></i>
+                                            </div>
+                                        )
+                                    })}
+                                    <div className='itemOfArray'>
+                                                <span>Ponistite sve</span>   
+                                    </div>
+                                </div>
+                            </div>
+                            )}
+                        </div>
                     </div>
             </div>
         </div>

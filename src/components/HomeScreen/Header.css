@@ -100,6 +100,7 @@ li {
     margin: 0.6rem;
     display: flex;
     font-size: 20px;
+    cursor: pointer;
 }
 .far:hover {
     color: #c2365c;
@@ -270,4 +271,46 @@ li {
     .rightNav {
         display: none;
     }
+}
+
+.userInfoConn{
+    width: 170px;
+    height: auto;
+    background-color: white;
+    position: fixed;
+    z-index: 9999;
+    top:65px;
+    right: 21%;
+    border: 1px solid #dbdcde;
+    padding: 5px;
+}
+
+.stickyy{
+    width: 170px;
+    height: auto;
+    background-color: white;
+    position: fixed;
+    z-index: 9999;
+    top:30px;
+    right: 21%;
+    border: 1px solid #dbdcde;
+    padding: 5px;
+}
+
+.paragraphUserInfo{
+    color: gray;
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.paragraphUserInfo:hover{
+    color: #c2365c;
+}
+
+.stickyy a, .userInfoConn a{
+    text-decoration: none;
+    color: #111111;
 }

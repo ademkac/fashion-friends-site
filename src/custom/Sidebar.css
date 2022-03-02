@@ -90,6 +90,7 @@
   margin-bottom: 15px;
   align-items: center;
   padding-left: 15px;
+  font: 14px Poppins, Arial, Tahoma;
 }
 
 .listSidebarItem img {
@@ -115,7 +116,7 @@
   height: 60px;
   border-bottom: 1px solid #EAEEF5;
   color: #000;
-  font-size: 12px;
+  font: 14px Poppins, Arial, Tahoma;
 }
 
 .kidsListItem{
@@ -124,7 +125,7 @@
   display: grid;
   grid-template-columns: 80% 20%;
   border-bottom: 1px solid #EAEEF5;
-
+  font: 14px Poppins, Arial, Tahoma;
 }
 
 .kidsListLink1{
@@ -133,12 +134,12 @@
 
 .kidsListLInk{
   text-decoration: none;
-  color: #000;
+  color: #333333;
   text-align: left;
   padding-top: 15px;
   padding-left: 10px;
   font-size: 12px;
-
+  font: 14px Poppins, Arial, Tahoma;
 }
 
 .kidsListItem button {
@@ -183,10 +184,10 @@ li.aksesoariListItem{
   padding-left: 15px;
   padding-top: 15px;
   background-color: #f6f6f8;
-  font-size: 12px;
   margin-bottom: 3px;
   border-radius: 0;
-  color: #000;
+  color: #222222;
+  font: 14px Poppins, Arial, Tahoma;
 } 
 
 ul.obucaList{
@@ -204,8 +205,8 @@ li.obucaListItem{
   padding-left: 15px;
   padding-top: 15px;
   background-color: #f6f6f8;
-  font-size: 12px;
   margin-bottom: 3px;
   border-radius: 0;
-  color: #000;
+  color: #222222;
+  font: 14px Poppins, Arial, Tahoma;
 } 

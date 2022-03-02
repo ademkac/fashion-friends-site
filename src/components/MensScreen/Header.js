@@ -20,8 +20,10 @@ const Header = (props) => {
 
     const [activeNav, setActiveNav] = useState(1)
     const [visible, setVisible] = useState(false)
+    const [showUserInfo, setShowUserInfo] = useState(false)
     const [stick, setStick] = useState(false)
     const headerClasses = `headerContainer ${stick  ? 'sticky' : ''}`
+    const userInfoClasses = `${stick ? 'stickyy' : 'userInfoConn'}`
 
     useEffect(()=>{
         visible ? document.body.style.overflow = 'hidden'
@@ -46,6 +48,15 @@ const Header = (props) => {
     const handleResize = () => {
          setVisible(!window.innerWidth > 808) 
     }
+
+    const hoverHandler = () => {
+        setShowUserInfo(true)
+    }
+
+    const hoverHandlerOut = () => {
+        setShowUserInfo(false)
+    }
+
 
     useLayoutEffect(()=> {
         window.addEventListener('resize', handleResize)
@@ -86,7 +97,10 @@ const Header = (props) => {
                 <div className="titleNav">FASHION<span className="titleSpan">&</span>FRIENDS</div>
                 <div className="rightNav">
                     <div className="userInfo">
-                        <div className="farr">
+                        <div
+                        onMouseOver={hoverHandler}
+                        onMouseLeave={hoverHandlerOut}
+                        className="farr">
                             <i className="far fa-user"></i>
                         </div>
                         <div className="farr">
@@ -108,6 +122,17 @@ const Header = (props) => {
                     <Sidebar closeSidebar={closeSidebar}/>
                    )
                 }
+                {showUserInfo && (
+                            <div
+                            onMouseEnter={hoverHandler}
+                            onMouseLeave={hoverHandlerOut}
+                            className={userInfoClasses}>
+                                <p className="paragraphUserInfo">Moj korisnicki nalog</p>
+                                <p className="paragraphUserInfo">Moja lista zelja</p>
+                                <p className="paragraphUserInfo">Kreirajte korisnicki nalog</p>
+                                <p className="paragraphUserInfo">Prijava</p>
+                            </div>
+                        )}
             
         </div>
     )

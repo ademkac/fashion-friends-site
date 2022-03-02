@@ -20,8 +20,10 @@ const Header = (props) => {
 
     const [activeNav, setActiveNav] = useState(0)
     const [visible, setVisible] = useState(false)
+    const [showUserInfo, setShowUserInfo] = useState(false)
     const [stick, setStick] = useState(false)
     const headerClasses = `headerContainer ${stick  ? 'sticky' : ''}`
+    const userInfoClasses = `${stick ? 'stickyy' : 'userInfoConn'}`
 
     useEffect(()=>{
         visible ? document.body.style.overflow = 'hidden'
@@ -47,6 +49,14 @@ const Header = (props) => {
          setVisible(!window.innerWidth > 808) 
     }
 
+    const hoverHandler = () => {
+        setShowUserInfo(true)
+    }
+
+    const hoverHandlerOut = () => {
+        setShowUserInfo(false)
+    }
+
     useLayoutEffect(()=> {
         window.addEventListener('resize', handleResize)
         return(()=> {
@@ -62,7 +72,6 @@ const Header = (props) => {
         });
       });
     
-
     return(
         <div className={headerClasses}>
                 {!visible && 
@@ -86,7 +95,10 @@ const Header = (props) => {
                 <div className="titleNav"><Link className="titleLink" to='/'>FASHION<span className="titleSpan">&</span>FRIENDS</Link></div>
                 <div className="rightNav">
                     <div className="userInfo">
-                        <div className="farr">
+                        <div 
+                        onMouseOver={hoverHandler}
+                        onMouseLeave={hoverHandlerOut}
+                        className="farr">
                             <i className="far fa-user"></i>
                         </div>
                         <div className="farr">
@@ -108,7 +120,17 @@ const Header = (props) => {
                     <Sidebar closeSidebar={closeSidebar}/>
                    )
                 }
-            
+                {showUserInfo && (
+                            <div
+                            onMouseEnter={hoverHandler}
+                            onMouseLeave={hoverHandlerOut}
+                            className={userInfoClasses}>
+                                <Link to='/customer/login'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>
+                                <Link to='/zene'><p className="paragraphUserInfo">Moja lista zelja</p></Link>
+                                <Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>
+                                <Link to='/customer/login'><p className="paragraphUserInfo">Prijava</p></Link>
+                            </div>
+                        )}
         </div>
     )
 }
