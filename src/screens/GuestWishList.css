@@ -77,3 +77,74 @@
     font-size: 14px;
     color: #1f71a3;
 }
+
+.productsListContainer{
+    width: 100%;
+    height: 400px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.iconContX{
+    position: absolute;
+    margin-left: 10px;
+    height: 30px;
+    width: 30px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.iconContX:hover #xMark{
+    color: #c2365c;
+}
+
+#xMark{
+    font-size: 15px;
+    color: gray;
+    position: relative;
+    top: 15%;
+    left: 30%;
+    right: 0;
+}
+
+.listItemDiv{
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+
+.listItemDiv img{
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+}
+
+.listItemDiv button{
+    height: 30px;
+    border: 2px solid black;
+    color: black;
+    padding: 0 15px;
+    border-radius: 20px;
+}
+
+.listItemDiv button:hover{
+    background-color: black;
+    color: white;
+}
+
+button.addAllInCart{
+    height: 30px;
+    border: 2px solid transparent;
+    color: white;
+    padding: 0 15px;
+    border-radius: 20px;
+    margin-top: 1rem;
+    background-color: black;
+}
+
+button.addAllInCart:hover{
+    background-color: #c2365c;
+}

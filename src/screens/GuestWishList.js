@@ -6,8 +6,19 @@ import Header from '../components/HomeScreen/Header';
 import SocialInfo from '../components/HomeScreen/SocialInfo';
 import Newsletter from '../components/Newsletter';
 import './GuestWishList.css'
+import slika from '../assets/colmarPic.png'
 
 const listOfDesiredProducts = [
+    {
+        opis: 'Colmar proizvod hardkodirano',
+        cena: 27000
+
+    },
+     {
+        opis: 'Colmar proizvod hardkodirano',
+        cena: 27000
+
+    }, 
 
 ]
 
@@ -42,6 +53,23 @@ const GuestWishList = () => {
                         <p>Lista želja ne sadrži proizvode</p>
                     </div>
                 )}
+
+                <ul className='productsListContainer'>
+                    {listOfDesiredProducts.map((obj, idx)=> {
+                        return (
+                            <li key={idx} className='listItemDiv'>
+                                <span className='iconContX'>
+                                    <i id='xMark' className='fa fa-times'></i>
+                                </span>
+                                <img src={slika} alt='' />
+                                <button>Dodajte u korpu</button>
+                                <p>{obj.opis}</p>
+                                <p>{obj.cena}</p>
+                            </li>
+                        )
+                    })}
+                </ul>
+                <button className='addAllInCart'>Dodajte sve u korpu</button>
             </div>
         </div>
         <Newsletter />
