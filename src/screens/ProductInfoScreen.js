@@ -90,6 +90,7 @@ const ProductInfoScreen = () => {
     const nameOfProduct = useParams().productInfo
     const [chosenSize, setChosenSize] = useState('')
     const [kolicina, setKolicina] = useState(10)
+    const [productAddedInCart, setProductAddedInCart] = useState(false)
     const [openedDetails, setOpenedDetails] = useState(false)
     const [openedInfo, setOpenedInfo] = useState(false)
     const [paused, setPaused] = useState(false)
@@ -220,6 +221,23 @@ const ProductInfoScreen = () => {
                     </ul>
                 </div>
             </div>
+            {productAddedInCart ? (
+                <div className='divSuccess'>
+                <i id='checkItem' className='fa fa-check'></i>
+                {
+                    productAddedInCart ? (
+                        <p>Guess - 2u1 muška jakna i prsluk je dodat u korpu za kupovinu</p>
+                    ) : (
+                        <p>Artikal je uklonjen</p>
+                    )
+                }
+            </div>
+            ): (
+                <div className='divSuccesss'>
+                <i id='checkItem' className='fa fa-check'></i>
+                <p>Calvin Klein - Kožne muške čizme je dodat u listu želja.</p>
+            </div>
+            )}
             <div className="productInfoCon">
                 <div className="insideProductInfo">
                     <div className="productiInfoImage">

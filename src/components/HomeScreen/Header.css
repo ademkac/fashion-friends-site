@@ -110,6 +110,11 @@ li {
     
     display: flex;
 }
+
+.userInfo a{
+    color: #111111;
+    text-decoration: none;
+}
 .titleSpan {
     font-weight: bold;
 }

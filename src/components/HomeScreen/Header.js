@@ -101,9 +101,11 @@ const Header = (props) => {
                         className="farr">
                             <i className="far fa-user"></i>
                         </div>
-                        <div className="farr">
-                            <i className="far fa-heart"></i><span className="heartSpan">&</span>
-                        </div>
+                        <Link to='/guestwishlist'>
+                            <div className="farr">
+                                <i className="far fa-heart"></i><span className="heartSpan">&</span>
+                            </div>
+                        </Link>
                         <div className="farr">
                             <i className="fas fa-shopping-bag"></i>
                         </div>

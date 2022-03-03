@@ -94,7 +94,7 @@ const Header = (props) => {
                         }
                     </ul>
                 </div>
-                <div className="titleNav">FASHION<span className="titleSpan">&</span>FRIENDS</div>
+                <div className="titleNav"><Link className="titleLink" to='/'>FASHION<span className="titleSpan">&</span>FRIENDS</Link></div>
                 <div className="rightNav">
                     <div className="userInfo">
                         <div
@@ -103,9 +103,11 @@ const Header = (props) => {
                         className="farr">
                             <i className="far fa-user"></i>
                         </div>
-                        <div className="farr">
-                            <i className="far fa-heart"></i><span className="heartSpan">&</span>
-                        </div>
+                        <Link to='/guestwishlist'>
+                            <div className="farr">
+                                <i className="far fa-heart"></i><span className="heartSpan">&</span>
+                            </div>
+                        </Link>
                         <div className="farr">
                             <i className="fas fa-shopping-bag"></i>
                         </div>

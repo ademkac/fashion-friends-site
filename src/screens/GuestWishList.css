@@ -1,0 +1,79 @@
+.mainGuestWishCOn{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.guestWishContainer{
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.insideGuestWishContainer{
+    width: 60%;
+    height: auto;
+}
+
+.insideGuestWishContainer h3{
+    margin-top: 2rem;
+}
+
+.divInfo{
+    width: 100%;
+    height: 40px;
+    border: 1px solid transparent;
+    background-color: #d9edf7;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding-left: 15px;
+}
+
+.divSuccess{
+    width: 100%;
+    height: 40px;
+    border: 1px solid transparent;
+    background-color: #e5efe5;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding-left: 15px;
+}
+
+#checkItem{
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #006401;
+    margin-top: 8px;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0;
+}
+
+.divSuccess p{
+    display: inline;
+    float: left;
+    font-size: 14px;
+    color: #006401;
+}
+
+.divInfo i{
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #31708f;
+    margin-top: 8px;
+}
+
+.divInfo p{
+    display: inline;
+    float: left;
+    font-size: 14px;
+    color: #1f71a3;
+}
