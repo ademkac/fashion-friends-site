@@ -11,13 +11,17 @@ import slika from '../assets/colmarPic.png'
 const listOfDesiredProducts = [
     {
         opis: 'Colmar proizvod hardkodirano',
-        cena: 27000
-
+        cena: 27000,
+        popust: 30,
+        velicina: 'M',
+        boja: 'crna'
     },
      {
         opis: 'Colmar proizvod hardkodirano',
-        cena: 27000
-
+        cena: 27000,
+        popust: 20,
+        velicina: 'L',
+        boja: 'plava'
     }, 
 
 ]
@@ -64,7 +68,12 @@ const GuestWishList = () => {
                                 <img src={slika} alt='' />
                                 <button>Dodajte u korpu</button>
                                 <p>{obj.opis}</p>
-                                <p>{obj.cena}</p>
+                                <p className='oldprice'>{obj.cena} RSD</p>
+                                <p className='discountP'>{obj.cena-(obj.cena*obj.popust/100)} RSD</p>
+                                <p className='ptitle'>Velicina: </p>
+                                <p className='descp'>{obj.velicina}</p>
+                                <p className='ptitle'>Boja: </p>
+                                <p className='descp'>{obj.boja}</p>
                             </li>
                         )
                     })}

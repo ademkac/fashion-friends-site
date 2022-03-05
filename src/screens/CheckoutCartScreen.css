@@ -1,0 +1,297 @@
+.mainCheckoutContainer{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.breadcrumbContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.insideBreadcrumb{
+    width: 70%;
+    display: flex;
+    justify-content: left;
+    
+}
+
+ul.breadcrumblist{
+    padding: 10px 16px;
+    list-style: none;
+    background-color: inherit;
+}
+
+ul.breadcrumblist li{
+    display: inline;
+}
+
+ul.breadcrumblist li+li::before {
+    padding: 8px;
+    content: ">\00a0";
+}
+
+.activeBreadcrumb{
+    color: grey;
+    text-decoration: none;
+    cursor: text;
+}
+
+.breadcrumbLink{
+    color: black;
+    text-decoration: none;
+}
+
+.breadcrumbLink:hover{
+    color: #c2365c;
+}
+
+.checkoutContainer{
+    width: 100%;
+    height: auto;
+}
+
+.insideCheckoutContainer{
+    width: 70%;
+    min-height: 700px;
+    margin: 0 auto;
+}
+
+.insideLeftCheckoutCon{
+    width: 65%;
+    height: 470px;
+    border: 1px solid #efefef;
+    display: inline;
+    float: left;
+}
+
+.cartInfo{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.priceInCart{
+    height: 200px;
+    width: 32%;
+    display: inline;
+    float: right;
+    border: 1px solid #efefef;
+}
+
+.cartInfoHeader{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid #efefef;
+}
+
+.leftCartInfoHeader{
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+    padding: 6px 0;
+}
+
+.leftCartInfoHeader p{
+    margin: 0 auto;
+    font: 14px Poppins, arial, Sans-serif;
+    color: gray;
+}
+
+.rightCartInfoHeader{
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+    padding: 6px 0;
+}
+
+.rightCartInfoHeader p{
+    display: inline;
+    float: left;
+    color: gray;
+    font: 14px Poppins, arial, Sans-serif;
+    margin: 0 15% 0 5%;
+}
+
+.cartInfoBody{
+    height: 220px;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+}
+
+.leftCartInfoBody{
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+}
+
+.insideLeftCartInfoBody{
+    width: 35%;
+    height: 100%;
+    display: inline;
+    float: left;
+}
+
+.imageContainer{
+    width: 100%;
+    height: 85%;
+}
+
+.imageContainer img{
+    width: 100%;
+    height: 100%;
+}
+
+.iconsContainer{
+    width: 100%;
+    height: 15%;
+}
+
+.iconsContainer span{
+    height: 25px;
+    width: 25px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    float: left;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.iconsContainer span:hover #pen{
+    color: #c2365c;
+}
+
+.iconsContainer span:hover #xMark{
+    color: #c2365c;
+}
+
+#pen{
+    color: gray;
+    font-size: 15px;
+    margin: 4px;
+}
+
+#xMark{
+    color: gray;
+    font-size: 15px;
+}
+
+.productInfoContain{
+    width: 65%;
+    height: 100%;
+    display: inline;
+    float: left;
+    padding: 5% 7% 0 0;
+}
+
+.productInfoContain p{
+    font: 14px Poppins, arial, sans-serif;
+    color: #444444;
+}
+
+.rightCartInfoBody{
+    width: 50%;
+    display: inline;
+    float: left;
+    height: 100%;
+    padding: 10% 0;
+}
+
+.rightCartInfoBody p{
+    font: 14px Poppins, arial, sans-serif;
+    color: #444444;
+    display: inline;
+    float: left;
+}
+
+.rightCartInfoBody input{
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    height: 30px;
+    width: 50px;
+    padding-left: 17px;
+    display: inline;
+    float: left;
+    margin-left: 25px;
+    margin-top: 5px;
+    margin-right: 35px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.buttonsContainer{
+    width: 100%;
+    height: 40px;
+    margin-top: 2rem;
+}
+
+.leftButtonCont{
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+}
+
+.leftButtonCont button{
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: black;
+    font-weight: bold;
+    font: 14px Poppins, arial, sans-serif;
+    padding: 0 10px;
+}
+
+.leftButtonCont button:hover{
+    background-color: black;
+    color: white;
+}
+
+.rightButtonCont{
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+}
+
+.rightButtonCont button{
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 20px;
+    color: black;
+    font-weight: bold;
+    font: 14px Poppins, arial, sans-serif;
+    padding: 0 10px;
+    margin-right: 1rem;
+}
+
+.rightButtonCont button:hover{
+    background-color: black;
+    color: white;
+}
+
+#grayButt{
+    background-color: gray;
+    color: white;
+    border: 2px solid transparent;
+}
+
+#grayButt:hover{
+    background-color: #c2365c;
+}

@@ -80,7 +80,7 @@
 
 .productsListContainer{
     width: 100%;
-    height: 400px;
+    height: 500px;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -133,6 +133,33 @@
 .listItemDiv button:hover{
     background-color: black;
     color: white;
+}
+
+.listItemDiv p{
+    font:14px Poppins, Arial, Sans-serif;
+    color: #333333;
+}
+
+.oldprice{
+    font:14px Poppins, Arial, Sans-serif;
+    color: #333333;
+    text-decoration: line-through;
+}
+
+p.discountP{
+    color: #c2365c;
+    margin-top: -0.8rem;
+}
+
+p.descp{
+    color: #333333;
+    margin-top: -0.8rem;
+}
+
+p.ptitle{
+    color: #9c9c9c;
+    font:14px Poppins, Arial, Sans-serif;
+    font-weight: bold;
 }
 
 button.addAllInCart{

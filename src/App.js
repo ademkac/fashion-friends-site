@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import './App.css';
 import BrandListScreen from './screens/BrandListScreen';
 import BrandScreen from './screens/BrandScreen';
+import CheckoutCartScreen from './screens/CheckoutCartScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import GuestWishList from './screens/GuestWishList';
 import HomeScreen from './screens/HomeScreen';
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/customer/register' element={<RegisterScreen />} />
           <Route path='/customer/forgotpassword' element={<ForgotPasswordScreen />}/>
           <Route path='/guestwishlist' element={<GuestWishList />}/>
+          <Route path='/checkout/cart' element={<CheckoutCartScreen />} />
           <Route path='/:productInfo' element={<ProductInfoScreen />}/>
           <Route path='/zene' element={<HomeScreen />}/>
           <Route path='/muskarci' element={<MensScreen />}/>
