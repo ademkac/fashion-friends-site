@@ -175,4 +175,40 @@
     .fas{
         padding-top: 12px;
     }
+
+    .footerInfoCon{
+        width: 100%;
+        height: 40px;
+        background-color: dimgrey;
+        padding-left: 100px;
+        padding-top: 4px;
+    }
+
+    .instaFirstRow img{
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+
+    .instaSecondRow img{
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:540px) {
+    .footerInfoCon{
+        
+        padding-left: 40px;
+        
+    }
+}
+
+@media (max-width:460px) {
+    .footerInfoCon{
+        
+        padding-left: 10px;
+        
+    }
 }

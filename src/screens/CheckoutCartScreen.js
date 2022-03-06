@@ -23,12 +23,15 @@ const CheckoutCartScreen = () => {
         <Header />
         <DropdownMeni />
         <div className='breadcrumbContainer'>
-            <div className='insideBreadcrumb'>
+            <div className='insideBreadcrumbb'>
                 <ul className='breadcrumblist'>
                     <li><Link to='/' className='breadcrumbLink'>Pocetna</Link></li>
                     <li><Link to='/#' className='activeBreadcrumb'>Korpa za kupovinu</Link></li>
                 </ul>
             </div>
+        </div>
+        <div className="h2Container">
+            <h2>Korpa za kupovinu</h2>
         </div>
         <div className="checkoutContainer">
             <div className="insideCheckoutContainer">
@@ -64,11 +67,16 @@ const CheckoutCartScreen = () => {
                                 </div>
                             </div>
                             <div className="rightCartInfoBody">
-                                <p>22.690,00 RSD</p>
-                                <input type='number' value={inputValue} onChange={inputHandler}/>
-                                <p>22.690,00 RSD</p>
+                                <p><span id="phoneSpan">Cena: </span>22.690,00 RSD</p>
+                                <div className="inlineDiv"><span id="phoneSpan">Kolicina: </span><input type='number' value={inputValue} onChange={inputHandler}/></div>
+                                <p><span id="phoneSpan">Ukupno: </span>22.690,00 RSD</p>
+                            </div>
+                            <div className="phone">
+                                <span><i id='pen' className="fa fa-pen"></i></span>
+                                <span><i id="xMark" className='fa fa-times'></i></span>
                             </div>
                         </div>
+
                         <div className="cartInfoBody">
                             <div className="leftCartInfoBody">
                                 <div className="insideLeftCartInfoBody">
@@ -88,9 +96,13 @@ const CheckoutCartScreen = () => {
                                 </div>
                             </div>
                             <div className="rightCartInfoBody">
-                                <p>22.690,00 RSD</p>
-                                <input type='number' value={inputValue} onChange={inputHandler}/>
-                                <p>22.690,00 RSD</p>
+                                <p><span id="phoneSpan">Cena: </span>22.690,00 RSD</p>
+                                <div className="inlineDiv"><span id="phoneSpan">Kolicina: </span><input type='number' value={inputValue} onChange={inputHandler}/></div>
+                                <p><span id="phoneSpan">Ukupno: </span>22.690,00 RSD</p>
+                            </div>
+                            <div className="phone">
+                                <span><i id='pen' className="fa fa-pen"></i></span>
+                                <span><i id="xMark" className='fa fa-times'></i></span>
                             </div>
                         </div>
                         <div className="buttonsContainer">
@@ -102,10 +114,29 @@ const CheckoutCartScreen = () => {
                                 <button id="grayButt">Isprazni korpu za kupovinu</button> 
                             </div>
                         </div>
+                        <div className="couponContainer">
+                            <button>Iskoristite kupon za popust</button>
+                            <div className="inputButtonCont">
+                                <input type='text' placeholder="Unesite kod popusta"/>
+                                <button>Iskoristite popust</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="priceInCart">
-
+                <div className="priceInCartContainer">
+                    <div className="priceInCart">
+                        <div className="topPriceCont">
+                            <p>Ukupno</p>
+                            <p>38.083,00 RSD</p>
+                            <p>Dostava</p>
+                            <p>0,00 RSD</p>
+                        </div>
+                        <div className="bottomPriceCont">
+                            <p><b>Ukupno</b> <span className="pSpan">sa PDV-om</span></p>
+                            <p>38.083,00 RSD</p>
+                        </div>
+                    </div>
+                    <button>NASTAVI NA PLACANJE</button>
                 </div>
             </div>
         </div>
