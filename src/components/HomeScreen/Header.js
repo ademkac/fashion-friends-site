@@ -106,9 +106,11 @@ const Header = (props) => {
                                 <i className="far fa-heart"></i><span className="heartSpan">&</span>
                             </div>
                         </Link>
+                        <Link to='/checkout/cart'>
                         <div className="farr">
                             <i className="fas fa-shopping-bag"></i>
                         </div>
+                        </Link>
                     </div>
                 
                 </div>
@@ -128,7 +130,7 @@ const Header = (props) => {
                             onMouseLeave={hoverHandlerOut}
                             className={userInfoClasses}>
                                 <Link to='/customer/login'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>
-                                <Link to='/zene'><p className="paragraphUserInfo">Moja lista zelja</p></Link>
+                                <Link to='/guestwishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>
                                 <Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>
                                 <Link to='/customer/login'><p className="paragraphUserInfo">Prijava</p></Link>
                             </div>

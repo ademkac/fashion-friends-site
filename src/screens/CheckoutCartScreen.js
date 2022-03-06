@@ -52,7 +52,7 @@ const CheckoutCartScreen = () => {
                             <div className="leftCartInfoBody">
                                 <div className="insideLeftCartInfoBody">
                                     <div className="imageContainer">
-                                        <img src={slika} alt=""/>
+                                       <Link to='/Guess'><img src={slika} alt=""/></Link> 
                                     </div>
                                     <div className="iconsContainer">
                                         <span><i id='pen' className="fa fa-pen"></i></span>
@@ -81,7 +81,7 @@ const CheckoutCartScreen = () => {
                             <div className="leftCartInfoBody">
                                 <div className="insideLeftCartInfoBody">
                                     <div className="imageContainer">
-                                        <img src={slika} alt=""/>
+                                    <Link to='/Guess'><img src={slika} alt=""/></Link> 
                                     </div>
                                     <div className="iconsContainer">
                                         <span><i id='pen' className="fa fa-pen"></i></span>
