@@ -4,6 +4,7 @@ import slika from '../../assets/drop1.png';
 import slika1 from '../../assets/colmarPic.png'
 
 import './DropdownMeni.css'
+import ClothesComponent from "../DropdownComponents/ClothesComponent";
 
 const DropdownMeni = (props) =>{
 
@@ -52,7 +53,7 @@ const DropdownMeni = (props) =>{
                     </div>
                     <div 
                     onMouseOver={()=>setShow3(true)}
-                    onMouseLeave={()=>setShow3(false)}
+                     onMouseLeave={()=>setShow3(false)}
                     className="dropdown">
                         <button className="dropbtn">Odeca<i className="fas fa-caret-down"></i></button>
                         
@@ -64,6 +65,13 @@ const DropdownMeni = (props) =>{
                         <button className="dropbtn">Obuca<i className="fas fa-caret-down"></i></button>
                         
                     </div> 
+                    <div
+                    onMouseOver={()=>setShow5(true)}
+                    onMouseLeave={()=>setShow5(false)}
+                    className="dropdown">
+                        <button className="dropbtn">Brendovi<i className="fas fa-caret-down"></i></button>
+                        
+                    </div>
                 </div>
                  {
                     show1 && ( 
@@ -71,7 +79,9 @@ const DropdownMeni = (props) =>{
                         onMouseEnter={()=>setShow1(true)}
                         onMouseLeave={()=>setShow1(false)}
                         className="dropdown-content">
-                            <Link to='/zene'><img src={slika} alt= '' /></Link>
+                            <div className="insideDropCont">
+                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika} alt= '' /></Link>
+                            </div>
                         </div>
                      )
                 }
@@ -81,7 +91,9 @@ const DropdownMeni = (props) =>{
                         onMouseEnter={()=>setShow2(true)}
                         onMouseLeave={()=>setShow2(false)}
                         className="dropdown-content">
-                            <Link to='/zene'><img src={slika1} alt= '' /></Link>
+                            <div className="insideDropCont">
+                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika1} alt= '' /></Link>
+                            </div>                        
                         </div>
                     )
                 } 
@@ -91,7 +103,7 @@ const DropdownMeni = (props) =>{
                         onMouseEnter={()=>setShow3(true)}
                         onMouseLeave={()=>setShow3(false)}
                         className="dropdown-content">
-                            <p>Odeca</p>
+                            <ClothesComponent />
                         </div>
                     )
                 }
@@ -102,6 +114,16 @@ const DropdownMeni = (props) =>{
                         onMouseLeave={()=>setShow4(false)}
                         className="dropdown-content">
                             <p>Obuca</p>
+                        </div>
+                    )
+                }
+                {
+                    show5 && (
+                        <div
+                        onMouseEnter={()=>setShow5(true)}
+                        onMouseLeave={()=>setShow5(false)}
+                        className="dropdown-content">
+                            <p>Brendovi</p>
                         </div>
                     )
                 }
