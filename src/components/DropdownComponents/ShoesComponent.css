@@ -1,5 +1,5 @@
 
-.insideClothesContainer{
+.insideShoesContainer{
     width: 60%;
     height: 100%;
     margin: 0 auto;
@@ -8,7 +8,7 @@
     margin-top: 10px;
 }
 
-#clothesList{
+#shoesList{
     list-style-type: none;
     width: 100%;
     text-decoration: none;
@@ -17,7 +17,7 @@
     background-color: transparent;
 }
 
-#clothesList1{
+#shoesList1{
     list-style-type: none;
     width: 100%;
     text-decoration: none;
@@ -26,7 +26,7 @@
     background-color: transparent;
 }
 
-#clothesList li{
+#shoesList li{
     width: 100%;
     display: block;
     font-size: 12px;
@@ -35,12 +35,12 @@
     cursor: pointer;
 }
 
-.clothesLink{
+.shoesLink{
     padding: 0;
     display: inline;
 }
 
-#clothesList1 li{
+#shoesList1 li{
     width: 100%;
     display: block;
     font-size: 12px;
@@ -48,11 +48,11 @@
     margin-bottom: 10px;
 }
 
-#clothesList1 li:hover .clothesLink{
+#shoesList1 li:hover .shoesLink{
     color: #c2365c;
 }
 
-#clothesList li:hover .clothesLink{
+#shoesList li:hover .shoesLink{
     color: #c2365c;
 }
 
@@ -62,7 +62,6 @@ span.rightSpanLi{
     font-size: 12px;
     font-weight: bold;
     margin-right: 50px;
-    cursor: pointer;
 }
 
 span.rightSpanLi:hover{
@@ -96,12 +95,12 @@ span.rightSpanLi:hover{
     height: auto;
 }
 
-.itemJacket{
+.itemSneakers{
     width: 100%;
     color: gray;
     font-size: 12px;
 }
 
-.itemJacket:hover a{
+.itemSneakers:hover a{
     color: #c2365c;
 }

@@ -1,0 +1,33 @@
+
+.insideeditorialContainer{
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-top: 10px;
+}
+
+.editorialImg{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.editorialImg img{
+    width: 200px;
+    height: 200px;
+}
+
+.editorialImg img:hover {
+    -ms-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+}
+
+
+.editorialImg p{
+    color: #222222;
+    font-size: 12px;
+}

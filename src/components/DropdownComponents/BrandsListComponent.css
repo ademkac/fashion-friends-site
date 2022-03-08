@@ -1,0 +1,97 @@
+
+.insidebrandListContainer{
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-top: 10px;
+}
+
+#brandListList{
+    list-style-type: none;
+    width: 100%;
+    text-decoration: none;
+    margin: 0;
+    color: #222222;
+    background-color: transparent;
+}
+
+#brandListList1{
+    list-style-type: none;
+    width: 100%;
+    text-decoration: none;
+    margin: 0;
+    color: #222222;
+    background-color: transparent;
+}
+
+#brandListList2{
+    list-style-type: none;
+    width: 100%;
+    text-decoration: none;
+    margin: 0;
+    color: #222222;
+    background-color: transparent;
+}
+
+#brandListList3{
+    list-style-type: none;
+    width: 100%;
+    text-decoration: none;
+    margin: 0;
+    color: #222222;
+    background-color: transparent;
+}
+
+#brandListList li{
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.brandListLink{
+    padding: 0;
+    display: inline;
+}
+
+#brandListList1 li{
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#brandListList2 li{
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#brandListList3 li{
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#brandListList1 li:hover .brandListLink{
+    color: #c2365c;
+}
+
+#brandListList li:hover .brandListLink{
+    color: #c2365c;
+}
+
+#brandListList2 li:hover .brandListLink{
+    color: #c2365c;
+}
+
+#brandListList3 li:hover .brandListLink{
+    color: #c2365c;
+}

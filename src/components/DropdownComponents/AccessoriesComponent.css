@@ -1,5 +1,5 @@
 
-.insideClothesContainer{
+.insideaccessoriesContainer{
     width: 60%;
     height: 100%;
     margin: 0 auto;
@@ -8,7 +8,7 @@
     margin-top: 10px;
 }
 
-#clothesList{
+#accessoriesList{
     list-style-type: none;
     width: 100%;
     text-decoration: none;
@@ -17,7 +17,7 @@
     background-color: transparent;
 }
 
-#clothesList1{
+#accessoriesList1{
     list-style-type: none;
     width: 100%;
     text-decoration: none;
@@ -26,7 +26,7 @@
     background-color: transparent;
 }
 
-#clothesList li{
+#accessoriesList li{
     width: 100%;
     display: block;
     font-size: 12px;
@@ -35,12 +35,12 @@
     cursor: pointer;
 }
 
-.clothesLink{
+.accessoriesLink{
     padding: 0;
     display: inline;
 }
 
-#clothesList1 li{
+#accessoriesList1 li{
     width: 100%;
     display: block;
     font-size: 12px;
@@ -48,30 +48,15 @@
     margin-bottom: 10px;
 }
 
-#clothesList1 li:hover .clothesLink{
+#accessoriesList1 li:hover .accessoriesLink{
     color: #c2365c;
 }
 
-#clothesList li:hover .clothesLink{
+#accessoriesList li:hover .accessoriesLink{
     color: #c2365c;
 }
 
-span.rightSpanLi{
-    float: right;
-    color: #222222;
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 50px;
-    cursor: pointer;
-}
 
-span.rightSpanLi:hover{
-    width: 20px;
-    height: 20px;
-    background-color: #ddd;
-    border: 1px solid transparent;
-    padding-left: 5px;
-}
 
 .rightContImg{
     width: 100%;
@@ -91,17 +76,3 @@ span.rightSpanLi:hover{
     transform: scale(1.15);
 }
 
-.listContain{
-    width: 100%;
-    height: auto;
-}
-
-.itemJacket{
-    width: 100%;
-    color: gray;
-    font-size: 12px;
-}
-
-.itemJacket:hover a{
-    color: #c2365c;
-}
