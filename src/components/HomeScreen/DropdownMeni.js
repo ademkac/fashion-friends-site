@@ -1,7 +1,11 @@
-import React, {useLayoutEffect, useState} from "react";
+import React, { useLayoutEffect, useRef, useState} from "react";
 import { Link } from "react-router-dom";
 import slika from '../../assets/drop1.png';
 import slika1 from '../../assets/colmarPic.png'
+import slika2 from '../../assets/disel.jpg'
+import slika3 from '../../assets/replayLogo.jpg'
+import slika4 from '../../assets/paciottiLogo.jpg'
+
 
 import './DropdownMeni.css'
 import ClothesComponent from "../DropdownComponents/ClothesComponent";
@@ -12,9 +16,37 @@ import AccessoriesComponent from "../DropdownComponents/AccessoriesComponent";
 import CosmeticsComponent from "../DropdownComponents/Cosmetics";
 import OutletComponent from "../DropdownComponents/OutletComponent";
 import EditorialComponent from "../DropdownComponents/EditorialComponent";
+import SearchModalComponent from "../DropdownComponents/SearchModalComponent";
+
+const popularSearch = [
+    {name: 'Replay'},{name: 'Premiata'},{name: 'Diesel'},{name: 'Torbe'},
+    {name: 'Tommy Hilfiger'},
+]
+
+const brands =[
+    {
+        name: 'Diesel', slika: slika2
+    },
+    {
+        name: 'Replay', slika: slika3
+    },
+    {
+        name: 'Paccioti', slika: slika4
+    }
+]
+
+const products = [
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30}, 
+]
 
 const DropdownMeni = (props) =>{
 
+    const [longSearch, setLongSearch] = useState(false)
     const [stick, setStick] = useState(false)
     const [show1, setShow1] = useState(false)
     const [show2, setShow2] = useState(false)
@@ -30,17 +62,34 @@ const DropdownMeni = (props) =>{
     const headerClasses = `dropdownMeni ${stick  ? 'sticky1' : ''}`
     const headerClasses1 = `searchBar ${stick  ? 'sticky2' : ''}`
     const headerClasses2 = `${stick ? 'stickyyy' : 'dropdown-content'}`
+    let modal = useRef(null)
 
     const handleScroll = () =>{
         setStick(window.scrollY > 0);
     }
 
+    const handleOutsideModalClick = (event) => {
+        const element = event.target;
+        if(longSearch && modal.current && !modal.current.contains(element)){
+            event.preventDefault()
+            event.stopPropagation()
+            setLongSearch(true)
+        }
+        
+    }
+
     useLayoutEffect(()=>{
         window.addEventListener('scroll',handleScroll);
+        
+            window.addEventListener('click', handleOutsideModalClick)
+       
    
 
         return(()=>{
             window.removeEventListener('scroll', handleScroll);
+            
+                window.addEventListener('click', handleOutsideModalClick)
+            
         })
 
         
@@ -119,6 +168,25 @@ const DropdownMeni = (props) =>{
                         <button className="dropbtn">Editorial<i className="fas fa-caret-down"></i></button>
                         
                     </div>
+                    {longSearch ? (
+                        <span className="longButtonSearch">
+                            <input type='search' placeholder="Trazite"/>
+                            <i className="fa fa-search"></i>
+                        </span>
+                    ) : (<span onClick={()=>setLongSearch(true)} className="buttonSearch"><i className="fa fa-search"></i></span>)}
+                
+                    {longSearch && (
+                        <div ref={modal} className="modalSearch">
+                            <SearchModalComponent
+                            popularSearch = {popularSearch}
+                            brands ={brands}
+                            products ={products}
+                             />
+                        </div>
+                    )}
+                    {longSearch && (
+                        <i id="triangle" className="fas fa-caret-up"></i>
+                    )}
                 </div>
                  {
                     show1 && ( 
