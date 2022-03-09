@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState} from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState} from "react";
 import { Link } from "react-router-dom";
 import slika from '../../assets/drop1.png';
 import slika1 from '../../assets/colmarPic.png'
@@ -62,34 +62,48 @@ const DropdownMeni = (props) =>{
     const headerClasses = `dropdownMeni ${stick  ? 'sticky1' : ''}`
     const headerClasses1 = `searchBar ${stick  ? 'sticky2' : ''}`
     const headerClasses2 = `${stick ? 'stickyyy' : 'dropdown-content'}`
+    const modalClasses = `${stick ? 'stickyModal': 'modalSearch'}`
+    const buttonSearch = `${stick ? 'stickyButtonSearch': 'buttonSearch'}`
+    const longButtonSearch = `${stick? 'stickyLongSearch': 'longButtonSearch'}`
+    const triangle = `${stick ? 'stickyTriangle': 'triangle'}`
+
     let modal = useRef(null)
+    let trigger = useRef(null)
+    let inputSearch = useRef(null)
 
     const handleScroll = () =>{
         setStick(window.scrollY > 0);
     }
 
-    const handleOutsideModalClick = (event) => {
-        const element = event.target;
-        if(longSearch && modal.current && !modal.current.contains(element)){
-            event.preventDefault()
-            event.stopPropagation()
-            setLongSearch(true)
-        }
-        
+    const handleOutsideModalClick = (e) => {
+    //if click is on trigger element, toggle modal
+     if(trigger.current && 
+        trigger.current.contains(e.target)) {
+        return setLongSearch(!longSearch);
+       }
+    
+    //if modal is open and click is outside modal, close it
+    if(modal.current && 
+      !modal.current.contains(e.target) && !inputSearch.current.contains(e.target)) {
+        return setLongSearch(false);
+      }
     }
+
+
+    useEffect(()=>{
+            document.addEventListener('click', handleOutsideModalClick, true)
+            return(()=>{ 
+                document.removeEventListener('click', handleOutsideModalClick, true)
+            })
+    
+    })
 
     useLayoutEffect(()=>{
         window.addEventListener('scroll',handleScroll);
         
-            window.addEventListener('click', handleOutsideModalClick)
-       
-   
-
         return(()=>{
             window.removeEventListener('scroll', handleScroll);
-            
-                window.addEventListener('click', handleOutsideModalClick)
-            
+                        
         })
 
         
@@ -169,23 +183,25 @@ const DropdownMeni = (props) =>{
                         
                     </div>
                     {longSearch ? (
-                        <span className="longButtonSearch">
-                            <input type='search' placeholder="Trazite"/>
+                        <span ref={inputSearch} className={longButtonSearch}>
+                            <input type='text' placeholder="Trazite"/>
                             <i className="fa fa-search"></i>
                         </span>
-                    ) : (<span onClick={()=>setLongSearch(true)} className="buttonSearch"><i className="fa fa-search"></i></span>)}
+                    ) : (<span ref={trigger} className={buttonSearch}><i className="fa fa-search"></i></span>)}
                 
                     {longSearch && (
-                        <div ref={modal} className="modalSearch">
-                            <SearchModalComponent
-                            popularSearch = {popularSearch}
-                            brands ={brands}
-                            products ={products}
-                             />
+                        <div className="modal--overlay">
+                            <div ref={modal} className={modalClasses}>
+                                <SearchModalComponent
+                                popularSearch = {popularSearch}
+                                brands ={brands}
+                                products ={products}
+                                />
+                            </div>
                         </div>
                     )}
                     {longSearch && (
-                        <i id="triangle" className="fas fa-caret-up"></i>
+                        <i id={triangle} className="fas fa-caret-up"></i>
                     )}
                 </div>
                  {

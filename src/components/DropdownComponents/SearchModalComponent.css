@@ -6,13 +6,13 @@
 .leftInsideModalComponent{
     display: inline;
     float: left;
-    width: 30%;
+    width: 33%;
     height: 100%;
     border-right: 1px solid #ddd;
 }
 
 .topLeftModalComponent{
-    height: 30%;
+    height: 40%;
     width: 100%;
     border-bottom: 1px solid #ddd;
     margin-bottom: 5px;
@@ -27,10 +27,13 @@
 .modalItemList{
     width: 100%;
     display: block;
+    margin-bottom: 15px;
+    font: 12px Poppins, arial, sans-serif;
+    color: gray;
 }
 
 .bottomLeftModalComponent{
-    height: 670%;
+    height: 57%;
     width: 100%;
 }
 
@@ -75,11 +78,12 @@
 
 .modalProductItem img{
     width: 100%;
-    height: 60%;
+    height: 60%; 
 }
 
-.oldPriceItem{
+p.oldPriceItem{
     text-decoration: line-through;
+    color: #222222;
 }
 
 P.newPriceItem{
