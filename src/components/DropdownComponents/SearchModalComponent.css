@@ -65,13 +65,13 @@
 }
 
 .modalProductItem{
-    width: 30%;
+    width: 33%;
     height: 45%;
     display: inline;
     float: left;
 }
 
-.modalProductItem p{
+.pContainerModal p{
     font: 12px Poppins, arial, sans-serif;
     color: rgb(187, 183, 183);
 }
@@ -88,4 +88,106 @@ p.oldPriceItem{
 
 P.newPriceItem{
     color: #c2365c;
+}
+
+@media (max-width:600px) {
+
+    .insideModalComponent{
+       overflow-y: scroll;
+    }
+    
+    .rightInsideModalComponent{
+        display: block;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .modalProductItem{
+        width: 100%;
+        height: 130px;
+        display: block;
+    }
+
+    .modalProductItem:hover .topP{
+        color: black;
+    }
+
+    .modalProductItem img{
+        width: 100px;
+        height: 100%; 
+        display: inline;
+        float: left;
+        margin-right: 10px;
+        
+    }
+
+    .pContainerModal{
+        display: inline;
+        float: left;
+    }
+
+    .leftInsideModalComponent{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    
+    .topLeftModalComponent{
+        height: auto;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 5px;
+    }
+    
+    #modalList{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .modalItemList{
+        display: inline;
+        float: left;
+        margin-right: 10px;
+        font: 12px Poppins, arial, sans-serif;
+        color: gray;
+        border: 1px solid #ddd;
+        border-radius: 40px;
+        padding: 8px 15px;
+        height: 30px;
+        width: auto;
+    }
+
+    .modalItemList:hover{
+        color: black;
+    }
+
+    .bottomLeftModalComponent{
+        height: auto;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+
+    }
+    
+    .brandItemWithImg{
+        width: 25%;
+        height: 70px;
+        display: block;
+        cursor: pointer;
+    }
+    
+    .brandItemWithImg:hover .brandItemWithImg p{
+        color:#c2365c
+    }
+    
+    .brandItemWithImg img{
+        width: 100%;
+        height: 40px;
+    }
+    
+    .brandItemWithImg p{
+        font: 12px Poppins, arial, sans-serif;
+    }
 }

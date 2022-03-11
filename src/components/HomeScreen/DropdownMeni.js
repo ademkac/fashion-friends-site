@@ -70,6 +70,7 @@ const DropdownMeni = (props) =>{
     let modal = useRef(null)
     let trigger = useRef(null)
     let inputSearch = useRef(null)
+    let growingSearch = useRef(null)
 
     const handleScroll = () =>{
         setStick(window.scrollY > 0);
@@ -77,8 +78,11 @@ const DropdownMeni = (props) =>{
 
     const handleOutsideModalClick = (e) => {
     //if click is on trigger element, toggle modal
-     if(trigger.current && 
-        trigger.current.contains(e.target)) {
+     if((trigger.current && 
+        trigger.current.contains(e.target)) || (
+            growingSearch.current && 
+        growingSearch.current.contains(e.target)
+        )) {
         return setLongSearch(!longSearch);
        }
     
@@ -312,7 +316,7 @@ const DropdownMeni = (props) =>{
         <div className={headerClasses1}>
         <ul className="growing-list" id="growing-search-freebie">
             <li>
-                <div className="growing-search">
+                <div ref={growingSearch} className="growing-search">
                     <div className="input">
                         <input type='text' placeholder="Trazite..." name="search"/>
                     </div>
@@ -324,6 +328,20 @@ const DropdownMeni = (props) =>{
                 </div>
             </li>
         </ul>
+        {longSearch && (
+                        <div className="modal--overlay">
+                            <div ref={modal} className={modalClasses}>
+                                <SearchModalComponent
+                                popularSearch = {popularSearch}
+                                brands ={brands}
+                                products ={products}
+                                />
+                            </div>
+                        </div>
+                    )}
+                    {longSearch && (
+                        <i id={triangle} className="fas fa-caret-up"></i>
+                    )}
         </div>
         </>
     )

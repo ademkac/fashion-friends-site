@@ -1,7 +1,10 @@
-import React, {useLayoutEffect, useState} from "react";
+import React, {useLayoutEffect, useState, useRef, useEffect} from "react";
 import { Link } from "react-router-dom";
 import slika from '../../assets/drop1.png';
 import slika1 from '../../assets/colmarPic.png'
+import slika2 from '../../assets/disel.jpg'
+import slika3 from '../../assets/replayLogo.jpg'
+import slika4 from '../../assets/paciottiLogo.jpg'
 import '../HomeScreen/DropdownMeni.css'
 import ClothesComponent from "../DropdownComponents/ClothesComponent";
 import ShoesComponent from "../DropdownComponents/ShoesComponent";
@@ -11,11 +14,39 @@ import AccessoriesComponent from "../DropdownComponents/AccessoriesComponent";
 import CosmeticsComponent from "../DropdownComponents/Cosmetics";
 import OutletComponent from "../DropdownComponents/OutletComponent";
 import EditorialComponent from "../DropdownComponents/EditorialComponent";
+import SearchModalComponent from "../DropdownComponents/SearchModalComponent";
+
+
+const popularSearch = [
+    {name: 'Replay'},{name: 'Premiata'},{name: 'Diesel'},{name: 'Torbe'},
+    {name: 'Tommy Hilfiger'},
+]
+
+const brands =[
+    {
+        name: 'Diesel', slika: slika2
+    },
+    {
+        name: 'Replay', slika: slika3
+    },
+    {
+        name: 'Paccioti', slika: slika4
+    }
+]
+
+const products = [
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30},
+    { slika: slika, opis: 'Modal item', staraCena: 27000, popust: 30}, 
+]
 
 const DropdownMeni = (props) =>{
 
     const [stick, setStick] = useState(false)
-    
+    const [longSearch, setLongSearch] = useState(false)
     const [show1, setShow1] = useState(false)
     const [show2, setShow2] = useState(false)
     const [show3, setShow3] = useState(false)
@@ -32,13 +63,40 @@ const DropdownMeni = (props) =>{
     const headerClasses = `dropdownMeni ${stick  ? 'sticky1' : ''}`
     const headerClasses1 = `searchBar ${stick  ? 'sticky2' : ''}`
     const headerClasses2 = `${stick ? 'stickyyy' : 'dropdown-content'}`
+    const modalClasses = `${stick ? 'stickyModal': 'modalSearch'}`
+    const buttonSearch = `${stick ? 'stickyButtonSearch': 'buttonSearch'}`
+    const longButtonSearch = `${stick? 'stickyLongSearch': 'longButtonSearch'}`
+    const triangle = `${stick ? 'stickyTriangle': 'triangle'}`
 
+    let modal = useRef(null)
+    let trigger = useRef(null)
+    let inputSearch = useRef(null)
 
     const handleScroll = () =>{
         setStick(window.scrollY > 0);
     }
 
+    const handleOutsideModalClick = (e) => {
+        //if click is on trigger element, toggle modal
+         if(trigger.current && 
+            trigger.current.contains(e.target)) {
+            return setLongSearch(!longSearch);
+           }
+        
+        //if modal is open and click is outside modal, close it
+        if(modal.current && 
+          !modal.current.contains(e.target) && !inputSearch.current.contains(e.target)) {
+            return setLongSearch(false);
+          }
+        }
+
+        useEffect(()=>{
+            document.addEventListener('click', handleOutsideModalClick, true)
+            return(()=>{ 
+                document.removeEventListener('click', handleOutsideModalClick, true)
+            })
     
+    })
 
     useLayoutEffect(()=>{
         window.addEventListener('scroll',handleScroll);
@@ -121,6 +179,27 @@ const DropdownMeni = (props) =>{
                         <button className="dropbtn">Editorial<i className="fas fa-caret-down"></i></button>
                         
                     </div>
+                    {longSearch ? (
+                        <span ref={inputSearch} className={longButtonSearch}>
+                            <input type='text' placeholder="Trazite"/>
+                            <i className="fa fa-search"></i>
+                        </span>
+                    ) : (<span ref={trigger} className={buttonSearch}><i className="fa fa-search"></i></span>)}
+                
+                    {longSearch && (
+                        <div className="modal--overlay">
+                            <div ref={modal} className={modalClasses}>
+                                <SearchModalComponent
+                                popularSearch = {popularSearch}
+                                brands ={brands}
+                                products ={products}
+                                />
+                            </div>
+                        </div>
+                    )}
+                    {longSearch && (
+                        <i id={triangle} className="fas fa-caret-up"></i>
+                    )}
                 </div>
                 {
                     show1 && ( 

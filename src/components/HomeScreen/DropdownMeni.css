@@ -342,8 +342,8 @@
   }
 
   .modalSearch{
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     border: 1px solid transparent;
     border-radius: 20px;
     background-color: white;
@@ -357,8 +357,8 @@
   }
   
   .stickyModal{
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     border: 1px solid transparent;
     border-radius: 20px;
     background-color: white;
@@ -477,3 +477,16 @@
   right: 30px;
 }
 }
+
+@media (max-width:770px) {
+  
+  .modalSearch{
+    top: 140px;
+  }
+  
+  .stickyModal{
+    top: 100px;
+  }
+  }
+
+
