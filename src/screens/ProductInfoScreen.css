@@ -6,52 +6,6 @@
     overflow-y: hidden;
 }
 
-.breadcrumbContainer{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-}
-
-.insideBreadcrumb{
-    width: 60%;
-    display: flex;
-    justify-content: left;
-    
-}
-
-ul.breadcrumblist{
-    padding: 10px 16px;
-    list-style: none;
-    background-color: inherit;
-}
-
-ul.breadcrumblist li{
-    display: inline;
-}
-
-ul.breadcrumblist li+li::before {
-    padding: 8px;
-    content: ">\00a0";
-}
-
-.activeBreadcrumb{
-    color: grey;
-    text-decoration: none;
-    cursor: text;
-    font-size: 12px;
-}
-
-.breadcrumbLink{
-    color: black;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-.breadcrumbLink:hover{
-    color: #c2365c;
-}
-
 .divSuccesss{
     width: 60%;
     height: 40px;

@@ -3,12 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import DropdownMeni from '../components/HomeScreen/DropdownMeni';
 import Header from '../components/HomeScreen/Header';
 import SocialInfo from '../components/HomeScreen/SocialInfo';
+import Breadcrumb from '../custom/Breadcrumb';
 import CategoriesListFilter from '../custom/CategoriesListFilter';
 import './BrandScreen.css'
-import slika1 from '../assets/ckGrid.png'
-import slika2 from '../assets/ckGridB.png'
-import slika3 from '../assets/gridCkRight.png'
-import Breadcrumb from '../custom/Breadcrumb';
 
 
 const arrayOfFilters = [
@@ -53,8 +50,7 @@ const filterItems = [
     },
 ]
 
-
-const BrandScreen = (props) => {
+const ChosenCatListScreen = (props) => {
 
     const [showK, setShowK] = useState(false)
     const [showV, setShowV] = useState(false)
@@ -65,14 +61,13 @@ const BrandScreen = (props) => {
     const [sliderValue, setSliderValue] = useState(1)
 
     const [clicked, setClicked] = useState(false)
-    const title = useParams().nekibrend;
+    const title = useParams().odeca;
 
     const breadcrumbList = [
         {name: 'Pocetna', to: '/'},
         {name: 'Brendovi', to: '/brendovi'},
         {name: title, to: '#'},
     ]
-
     const dropdownHandler = (name) => {
         setClicked(!clicked)
         console.log("Ime kategorije: "+name)
@@ -99,28 +94,7 @@ const BrandScreen = (props) => {
             <div className='brandDescription'>
                     <div className='insideDesc'>
                         <h1>{title}</h1>
-                        <p>Opis brenda {title}</p>
                     </div>
-            </div>
-            <div className='imageGrid'>
-                <div className='insideGrid'>
-                    <div className='leftGridImage'>
-                        <img src={slika1} alt=''/>
-                    </div>
-                    <div className='rightGridImage'>
-                        <div className='topRightGrid'>
-                            <div className='topRightLeft'>
-                                <img src={slika2} alt='' />
-                            </div>
-                            <div className='topRightRight'>
-                                <img src={slika3} alt='' />
-                            </div>
-                        </div>
-                        <div className='bottomRightGrid'>
-                            <img src={slika1} alt='' />
-                        </div>
-                    </div>
-                </div>
             </div>
             <div className='mainBrandContainer'>
                     <div className='brandTwoCol'>
@@ -217,4 +191,4 @@ const BrandScreen = (props) => {
     )
 }
 
-export default BrandScreen;
+export default ChosenCatListScreen;

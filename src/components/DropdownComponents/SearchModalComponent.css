@@ -139,6 +139,8 @@ P.newPriceItem{
         width: 100%;
         border-bottom: 1px solid #ddd;
         margin-bottom: 5px;
+        text-align: center;
+        padding: 20px 0;
     }
     
     #modalList{
@@ -168,9 +170,13 @@ P.newPriceItem{
         height: auto;
         width: 100%;
         border-bottom: 1px solid #ddd;
-
+        text-align: center;
     }
-    
+
+    #titl{
+        color: black;
+    }
+
     .brandItemWithImg{
         width: 25%;
         height: 70px;

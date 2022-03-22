@@ -8,6 +8,12 @@ import Header from "../components/HomeScreen/Header";
 import SocialInfo from "../components/HomeScreen/SocialInfo";
 import Newsletter from "../components/Newsletter";
 import slika from '../assets/colmarPic.png'
+import Breadcrumb from "../custom/Breadcrumb";
+
+const breadcrumbList = [
+    {name: 'Pocetna' , to: '/'},
+    {name: 'Korpa za kupovinu', to: '/checkout/cart'},
+]
 
 const CheckoutCartScreen = () => {
 
@@ -22,14 +28,7 @@ const CheckoutCartScreen = () => {
         <SocialInfo />
         <Header />
         <DropdownMeni />
-        <div className='breadcrumbContainer'>
-            <div className='insideBreadcrumbb'>
-                <ul className='breadcrumblist'>
-                    <li><Link to='/' className='breadcrumbLink'>Pocetna</Link></li>
-                    <li><Link to='/#' className='activeBreadcrumb'>Korpa za kupovinu</Link></li>
-                </ul>
-            </div>
-        </div>
+        <Breadcrumb list={breadcrumbList} />
         <div className="h2Container">
             <h2>Korpa za kupovinu</h2>
         </div>

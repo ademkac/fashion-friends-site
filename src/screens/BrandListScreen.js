@@ -20,6 +20,7 @@ import DropdownMeni from '../components/HomeScreen/DropdownMeni';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/HomeScreen/Footer';
 import FooterInfo from '../components/HomeScreen/FooterInfo';
+import Breadcrumb from '../custom/Breadcrumb';
 
 
 const brandsList = [
@@ -69,20 +70,18 @@ const brandsList = [
     },
 ]
 
+const breadcrumbList = [
+    {name: 'Pocetna', to: '/'},
+    {name: 'Brendovi', to: '/brendovi'}
+]
+
 const BrandListScreen = () => {
     return (
         <div className='container'>
             <SocialInfo />
             <Header />
             <DropdownMeni />
-            <div className='breadcrumbContainer'>
-                <div className='insideBreadcrumb'>
-                    <ul className='breadcrumblist'>
-                        <li><Link to='/' className='breadcrumbLink'>Pocetna</Link></li>
-                        <li><Link to='/brendovi' className='activeBreadcrumb'>Brendovi</Link></li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumb list={breadcrumbList} />
             <div className='titleCon'>
                 <div className='insideTitleCon'>
                     <h2>BRENDOVI</h2>

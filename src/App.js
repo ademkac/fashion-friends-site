@@ -4,6 +4,7 @@ import './App.css';
 import BrandListScreen from './screens/BrandListScreen';
 import BrandScreen from './screens/BrandScreen';
 import CheckoutCartScreen from './screens/CheckoutCartScreen';
+import ChosenCatListScreen from './screens/ChosenCatListScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import GuestWishList from './screens/GuestWishList';
 import HomeScreen from './screens/HomeScreen';
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/deca' element={<HomeScreen />}/>
           <Route path='/brendovi' element={<BrandListScreen />} />
           <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
+          <Route path='/zene/:odeca' element={<ChosenCatListScreen />} />
           <Route
         path="*"
         element={<Navigate to="/" />}

@@ -391,7 +391,6 @@
     cursor: pointer;
   }
 
-  
   @media (max-width:1300px) {
     .buttonSearch{
       right: 140px;
@@ -488,5 +487,19 @@
     top: 100px;
   }
   }
+
+  @media (max-width:600px) {
+  
+    .modalSearch{
+      width: 97%;
+      right: 10px;
+    }
+    
+    .stickyModal{
+      width: 97%;
+      right: 10px;
+
+    }
+    }
 
 

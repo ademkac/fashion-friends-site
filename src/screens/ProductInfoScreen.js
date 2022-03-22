@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useSelector, useDispatch} from 'react-redux';
 import { useParams, Link } from "react-router-dom";
 import {useSwipeable} from 'react-swipeable'
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
@@ -9,6 +10,8 @@ import SocialInfo from "../components/HomeScreen/SocialInfo";
 import Newsletter from "../components/Newsletter";
 import './ProductInfoScreen.css'
 import slika from '../assets/colmarPic.png'
+import Breadcrumb from "../custom/Breadcrumb";
+import {fetchProduct} from '../store/products-actions'
 
 const listOfSizes = [
     {name: 'S',
@@ -102,8 +105,17 @@ const ProductInfoScreen = () => {
     const [recentlyViewedPr2, setrecentlyViewedPr2] = useState(2)
     const [recentlyViewedPr3, setrecentlyViewedPr3] = useState(3)
     const [recentlyViewedPr4, setrecentlyViewedPr4] = useState(4)
+    const dispatch = useDispatch();
+    const product = useSelector((state)=>state.product);
 
-    
+
+    const breadcrumbList = [
+        {name: 'Pocetna', to: '/'},
+        {name: 'Muskarci', to: '/pol'},
+        {name: 'Kategorija-odeca', to: '/pol/kategorija'},
+        {name: 'Podkategorija-jakne i kaputi', to: '/pol/kategorija/podkategorija'},
+        {name: nameOfProduct, to: '#'},
+    ]
 
     const sizeHandler = (name) => {
         setChosenSize(name)
@@ -158,10 +170,13 @@ const ProductInfoScreen = () => {
     })
 
     useEffect(()=>{
+        dispatch(fetchProduct(4))
+    }, [dispatch])
+
+    useEffect(()=>{
         if(chosenSize != ''){
             const chosen = listOfSizes.find((obj)=>obj.name == chosenSize);
             setKolicina(chosen.quantity)
-            console.log("quantity: "+kolicina)
         }
 
         if(linkedPr1 == 1) {
@@ -190,17 +205,7 @@ const ProductInfoScreen = () => {
             }
         }
 
-       /*  const interval = setInterval(()=> {
-            if(!paused){
-                nextItemHandler()
-                
-            }
-        }, 3000);
-        return () => {
-            if(interval){
-                clearInterval(interval)
-            }
-        }     */
+       
 
 
     }, [chosenSize, linkedPr1, linkedPr4, recentlyViewedPr1, recentlyViewedPr4, listOfRecentlyViewed])
@@ -210,17 +215,7 @@ const ProductInfoScreen = () => {
             <SocialInfo />
             <Header />
             <DropdownMeni />
-            <div className='breadcrumbContainer'>
-                <div className='insideBreadcrumb'>
-                    <ul className='breadcrumblist'>
-                        <li><Link to='/' className='breadcrumbLink'>Pocetna</Link></li>
-                        <li><Link to='/pol' className='breadcrumbLink'>Muskarci</Link></li>
-                        <li><Link to='/pol/kategorija' className='breadcrumbLink'>Kategorija-odeca</Link></li>
-                        <li><Link to='/pol/kategorija/podkategorija' className='breadcrumbLink'>Podkategorija-jakne i kaputi</Link></li>
-                        <li><Link to={`/${nameOfProduct}`} className='activeBreadcrumb'>{nameOfProduct}</Link></li>
-                    </ul>
-                </div>
-            </div>
+            <Breadcrumb list={breadcrumbList} />
             {productAddedInCart ? (
                 <div className='divSuccess'>
                 <i id='checkItem' className='fa fa-check'></i>
@@ -238,24 +233,26 @@ const ProductInfoScreen = () => {
                 <p>Calvin Klein - Kožne muške čizme je dodat u listu želja.</p>
             </div>
             )}
-            <div className="productInfoCon">
+            { product != null && (
+                <>
+                <div className="productInfoCon">
                 <div className="insideProductInfo">
                     <div className="productiInfoImage">
-                        <img src={slika} alt=""/>
+                        <img src={require(`../assets/${product.product.picture}`)} alt=""/>
                         <div className="listOfOtherPic">
                             <button className="prevPic">&#10094;</button>
-                                <img src={slika} alt="" />
-                                <img src={slika} alt="" />
+                                <img src={require(`../assets/${product.product.picture}`)} alt="" />
+                                <img src={require(`../assets/${product.product.picture}`)} alt="" />
                                
                             <button className="nextPic">&#10095;</button>
                         </div>
                     </div>
                     <div className="productInfoData">
-                        <h3>COLMAR</h3>
-                        <p>{nameOfProduct}</p>
-                        <p>6.990,00 RSD</p>
-                        <p>Pamucna majica kratkih rukava. Logo print.</p>
-                        <p>Boja: Crna</p>
+                        <h3>{product.product.brand}</h3>
+                        <p>{product.product.name}</p>
+                        <p>{product.product.price}</p>
+                        <p>{product.product.description}</p>
+                        <p>Boja: {product.product.color}</p>
                         <i className="fa fa-check"></i>
                         <p>Velicina: {chosenSize}</p>
                         <div className="listOfSizes">
@@ -323,29 +320,30 @@ const ProductInfoScreen = () => {
                                  <tbody>
                                  <tr>
                                      <td className="infoTitle">Sifra artikla</td>
-                                     <td>CO7526-6SH-99</td>
+                                     <td>{product.product.articleCode}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Brend</td>
-                                     <td>Colmar</td>
+                                     <td>{product.product.brand}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Sezona</td>
-                                     <td>Prolece-Leto</td>
+                                     <td>{product.product.season}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Pol</td>
-                                     <td>Muski</td>
+                                     <td>{product.product.sex}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Materijal</td>
-                                     <td>100% pamuk</td>
+                                     <td>{product.product.material}</td>
                                  </tr>
                                  </tbody>
                              </table>
                          </div>
                      )}
             </div>
+           </> )}
 
             <div className="linkedProducts">
                 <div className="insideLinkedProducts">
@@ -397,10 +395,10 @@ const ProductInfoScreen = () => {
                                     <div 
                                     key={idx} 
                                     className={
-                                    (idx+1 == recentlyViewedPr1 
-                                    || idx+1 == recentlyViewedPr2
-                                    || idx+1 == recentlyViewedPr3
-                                    || idx+1 == recentlyViewedPr4) ? 'recentlyViewedItem' : 'nonActiveLink'}>
+                                    (idx+1 === recentlyViewedPr1 
+                                    || idx+1 === recentlyViewedPr2
+                                    || idx+1 === recentlyViewedPr3
+                                    || idx+1 === recentlyViewedPr4) ? 'recentlyViewedItem' : 'nonActiveLink'}>
                                         <Link  to={`/${obj.opis}`}>
                                         <img src={obj.slika} alt='' />
                                         <div className="linkedProudctInfo">

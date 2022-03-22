@@ -33,7 +33,7 @@ const SearchModalComponent = (props) => {
                     </ul>
                 </div>
                 <div className="bottomLeftModalComponent">
-                        <p>Brend</p>
+                        <p id="titl">Brend</p>
                         {
                             props.brands.map((obj, idx)=>{
                                 return(

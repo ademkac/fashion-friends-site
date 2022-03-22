@@ -121,62 +121,62 @@ const DropdownMeni = (props) =>{
                     onMouseOver={()=>setShow1(true)}
                     onMouseLeave={()=>setShow1(false)}
                     className="dropdown">
-                        <button className="dropbtn">Noviteti<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/noviteti'><button className="dropbtn">Noviteti<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
                     onMouseOver={()=>setShow2(true)}
                     onMouseLeave={()=>setShow2(false)}
                     className="dropdown">
-                        <button className="dropbtn">Luxury<i className="fas fa-caret-down"></i></button>
+                        <Link to='/brendovi/dsquared2'><button className="dropbtn">Luxury<i className="fas fa-caret-down"></i></button></Link>
                     </div>
                     <div 
                     onMouseOver={()=>setShow3(true)}
                      onMouseLeave={()=>setShow3(false)}
                     className="dropdown">
-                        <button className="dropbtn">Odeca<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/odeca'><button className="dropbtn">Odeca<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
                     onMouseOver={()=>setShow4(true)}
                     onMouseLeave={()=>setShow4(false)}
                     className="dropdown">
-                        <button className="dropbtn">Obuca<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/obuca'><button className="dropbtn">Obuca<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div> 
                     <div
                     onMouseOver={()=>setShow5(true)}
                     onMouseLeave={()=>setShow5(false)}
                     className="dropdown">
-                        <button className="dropbtn">Brendovi<i className="fas fa-caret-down"></i></button>
+                        <Link to='/brendovi'><button className="dropbtn">Brendovi<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
                     onMouseOver={()=>setShow6(true)}
                     onMouseLeave={()=>setShow6(false)}
                     className="dropdown">
-                        <button className="dropbtn">Torbe<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/torbe'><button className="dropbtn">Torbe<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
                     onMouseOver={()=>setShow7(true)}
                     onMouseLeave={()=>setShow7(false)}
                     className="dropdown">
-                        <button className="dropbtn">Aksesoari<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/aksesoari'><button className="dropbtn">Aksesoari<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
                     onMouseOver={()=>setShow8(true)}
                     onMouseLeave={()=>setShow8(false)}
                     className="dropdown">
-                        <button className="dropbtn">Kozmetika<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/kozmetika'><button className="dropbtn">Kozmetika<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
                     onMouseOver={()=>setShow9(true)}
                     onMouseLeave={()=>setShow9(false)}
                     className="dropdown">
-                        <button className="dropbtn">Outlet<i className="fas fa-caret-down"></i></button>
+                        <Link to='/zene/outlet'><button className="dropbtn">Outlet<i className="fas fa-caret-down"></i></button></Link>
                         
                     </div>
                     <div
