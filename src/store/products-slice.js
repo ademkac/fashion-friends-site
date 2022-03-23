@@ -17,6 +17,7 @@ const productsSlice = createSlice({
             sex: '',
             material: '' 
         },
+        isLoading: false
     },
     reducers:{
         getProduct(state, action){
@@ -34,6 +35,9 @@ const productsSlice = createSlice({
             state.product.material = action.payload.product.material; 
 
         },
+        setIsLoading(state, action){
+            state.isLoading = action.payload;
+        }
     }
 })
 

@@ -12,6 +12,8 @@ import './ProductInfoScreen.css'
 import slika from '../assets/colmarPic.png'
 import Breadcrumb from "../custom/Breadcrumb";
 import {fetchProduct} from '../store/products-actions'
+import LoadingSpinner from "../custom/LoadingSpinner";
+import Notification from "../custom/Notification";
 
 const listOfSizes = [
     {name: 'S',
@@ -107,7 +109,8 @@ const ProductInfoScreen = () => {
     const [recentlyViewedPr4, setrecentlyViewedPr4] = useState(4)
     const dispatch = useDispatch();
     const product = useSelector((state)=>state.product);
-
+    const isLoading = useSelector(state=>state.product.isLoading)
+    const notification = useSelector(state=>state.ui.notification)
 
     const breadcrumbList = [
         {name: 'Pocetna', to: '/'},
@@ -233,16 +236,25 @@ const ProductInfoScreen = () => {
                 <p>Calvin Klein - Kožne muške čizme je dodat u listu želja.</p>
             </div>
             )}
+            {isLoading && (
+                <LoadingSpinner asOverlay />
+            )}
             { product != null && (
                 <>
+                {notification && (
+                    <Notification
+                    status={notification.status}
+                    title={notification.title}
+                    message={notification.message} />
+                )}
                 <div className="productInfoCon">
                 <div className="insideProductInfo">
                     <div className="productiInfoImage">
-                        <img src={require(`../assets/${product.product.picture}`)} alt=""/>
+                        <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt=""/>
                         <div className="listOfOtherPic">
                             <button className="prevPic">&#10094;</button>
-                                <img src={require(`../assets/${product.product.picture}`)} alt="" />
-                                <img src={require(`../assets/${product.product.picture}`)} alt="" />
+                                <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt="" />
+                                <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt="" />
                                
                             <button className="nextPic">&#10095;</button>
                         </div>

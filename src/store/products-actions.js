@@ -1,4 +1,5 @@
 import {productsActions} from './products-slice';
+import { uiActions } from './ui-slice';
 
 export const fetchProduct = (id) => {
     return async (dispatch) => {
@@ -6,10 +7,16 @@ export const fetchProduct = (id) => {
             const response = await fetch(
                 'https://localhost:7263/api/ProductControler/'+id
             );
+            dispatch(
+                productsActions.setIsLoading(true)
+            )
 
             if(!response.ok) {
                 throw new Error('Proizvod trenutno nije dostupan!');
             }
+            dispatch(
+                productsActions.setIsLoading(false)
+            )
 
             const data = await response.json();
             console.log("data from backend: "+data)
@@ -24,7 +31,16 @@ export const fetchProduct = (id) => {
                 })
             );
         } catch (error) {
-            console.log("greska prilikom uzimanja produkta sa servera: "+error)
+            dispatch(
+                productsActions.setIsLoading(false)
+            )
+            dispatch(
+                uiActions.showNotification({
+                    status: 'error',
+                    title: 'Error!',
+                    message: 'Trenutno nije moguce prikazati proizvod!'
+                })
+            )
         }
     }
 }
