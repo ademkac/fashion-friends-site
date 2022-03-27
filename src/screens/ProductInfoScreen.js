@@ -249,7 +249,7 @@ const ProductInfoScreen = () => {
                 )}
                 <div className="productInfoCon">
                 <div className="insideProductInfo">
-                    <div className="productiInfoImage">
+                    <div className="productiInfoImage"> 
                         <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt=""/>
                         <div className="listOfOtherPic">
                             <button className="prevPic">&#10094;</button>

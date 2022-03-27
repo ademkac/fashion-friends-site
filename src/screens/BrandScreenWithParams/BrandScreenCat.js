@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import { Link, useParams } from 'react-router-dom';
-import DropdownMeni from '../components/HomeScreen/DropdownMeni';
-import Header from '../components/HomeScreen/Header';
-import SocialInfo from '../components/HomeScreen/SocialInfo';
-import CategoriesListFilter from '../custom/CategoriesListFilter';
-import './BrandScreen.css'
-import slika1 from '../assets/ckGrid.png'
-import slika2 from '../assets/ckGridB.png'
-import slika3 from '../assets/gridCkRight.png'
-import Breadcrumb from '../custom/Breadcrumb';
+import DropdownMeni from '../../components/HomeScreen/DropdownMeni';
+import Header from '../../components/HomeScreen/Header';
+import SocialInfo from '../../components/HomeScreen/SocialInfo';
+import CategoriesListFilter from '../../custom/CategoriesListFilter';
+import '../BrandScreen.css'
+import slika1 from '../../assets/ckGrid.png'
+import slika2 from '../../assets/ckGridB.png'
+import slika3 from '../../assets/gridCkRight.png'
+import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
-import {fetchProductsData} from '../store/products-actions'
+import {productsActions} from '../../store/products-slice';
+import { fetchProductsData } from '../../store/products-actions';
+
 
 /* const arrayOfFilters = [
      {
@@ -35,9 +37,6 @@ import {fetchProductsData} from '../store/products-actions'
 
 const filterItems = [
     {
-        name: 'Kategorija'
-    },
-    {
         name: 'Boja'
     },
     {
@@ -54,36 +53,63 @@ const filterItems = [
     },
 ]
 
-const BrandScreen = (props) => {
+const products = [
+    {
+        name: 'Tommy jakna sa dva lica',
+        price: 17000
+    },
+    {
+        name: 'Tommy majica sa dva lica',
+        price: 7000
+    },
+    {
+        name: 'Tommy patike',
+        price: 17000
+    },
+    {
+        name: 'Tommy jakna za zimu',
+        price: 12000
+    },
+    {
+        name: 'Tommy jakna sa dva lica',
+        price: 9000
+    },
+    {
+        name: 'Tommy jakna sa dva lica',
+        price: 8000
+    },
+]
 
-    const [showK, setShowK] = useState(false)
+const BrandScreenCat = (props) => {
+
     const [showV, setShowV] = useState(false)
     const [showB, setShowB] = useState(false)
     const [showS, setShowS] = useState(false)
     const [showP, setShowP] = useState(false)
     const [showC, setShowC] = useState(false)
     const [sliderValue, setSliderValue] = useState(1)
-    const products = useSelector(state => state.product.products)
-    const dispatch = useDispatch();
+
     const [clicked, setClicked] = useState(false)
-    const title = useParams().nekibrend;
+    const {nekibrend, kat} = useParams();
+    const categoryProducts = useSelector(state => state.product.categoryProducts)
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(fetchProductsData())
+        dispatch(productsActions.findCategoryOfBrand(kat))
+    },[dispatch])
 
     const breadcrumbList = [
         {name: 'Pocetna', to: '/'},
         {name: 'Brendovi', to: '/brendovi'},
-        {name: title, to: '#'},
+        {name: nekibrend, to: '#'},
     ]
-
-    useEffect(()=>{
-        dispatch(fetchProductsData());
-    }, [dispatch])
 
     const dropdownHandler = (name) => {
         setClicked(!clicked)
         console.log("Ime kategorije: "+name)
         
-        name == 'Kategorija' ? setShowK(!showK) 
-        : name == 'Boja' ? setShowB(!showB)
+         name == 'Boja' ? setShowB(!showB)
         : name == 'Velicina' ? setShowV(!showV)
         : name == 'Cena' ? setShowC(!showC)
         : name == 'Pol' ? setShowP(!showP)
@@ -103,8 +129,8 @@ const BrandScreen = (props) => {
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>
-                        <h1>{title}</h1>
-                        <p>Opis brenda {title}</p>
+                        <h1>{nekibrend}</h1>
+                        <p>Opis brenda {nekibrend}</p>
                     </div>
             </div>
             <div className='imageGrid'>
@@ -140,7 +166,6 @@ const BrandScreen = (props) => {
                                                 <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
                                                 {((showB && obj.name == 'Boja')
                                                 || (showC && obj.name == 'Cena')
-                                                || (showK && obj.name == 'Kategorija')
                                                 || (showP && obj.name == 'Pol')
                                                 || (showS && obj.name == 'Sezona')
                                                 || (showV && obj.name == 'Velicina')) == false  
@@ -149,15 +174,11 @@ const BrandScreen = (props) => {
                                                 </div>
                                                 {(  (showB && obj.name == 'Boja')
                                                 || (showC && obj.name == 'Cena')
-                                                || (showK && obj.name == 'Kategorija')
                                                 || (showP && obj.name == 'Pol')
                                                 || (showS && obj.name == 'Sezona')
                                                 || (showV && obj.name == 'Velicina')  )  && (
                                                     <div className='dropContent'>
-                                                    {obj.name == 'Kategorija'? 
-                                                    (
-                                                        <CategoriesListFilter brend={title} />
-                                                    ): obj.name == 'Boja' ?
+                                                    { obj.name == 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             <span className='redd'></span>
@@ -168,10 +189,10 @@ const BrandScreen = (props) => {
                                                     ): obj.name == 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <Link to={`/brendovi/${title}/filter/S`}><p>S</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/M`}><p>M</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/L`}><p>L</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/XL`}><p>XL</p></Link>
+                                                            <p>S</p>
+                                                            <p>M</p>
+                                                            <p>L</p>
+                                                            <p>XL</p>
                                                         </div>
                                                     ): obj.name == 'Sezona' ?
                                                     (
@@ -197,43 +218,27 @@ const BrandScreen = (props) => {
                             </ul>
                         </div>
                         <div className='listOfProducts'>
-                            {/* {arrayOfFilters.length > 0 && (
+                           
                                 <div className='arrayOfFilters'>
                                 <h4>Trenutna kupovina po</h4>
                                 <div className='insideArrayOfFilters'>
-                                    {arrayOfFilters.map((obj, idx)=>{
-                                        return (
-                                            <div key={idx} className='itemOfArray'>
-                                                <span><b>{obj.kategorija}:</b> {obj.podkategorija}</span>
-                                                <i  className="fas fa-times"></i>
-                                            </div>
-                                        )
-                                    })}
                                     <div className='itemOfArray'>
-                                                <span>Ponistite sve</span>   
+                                        <span><b>Kategorija:</b> {kat}</span>
+                                        <i  className="fas fa-times"></i>
+                                    </div>
+                                    <div className='itemOfArray'>
+                                        <span>Ponistite sve</span>   
                                     </div>
                                 </div>
                             </div>
-                            )} */}
                             <div className='productItemsContainer'>
-                            {products.length === 0 && (
-                                <h2>Trenutno nema dostupnih proizvoda!!!!</h2>
-                            )}
                             {
-                                products.map((obj, idx)=>{
+                                categoryProducts.map((obj, idx)=>{
                                     return(
                                         <div className='productItem' key={idx}>
-                                            <img src={require(`../assets/${obj.picture}`)} alt="" />
+                                            <img src={slika1} alt="" />
                                             <p>{obj.name}</p>
-                                            {obj.size.map((obj, idx)=>{
-                                                return(
-                                                    <span key={idx}>{obj.size}</span>
-                                                )
-                                            })}
-                                            <p className='oldprice'>{obj.price} RSD</p>
-                                            {obj.discount !== 0 && (
-                                            <p className='discountP'>{obj.price-(obj.price*obj.discount/100)} RSD</p>
-                                            )}
+                                            <p>{obj.price}</p>
                                         </div>
                                     )
                                 })
@@ -246,4 +251,4 @@ const BrandScreen = (props) => {
     )
 }
 
-export default BrandScreen;
+export default BrandScreenCat;

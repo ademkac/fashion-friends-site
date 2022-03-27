@@ -3,6 +3,8 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import './App.css';
 import BrandListScreen from './screens/BrandListScreen';
 import BrandScreen from './screens/BrandScreen';
+import BrandScreenCat from './screens/BrandScreenWithParams/BrandScreenCat';
+import BrandScreenSize from './screens/BrandScreenWithParams/BrandScreenSize';
 import CheckoutCartScreen from './screens/CheckoutCartScreen';
 import ChosenCatListScreen from './screens/ChosenCatListScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
@@ -31,6 +33,8 @@ const App = () => {
           <Route path='/deca' element={<HomeScreen />}/>
           <Route path='/brendovi' element={<BrandListScreen />} />
           <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
+          <Route path='/brendovi/:nekibrend/filter/:kat' element={<BrandScreenCat />} />
+          <Route path='/brendovi/:nekibrend/filter/:size' element={<BrandScreenSize />} />
           <Route path='/zene/:odeca' element={<ChosenCatListScreen />} />
           <Route
         path="*"

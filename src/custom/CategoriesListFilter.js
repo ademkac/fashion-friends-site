@@ -96,7 +96,7 @@ const listOfItems = [
 ]
 
 
-const CategoriesListFilter = () =>{
+const CategoriesListFilter = (props) =>{
     return (
         <div className='containerCategories'>
             <ul className='listContainerCategories'>
@@ -104,7 +104,7 @@ const CategoriesListFilter = () =>{
                     listOfItems.map((obj, idx) => {
                         return(
                             <li key={idx} className='itemContainerCategories'>
-                               <Link className='itemLinkCat' to='/'>{obj.name}</Link> 
+                               <Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/${obj.name}`}>{obj.name}</Link> 
                             </li>
                         )
                     })
