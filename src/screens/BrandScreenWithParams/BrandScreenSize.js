@@ -227,11 +227,15 @@ const BrandScreenSize = (props) => {
                                         <i  className="fas fa-times"></i>
                                     </div>
                                     <div className='itemOfArray'>
-                                        <span>Ponistite sve</span>   
-                                    </div>
+                                    <Link to={`/brendovi/${nekibrend}`}><span onClick={()=>dispatch(productsActions.backToInitalState())}>Ponistite sve</span></Link>                                        </div>
                                 </div>
                             </div>
                             <div className='productItemsContainer'>
+                            {
+                                sizeProducts.length === 0 && (
+                                    <h3>Trenutno nema proizvoda sa tom velicinom!</h3>
+                                )
+                            }
                             {
                                 sizeProducts.map((obj, idx)=>{
                                     return(
@@ -239,6 +243,9 @@ const BrandScreenSize = (props) => {
                                             <img src={slika1} alt="" />
                                             <p>{obj.name}</p>
                                             <p>{obj.price}</p>
+                                            {obj.discount !== 0 && (
+                                            <p className='discountP'>{obj.price-(obj.price*obj.discount/100)} RSD</p>
+                                            )}
                                         </div>
                                     )
                                 })

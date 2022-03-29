@@ -205,7 +205,7 @@ li.filterBrandItem{
     border: 1px solid black;
 }
 
-.sizeFilter span{
+.sizeFilter a{
     width: 20px;
     height: 20px;
     border: 1px solid inherit;
@@ -213,29 +213,34 @@ li.filterBrandItem{
     margin-right: 5px;
     margin-left: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.sizeFilter span:hover{
+.sizeFilter a:hover{
     border: 1px solid black;
     -ms-transform: scale(1.2);
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
-span.redd{
+a.redd{
     background-color: red;
 }
 
-span.bluee{
+a.bluee{
     background-color: blue;
 }
 
-span.greenn{
+a.greenn{
     background-color: green;
 }
 
-span.blackk{
+a.blackk{
     background-color: black;
+}
+
+a.yelloww{
+    background-color: yellow;
 }
 
 .sliderPrice{
@@ -311,11 +316,14 @@ input[type="range"]::-moz-range-progress {
       color: gray;
   }
 
-  .itemOfArray i{
+  #itemOfArr{
       font-size: 14px;
       display: inline;
       float: left;
       color: #333333;
+      margin-left: 10px;
+      margin-top: 2px;
+      position: static;
   }
 
   .bottomBorder{
@@ -356,4 +364,8 @@ input[type="range"]::-moz-range-progress {
 p.discountP{
     color: #c2365c;
     margin-top: -0.8rem;
+}
+
+p.discountOld{
+    text-decoration: line-through;
 }

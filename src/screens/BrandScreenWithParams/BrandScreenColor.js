@@ -1,43 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import { Link, useParams } from 'react-router-dom';
-import DropdownMeni from '../components/HomeScreen/DropdownMeni';
-import Header from '../components/HomeScreen/Header';
-import SocialInfo from '../components/HomeScreen/SocialInfo';
-import CategoriesListFilter from '../custom/CategoriesListFilter';
-import './BrandScreen.css'
-import slika1 from '../assets/ckGrid.png'
-import slika2 from '../assets/ckGridB.png'
-import slika3 from '../assets/gridCkRight.png'
-import Breadcrumb from '../custom/Breadcrumb';
+import DropdownMeni from '../../components/HomeScreen/DropdownMeni';
+import Header from '../../components/HomeScreen/Header';
+import SocialInfo from '../../components/HomeScreen/SocialInfo';
+import CategoriesListFilter from '../../custom/CategoriesListFilter';
+import '../BrandScreen.css'
+import slika1 from '../../assets/ckGrid.png'
+import slika2 from '../../assets/ckGridB.png'
+import slika3 from '../../assets/gridCkRight.png'
+import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
-import {fetchProductsData} from '../store/products-actions'
-import { productsActions } from '../store/products-slice';
-
-/* const arrayOfFilters = [
-     {
-        kategorija: 'Sezona', podkategorija: 'Jesen-Zima'
-    },
-    {
-        kategorija: 'Brend', podkategorija: 'Paciotti'
-    },
-    {
-        kategorija: 'Pol', podkategorija: 'Muski'
-    },
-    {
-        kategorija: 'Sezona', podkategorija: 'Jesen-Zima'
-    },
-    {
-        kategorija: 'Brend', podkategorija: 'Paciotti'
-    },
-    {
-        kategorija: 'Pol', podkategorija: 'Muski'
-    } 
-] */
+import {productsActions} from '../../store/products-slice';
+import { fetchProductsData } from '../../store/products-actions';
 
 const filterItems = [
-    {
-        name: 'Kategorija'
-    },
     {
         name: 'Boja'
     },
@@ -55,8 +31,7 @@ const filterItems = [
     },
 ]
 
-const BrandScreen = (props) => {
-
+const BrandScreenColor = (props) => {
     const [showK, setShowK] = useState(false)
     const [showV, setShowV] = useState(false)
     const [showB, setShowB] = useState(false)
@@ -64,31 +39,34 @@ const BrandScreen = (props) => {
     const [showP, setShowP] = useState(false)
     const [showC, setShowC] = useState(false)
     const [sliderValue, setSliderValue] = useState(1)
-    const products = useSelector(state => state.product.products)
-    const dispatch = useDispatch();
+
     const [clicked, setClicked] = useState(false)
-    const title = useParams().nekibrend;
+    const {nekibrend, color} = useParams();
+    let colorArray = color.split(',');
+    const colorProducts = useSelector(state => state.product.colorProducts)
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(fetchProductsData())
+        dispatch(productsActions.findColorOfBrand(colorArray[colorArray.length-1]))
+        
+    },[dispatch, color])
 
     const breadcrumbList = [
         {name: 'Pocetna', to: '/'},
         {name: 'Brendovi', to: '/brendovi'},
-        {name: title, to: '#'},
+        {name: nekibrend, to: '#'}, 
     ]
-
-    useEffect(()=>{
-        dispatch(fetchProductsData());
-        dispatch(productsActions.backToInitalState())
-    }, [dispatch])
 
     const dropdownHandler = (name) => {
         setClicked(!clicked)
         console.log("Ime kategorije: "+name)
         
         name === 'Kategorija' ? setShowK(!showK) 
-        : name === 'Boja' ? setShowB(!showB)
-        : name === 'Velicina' ? setShowV(!showV)
-        : name === 'Cena' ? setShowC(!showC)
-        : name === 'Pol' ? setShowP(!showP)
+        : name == 'Boja' ? setShowB(!showB)
+        : name == 'Velicina' ? setShowV(!showV)
+        : name == 'Cena' ? setShowC(!showC)
+        : name == 'Pol' ? setShowP(!showP)
         : setShowS(!showS)
     }
 
@@ -105,8 +83,8 @@ const BrandScreen = (props) => {
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>
-                        <h1>{title}</h1>
-                        <p>Opis brenda {title}</p>
+                        <h1>{nekibrend}</h1>
+                        <p>Opis brenda {nekibrend}</p>
                     </div>
             </div>
             <div className='imageGrid'>
@@ -140,49 +118,49 @@ const BrandScreen = (props) => {
                                             <li className='filterBrandItem' key={idx}>
                                                 <div className='dropTitle'>
                                                 <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
-                                                {((showB && obj.name === 'Boja')
-                                                || (showC && obj.name === 'Cena')
+                                                {((showB && obj.name == 'Boja')
+                                                || (showC && obj.name == 'Cena')
                                                 || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name === 'Pol')
-                                                || (showS && obj.name === 'Sezona')
-                                                || (showV && obj.name === 'Velicina')) === false  
+                                                || (showP && obj.name == 'Pol')
+                                                || (showS && obj.name == 'Sezona')
+                                                || (showV && obj.name == 'Velicina')) == false  
                                                 ?(<i className="fas fa-caret-down"></i>)
                                                 :(<i className="fas fa-caret-up"></i>)}
                                                 </div>
-                                                {(  (showB && obj.name === 'Boja')
-                                                || (showC && obj.name === 'Cena')
+                                                {(  (showB && obj.name == 'Boja')
+                                                || (showC && obj.name == 'Cena')
                                                 || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name === 'Pol')
-                                                || (showS && obj.name === 'Sezona')
-                                                || (showV && obj.name === 'Velicina')  )  && (
+                                                || (showP && obj.name == 'Pol')
+                                                || (showS && obj.name == 'Sezona')
+                                                || (showV && obj.name == 'Velicina')  )  && (
                                                     <div className='dropContent'>
                                                     {obj.name === 'Kategorija'? 
                                                     (
-                                                        <CategoriesListFilter brend={title} />
-                                                    ): obj.name === 'Boja' ?
+                                                        <CategoriesListFilter brend={nekibrend} />
+                                                    ): obj.name == 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <Link className='bluee' to={`/brendovi/${title}/filter/colorplava`}></Link>
-                                                            <Link className='greenn' to={`/brendovi/${title}/filter/colorzelena`}></Link>
-                                                            <Link className='blackk' to={`/brendovi/${title}/filter/colorcrna`}></Link>
-                                                            <Link className='redd' to={`/brendovi/${title}/filter/colorcrvena`}></Link>
-                                                            <Link className='yelloww' to={`/brendovi/${title}/filter/colorzuta`}></Link>
+                                                            {!colorArray.find(it=>it === 'crvena') &&(<Link className='redd' to={`/brendovi/${nekibrend}/filter/color${color},crvena`}></Link>)}
+                                                            {!colorArray.find(it=>it === 'plava') &&(<Link className='bluee' to={`/brendovi/${nekibrend}/filter/color${color},plava`}></Link>)}
+                                                            {!colorArray.find(it=>it === 'zelena') &&(<Link className='greenn' to={`/brendovi/${nekibrend}/filter/color${color},zelena`}></Link>)}
+                                                            {!colorArray.find(it=>it === 'crna') &&(<Link className='blackk' to={`/brendovi/${nekibrend}/filter/color${color},crna`}></Link>)}
+                                                            {!colorArray.find(it=>it === 'zuta') &&(<Link className='yelloww' to={`/brendovi/${nekibrend}/filter/color${color},zuta`}></Link>)}
                                                         </div>
-                                                    ): obj.name === 'Velicina' ?
+                                                    ): obj.name == 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <Link to={`/brendovi/${title}/filter/sizeS`}><p>S</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/sizeM`}><p>M</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/sizeL`}><p>L</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/sizeXL`}><p>XL</p></Link>
+                                                            <p>S</p>
+                                                            <p>M</p>
+                                                            <p>L</p>
+                                                            <p>XL</p>
                                                         </div>
-                                                    ): obj.name === 'Sezona' ?
+                                                    ): obj.name == 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to='/' className='seasonLink'>Jesen-Zima</Link>
                                                             <Link to='/' className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
-                                                    ): obj.name === 'Pol' ?
+                                                    ): obj.name == 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to='/' className='seasonLink'>Muskarci</Link>
@@ -198,24 +176,42 @@ const BrandScreen = (props) => {
                                     })
                                 }
                             </ul>
-                        </div>
+                        </div> 
                         <div className='listOfProducts'>
+                            <div className='arrayOfFilters'>
+                                <h4>Trenutna kupovina po</h4>
+                                <div className='insideArrayOfFilters'>
+                                    {colorArray.map((obj, idx)=>{
+                                        return(
+                                            <Link
+                                            to={colorArray.length === 1 
+                                                ? `/brendovi/${nekibrend}`
+                                                :`/brendovi/${nekibrend}/filter/color${colorArray.filter(it=>it !== obj).toString()}`}
+                                            key={idx}
+                                            className='itemOfArray'>
+                                                <span><b>Boja:</b> {obj}</span>
+                                                <i id='itemOfArr' className="fas fa-times"></i>
+                                            </Link>
+                                        )
+                                    })}
+                                    <div className='itemOfArray'>
+                                    <Link to={`/brendovi/${nekibrend}`}><span onClick={()=>dispatch(productsActions.backToInitalState())}>Ponistite sve</span></Link>    
+                                    </div>
+                                </div>
+                            </div>
                             <div className='productItemsContainer'>
-                            {products.length === 0 && (
-                                <h2>Trenutno nema dostupnih proizvoda!!!!</h2>
-                            )}
                             {
-                                products.map((obj, idx)=>{
+                                colorProducts.length === 0 && (
+                                    <h3>Trenutno nema proizvoda u toj boji!</h3>
+                                )
+                            }
+                            {
+                                colorProducts.map((obj, idx)=>{
                                     return(
                                         <div className='productItem' key={idx}>
-                                            <img src={require(`../assets/${obj.picture}`)} alt="" />
+                                            <img src={slika1} alt="" />
                                             <p>{obj.name}</p>
-                                            {obj.size.map((obj, idx)=>{
-                                                return(
-                                                    <span key={idx}>{obj.size}</span>
-                                                )
-                                            })}
-                                            <p className='oldprice'>{obj.price} RSD</p>
+                                            {obj.discount !== 0 ? (<p className='discountOld'>{obj.price}</p>): <p>{obj.price}</p>}
                                             {obj.discount !== 0 && (
                                             <p className='discountP'>{obj.price-(obj.price*obj.discount/100)} RSD</p>
                                             )}
@@ -231,4 +227,4 @@ const BrandScreen = (props) => {
     )
 }
 
-export default BrandScreen;
+export default BrandScreenColor;

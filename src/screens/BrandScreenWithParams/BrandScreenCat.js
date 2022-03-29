@@ -227,7 +227,7 @@ const BrandScreenCat = (props) => {
                                         <i  className="fas fa-times"></i>
                                     </div>
                                     <div className='itemOfArray'>
-                                        <span>Ponistite sve</span>   
+                                    <Link to={`/brendovi/${nekibrend}`}><span onClick={()=>dispatch(productsActions.backToInitalState())}>Ponistite sve</span></Link>    
                                     </div>
                                 </div>
                             </div>
@@ -239,6 +239,9 @@ const BrandScreenCat = (props) => {
                                             <img src={slika1} alt="" />
                                             <p>{obj.name}</p>
                                             <p>{obj.price}</p>
+                                            {obj.discount !== 0 && (
+                                            <p className='discountP'>{obj.price-(obj.price*obj.discount/100)} RSD</p>
+                                            )}
                                         </div>
                                     )
                                 })

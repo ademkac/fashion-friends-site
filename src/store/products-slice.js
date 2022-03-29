@@ -6,6 +6,7 @@ const productsSlice = createSlice({
         products: [],
         categoryProducts: [],
         sizeProducts: [],
+        colorProducts: [],
         product: {
             name: '',
             brand: '',
@@ -56,6 +57,28 @@ const productsSlice = createSlice({
                     }
                 })
             })
+        },
+        findColorOfBrand(state, action){
+            let niz = []
+            state.products.map(obj=>{
+                obj.color.map(obj1=>{
+                    if(obj1.color === action.payload){
+                        niz.push(obj)
+                    }
+                })
+            })
+            state.colorProducts = [...new Set(niz.map(a=>a))]
+        },
+        setColorProducts(state, action){
+            state.colorProducts.concat(action.payload)
+        },
+        backColorProductsToInitial(state){
+            state.colorProducts = [];
+        },
+        backToInitalState(state){
+            state.categoryProducts = [];
+            state.colorProducts = [];
+            state.sizeProducts = [];
         },
         setIsLoading(state, action){
             state.isLoading = action.payload;

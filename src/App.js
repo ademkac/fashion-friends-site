@@ -5,6 +5,7 @@ import BrandListScreen from './screens/BrandListScreen';
 import BrandScreen from './screens/BrandScreen';
 import BrandScreenCat from './screens/BrandScreenWithParams/BrandScreenCat';
 import BrandScreenSize from './screens/BrandScreenWithParams/BrandScreenSize';
+import BrandScreenColor from './screens/BrandScreenWithParams/BrandScreenColor';
 import CheckoutCartScreen from './screens/CheckoutCartScreen';
 import ChosenCatListScreen from './screens/ChosenCatListScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
@@ -33,8 +34,9 @@ const App = () => {
           <Route path='/deca' element={<HomeScreen />}/>
           <Route path='/brendovi' element={<BrandListScreen />} />
           <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
-          <Route path='/brendovi/:nekibrend/filter/:kat' element={<BrandScreenCat />} />
-          <Route path='/brendovi/:nekibrend/filter/:size' element={<BrandScreenSize />} />
+          <Route path='/brendovi/:nekibrend/filter/kat:kat' element={<BrandScreenCat />} />
+          <Route path='/brendovi/:nekibrend/filter/size:size' element={<BrandScreenSize />} />
+          <Route path='/brendovi/:nekibrend/filter/color:color' element={<BrandScreenColor />} />
           <Route path='/zene/:odeca' element={<ChosenCatListScreen />} />
           <Route
         path="*"
