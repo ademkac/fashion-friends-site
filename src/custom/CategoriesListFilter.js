@@ -104,7 +104,13 @@ const CategoriesListFilter = (props) =>{
                     listOfItems.map((obj, idx) => {
                         return(
                             <li key={idx} className='itemContainerCategories'>
-                               <Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/kat${obj.name}`}>{obj.name}</Link> 
+                               {props.filter === 'color' ? (<Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/category:${obj.name}/color:${props.value}`}>{obj.name}</Link> )
+                                :props.filter === 'size' ? (<Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/size:${props.value}/category:${obj.name}`}>{obj.name}</Link> )  
+                                :props.filter === 'sex' ? (<Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/category:${obj.name}/sex:${props.value}`}>{obj.name}</Link> ) 
+                                :props.filter === 'season'? (<Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/category:${obj.name}/season:${props.value}`}>{obj.name}</Link> )
+                                :props.filter === 'category'? (<Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/category${obj.name}`}>{obj.name}</Link>)
+                                : (<Link className='itemLinkCat' to={`/brendovi/${props.brend}/filter/category:${obj.name}/price:${props.value}`}>{obj.name}</Link> )
+                            }
                             </li>
                         )
                     })

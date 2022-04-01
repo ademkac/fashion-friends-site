@@ -34,7 +34,7 @@ const filterItems = [
     },
 ]
 
-const BrandScreenColor = (props) => {
+const BrandScreenSex = (props) => {
     const [showK, setShowK] = useState(false)
     const [showV, setShowV] = useState(false)
     const [showB, setShowB] = useState(false)
@@ -44,20 +44,15 @@ const BrandScreenColor = (props) => {
     const [sliderValue, setSliderValue] = useState(1)
 
     const [clicked, setClicked] = useState(false)
-    const {nekibrend, color} = useParams();
-    let colorArray = color.split(',');
-    const colorProducts = useSelector(state => state.product.colorProducts)
+    const {nekibrend, sex} = useParams();
+    const sexProducts = useSelector(state => state.product.sexProducts)
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(fetchProductsData())
-        dispatch(productsActions.backColorProductsToInitial())
-        colorArray.map(a=>{
-            dispatch(productsActions.findColorOfBrand(a))
-        })
+        dispatch(productsActions.findSexOfBrand(sex))
         
-        
-    },[dispatch, color])
+    },[dispatch, sex])
 
     const breadcrumbList = [
         {name: 'Pocetna', to: '/'},
@@ -67,9 +62,9 @@ const BrandScreenColor = (props) => {
 
     const dropdownHandler = (name) => {
         setClicked(!clicked)
-        console.log("Ime kategorije: "+name)
+        console.log("Ime sexegorije: "+name)
         
-        name === 'Kategorija' ? setShowK(!showK) 
+        name === 'sexegorija' ? setShowK(!showK) 
         : name == 'Boja' ? setShowB(!showB)
         : name == 'Velicina' ? setShowV(!showV)
         : name == 'Cena' ? setShowC(!showC)
@@ -136,42 +131,42 @@ const BrandScreenColor = (props) => {
                                                 </div>
                                                 {(  (showB && obj.name == 'Boja')
                                                 || (showC && obj.name == 'Cena')
-                                                || (showK && obj.name === 'Kategorija') 
+                                                || (showK && obj.name === 'Kategorija')
                                                 || (showP && obj.name == 'Pol')
                                                 || (showS && obj.name == 'Sezona')
                                                 || (showV && obj.name == 'Velicina')  )  && (
                                                     <div className='dropContent'>
                                                     {obj.name === 'Kategorija'? 
                                                     (
-                                                        <CategoriesListFilter brend={nekibrend} filter='color' value={color} />
+                                                        <CategoriesListFilter brend={nekibrend} filter='sex' value={sex} />
                                                     ): obj.name == 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            {!colorArray.find(it=>it === 'crvena') &&(<Link className='redd' to={`/brendovi/${nekibrend}/filter/color${color},crvena`}></Link>)}
-                                                            {!colorArray.find(it=>it === 'plava') &&(<Link className='bluee' to={`/brendovi/${nekibrend}/filter/color${color},plava`}></Link>)}
-                                                            {!colorArray.find(it=>it === 'zelena') &&(<Link className='greenn' to={`/brendovi/${nekibrend}/filter/color${color},zelena`}></Link>)}
-                                                            {!colorArray.find(it=>it === 'crna') &&(<Link className='blackk' to={`/brendovi/${nekibrend}/filter/color${color},crna`}></Link>)}
-                                                            {!colorArray.find(it=>it === 'zuta') &&(<Link className='yelloww' to={`/brendovi/${nekibrend}/filter/color${color},zuta`}></Link>)}
+                                                            <Link className='redd' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:crvena`}></Link>
+                                                            <Link className='bluee' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:plava`}></Link>
+                                                            <Link className='greenn' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:zelena`}></Link>
+                                                            <Link className='blackk' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:crna`}></Link>
+                                                            <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:zuta`}></Link>
                                                         </div>
                                                     ): obj.name == 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:S/color:${color}`}><p>S</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:M/color:${color}`}><p>M</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:L/color:${color}`}><p>L</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:XL/color:${color}`}><p>XL</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:S/sex:${sex}`}><p>S</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:M/sex:${sex}`}><p>M</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:L/sex:${sex}`}><p>L</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:XL/sex:${sex}`}><p>XL</p></Link>
                                                         </div>
                                                     ): obj.name == 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Jesen-Zima/color:${color}`} className='seasonLink'>Jesen-Zima</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Prolece-Leto/color:${color}`} className='seasonLink'>Prolece-Leto</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Jesen-Zima/sex:${sex}`} className='seasonLink'>Jesen-Zima</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Prolece-Leto/sex:${sex}`} className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
                                                     ): obj.name == 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Muski/color:${color}`} className='seasonLink'>Muskarci</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Zenski/color:${color}`} className='seasonLink'>Zene</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/sexMuski`} className='seasonLink'>Muskarci</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/sexZenski`} className='seasonLink'>Zene</Link>
                                                         </div>
                                                     ): (<div className='seasonFilter'>
                                                         <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>
@@ -188,19 +183,12 @@ const BrandScreenColor = (props) => {
                             <div className='arrayOfFilters'>
                                 <h4>Trenutna kupovina po</h4>
                                 <div className='insideArrayOfFilters'>
-                                    {colorArray.map((obj, idx)=>{
-                                        return(
                                             <Link
-                                            to={colorArray.length === 1 
-                                                ? `/brendovi/${nekibrend}`
-                                                :`/brendovi/${nekibrend}/filter/color${colorArray.filter(it=>it !== obj).toString()}`}
-                                            key={idx}
+                                            to={`/brendovi/${nekibrend}`}
                                             className='itemOfArray'>
-                                                <span><b>Boja:</b> {obj}</span>
+                                                <span><b>Pol:</b> {sex}</span>
                                                 <i id='itemOfArr' className="fas fa-times"></i>
                                             </Link>
-                                        )
-                                    })}
                                     <div className='itemOfArray'>
                                     <Link to={`/brendovi/${nekibrend}`}><span onClick={()=>dispatch(productsActions.backToInitalState())}>Ponistite sve</span></Link>    
                                     </div>
@@ -208,12 +196,12 @@ const BrandScreenColor = (props) => {
                             </div>
                             <div className='productItemsContainer'>
                             {
-                                colorProducts.length === 0 && (
-                                    <h3>Trenutno nema proizvoda u toj boji!</h3>
+                                sexProducts.length === 0 && (
+                                    <h3>Trenutno nema proizvoda iz kategorije: {sex === 'Muski'? (<span>Muskarci</span>): (<span>Zene</span>)}!</h3>
                                 )
                             }
                             {
-                                colorProducts.map((obj, idx)=>{
+                                sexProducts.map((obj, idx)=>{
                                     return(
                                         <div className='productItem' key={idx}>
                                             <img src={slika1} alt="" />
@@ -234,4 +222,4 @@ const BrandScreenColor = (props) => {
     )
 }
 
-export default BrandScreenColor;
+export default BrandScreenSex;

@@ -108,7 +108,7 @@ const ProductInfoScreen = () => {
     const [recentlyViewedPr3, setrecentlyViewedPr3] = useState(3)
     const [recentlyViewedPr4, setrecentlyViewedPr4] = useState(4)
     const dispatch = useDispatch();
-    const product = useSelector((state)=>state.product);
+    const product = useSelector((state)=>state.product.product);
     const isLoading = useSelector(state=>state.product.isLoading)
     const notification = useSelector(state=>state.ui.notification)
 
@@ -173,7 +173,7 @@ const ProductInfoScreen = () => {
     })
 
     useEffect(()=>{
-        dispatch(fetchProduct(4))
+        dispatch(fetchProduct(1))
     }, [dispatch])
 
     useEffect(()=>{
@@ -260,17 +260,17 @@ const ProductInfoScreen = () => {
                         </div>
                     </div>
                     <div className="productInfoData">
-                        <h3>{product.product.brand}</h3>
-                        <p>{product.product.name}</p>
-                        <p>{product.product.price}</p>
-                        <p>{product.product.description}</p>
-                        <p>Boja: {product.product.color}</p>
+                        <h3>{product.brand}</h3>
+                        <p>{product.name}</p>
+                        <p>{product.price}</p>
+                        <p>{product.description}</p>
+                        <p>Boja: {/* {product.color} */}</p>
                         <i className="fa fa-check"></i>
                         <p>Velicina: {chosenSize}</p>
                         <div className="listOfSizes">
-                            {listOfSizes.map((obj, idx) => {
+                            {product.size.map((obj, idx) => {
                                 return (
-                                    <span onClick={()=>sizeHandler(`${obj.name}`)} className="sizeItem" key={idx}>{obj.name}</span>
+                                    <span onClick={()=>sizeHandler(`${obj.size}`)} className="sizeItem" key={idx}>{obj.size}</span>
                                 )
                             })}
                         </div>
@@ -332,23 +332,23 @@ const ProductInfoScreen = () => {
                                  <tbody>
                                  <tr>
                                      <td className="infoTitle">Sifra artikla</td>
-                                     <td>{product.product.articleCode}</td>
+                                     <td>{product.articleCode}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Brend</td>
-                                     <td>{product.product.brand}</td>
+                                     <td>{product.brand}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Sezona</td>
-                                     <td>{product.product.season}</td>
+                                     <td>{product.season}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Pol</td>
-                                     <td>{product.product.sex}</td>
+                                     <td>{product.sex}</td>
                                  </tr>
                                  <tr>
                                      <td className="infoTitle">Materijal</td>
-                                     <td>{product.product.material}</td>
+                                     <td>{product.material}</td>
                                  </tr>
                                  </tbody>
                              </table>

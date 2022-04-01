@@ -7,6 +7,9 @@ const productsSlice = createSlice({
         categoryProducts: [],
         sizeProducts: [],
         colorProducts: [],
+        twoFilterProducts: [],
+        seasonProducts: [],
+        sexProducts: [],
         product: {
             name: '',
             brand: '',
@@ -21,7 +24,7 @@ const productsSlice = createSlice({
             sex: '',
             material: '' 
         },
-        isLoading: false
+        isLoading: false 
     },
     reducers:{
         setProducts(state, action){
@@ -49,36 +52,99 @@ const productsSlice = createSlice({
                 }
             })
         },
+        findSeasonOfBrand(state, action){
+            state.seasonProducts = []
+            state.products.map(obj=>{
+                if(obj.season === action.payload){
+                    state.seasonProducts.push(obj)
+                }
+            })
+        },
+        findSexOfBrand(state, action){
+            state.sexProducts = []
+            state.products.map(obj=>{
+                if(obj.sex === action.payload){
+                    state.sexProducts.push(obj)
+                }
+            })
+        },
         findSizeOfBrand(state, action){
+            let niz1 = []
             state.products.map(obj=>{
                 obj.size.map(obj1=>{
                     if(obj1.size === action.payload){
-                        state.sizeProducts.push(obj)
+                        niz1.push(obj)
                     }
                 })
             })
+            if(niz1.length !== 0){
+                state.sizeProducts = [...new Set(niz1.map(a=>a))]
+            }
         },
         findColorOfBrand(state, action){
             let niz = []
-            state.products.map(obj=>{
+            state.products.map(obj=>{ 
                 obj.color.map(obj1=>{
                     if(obj1.color === action.payload){
                         niz.push(obj)
                     }
                 })
             })
-            state.colorProducts = [...new Set(niz.map(a=>a))]
+            if(niz.length !== 0){
+                state.colorProducts = [...new Set(niz.map(a=>a))]
+            }
+            
         },
-        setColorProducts(state, action){
-            state.colorProducts.concat(action.payload)
+        filterProductsTwoParams(state, action){
+            let niz = [];
+            state.products.map(obj=>{
+                if(action.payload.filter === 'category'){
+                    if(obj.category === action.payload.info){
+                        niz.push(obj) 
+                    }
+                }else if(action.payload.filter === 'season'){
+                    if(obj.season === action.payload.info){
+                        niz.push(obj)
+                    }
+                }else if(action.payload.filter === 'sex'){
+                    if(obj.sex === action.payload.info){
+                        niz.push(obj)
+                    }
+                }else if(action.payload.filter === 'price'){
+                    if(obj.price === action.payload.info){
+                        niz.push(obj)
+                    }
+                }else if(action.payload.filter === 'color'){
+                    obj.color.map(obj1=> {
+                        if(obj1.color === action.payload.info){
+                            niz.push(obj)
+                        }
+                    })
+                }else if(action.payload.filter === 'size'){
+                    obj.size.map(obj1=>{
+                        if(obj1.size === action.payload.info){
+                            niz.push(obj)
+                        }
+                    })
+                }else{
+                    return state.twoFilterProducts;
+                }
+            })
+            state.twoFilterProducts = [...new Set(niz.map(a=>a))]
+            state.twoFilterProducts = [...new Set(state.twoFilterProducts.map(a=>a))]
         },
         backColorProductsToInitial(state){
             state.colorProducts = [];
+        },
+        backSizeProductsToInitial(state){
+            state.sizeProducts = []
         },
         backToInitalState(state){
             state.categoryProducts = [];
             state.colorProducts = [];
             state.sizeProducts = [];
+            state.twoFilterProducts = [];
+            state.seasonProducts = [];
         },
         setIsLoading(state, action){
             state.isLoading = action.payload;

@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import DropdownMeni from '../../components/HomeScreen/DropdownMeni';
 import Header from '../../components/HomeScreen/Header';
 import SocialInfo from '../../components/HomeScreen/SocialInfo';
-import CategoriesListFilter from '../../custom/CategoriesListFilter';
 import '../BrandScreen.css'
 import slika1 from '../../assets/ckGrid.png'
 import slika2 from '../../assets/ckGridB.png'
@@ -12,28 +11,6 @@ import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {productsActions} from '../../store/products-slice';
 import { fetchProductsData } from '../../store/products-actions';
-
-
-/* const arrayOfFilters = [
-     {
-        kategorija: 'Sezona', podkategorija: 'Jesen-Zima'
-    },
-    {
-        kategorija: 'Brend', podkategorija: 'Paciotti'
-    },
-    {
-        kategorija: 'Pol', podkategorija: 'Muski'
-    },
-    {
-        kategorija: 'Sezona', podkategorija: 'Jesen-Zima'
-    },
-    {
-        kategorija: 'Brend', podkategorija: 'Paciotti'
-    },
-    {
-        kategorija: 'Pol', podkategorija: 'Muski'
-    } 
-] */
 
 const filterItems = [
     {
@@ -50,33 +27,6 @@ const filterItems = [
     },
     {
         name: 'Cena'
-    },
-]
-
-const products = [
-    {
-        name: 'Tommy jakna sa dva lica',
-        price: 17000
-    },
-    {
-        name: 'Tommy majica sa dva lica',
-        price: 7000
-    },
-    {
-        name: 'Tommy patike',
-        price: 17000
-    },
-    {
-        name: 'Tommy jakna za zimu',
-        price: 12000
-    },
-    {
-        name: 'Tommy jakna sa dva lica',
-        price: 9000
-    },
-    {
-        name: 'Tommy jakna sa dva lica',
-        price: 8000
     },
 ]
 
@@ -118,7 +68,6 @@ const BrandScreenCat = (props) => {
 
     const sliderHandler = (evt) => {
         setSliderValue(evt.target.value);
-        console.log("slider value: "+sliderValue)
     }
 
     return(
@@ -181,30 +130,31 @@ const BrandScreenCat = (props) => {
                                                     { obj.name == 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <span className='redd'></span>
-                                                            <span className='bluee'></span>
-                                                            <span className='greenn'></span>
-                                                            <span className='blackk'></span>
+                                                            <Link className='redd' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:crvena`}></Link>
+                                                            <Link className='bluee' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:plava`}></Link>
+                                                            <Link className='greenn' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:zelena`}></Link>
+                                                            <Link className='blackk' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:crna`}></Link>
+                                                            <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:zuta`}></Link>
                                                         </div>
                                                     ): obj.name == 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <p>S</p>
-                                                            <p>M</p>
-                                                            <p>L</p>
-                                                            <p>XL</p>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:S/category:${kat}`}><p>S</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:M/category:${kat}`}><p>M</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:L/category:${kat}`}><p>L</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:XL/category:${kat}`}><p>XL</p></Link>
                                                         </div>
                                                     ): obj.name == 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
-                                                            <Link to='/' className='seasonLink'>Jesen-Zima</Link>
-                                                            <Link to='/' className='seasonLink'>Prolece-Leto</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Jesen-Zima/category:${kat}`} className='seasonLink'>Jesen-Zima</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Prolece-Leto/category:${kat}`} className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
                                                     ): obj.name == 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
-                                                            <Link to='/' className='seasonLink'>Muskarci</Link>
-                                                            <Link to='/' className='seasonLink'>Zene</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Muski/category:${kat}`} className='seasonLink'>Muskarci</Link>
+                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Zenski/category:${kat}`} className='seasonLink'>Zene</Link>
                                                         </div>
                                                     ): (<div className='seasonFilter'>
                                                         <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>
@@ -222,10 +172,10 @@ const BrandScreenCat = (props) => {
                                 <div className='arrayOfFilters'>
                                 <h4>Trenutna kupovina po</h4>
                                 <div className='insideArrayOfFilters'>
-                                    <div className='itemOfArray'>
+                                    <Link to={`/brendovi/${nekibrend}`} className='itemOfArray'>
                                         <span><b>Kategorija:</b> {kat}</span>
-                                        <i  className="fas fa-times"></i>
-                                    </div>
+                                        <i id='itemOfArr'  className="fas fa-times"></i>
+                                    </Link>
                                     <div className='itemOfArray'>
                                     <Link to={`/brendovi/${nekibrend}`}><span onClick={()=>dispatch(productsActions.backToInitalState())}>Ponistite sve</span></Link>    
                                     </div>

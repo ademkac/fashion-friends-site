@@ -190,7 +190,11 @@ li.filterBrandItem{
     
 }
 
-.sizeFilter p{
+.sizeItLink p{
+    margin-top: -2px;
+}
+
+.sizeFilter .sizeItLink{
     border: 1px solid grey;
     border-radius: 20px;
     padding: 3px;
@@ -200,7 +204,7 @@ li.filterBrandItem{
     cursor: pointer;
 }
 
-.sizeFilter p:hover{
+.sizeFilter .sizeItLink:hover{
     color: black;
     border: 1px solid black;
 }
@@ -288,8 +292,7 @@ input[type="range"]::-moz-range-progress {
 
   .insideArrayOfFilters{
       width: 100%;
-      min-height: 50px;
-      max-height: 100px;
+      min-height: 100px;
       padding: 10px 15px;
   }
 

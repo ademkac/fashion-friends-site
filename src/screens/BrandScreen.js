@@ -158,7 +158,7 @@ const BrandScreen = (props) => {
                                                     <div className='dropContent'>
                                                     {obj.name === 'Kategorija'? 
                                                     (
-                                                        <CategoriesListFilter brend={title} />
+                                                        <CategoriesListFilter brend={title} filter='category' value=''/>
                                                     ): obj.name === 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
@@ -171,22 +171,22 @@ const BrandScreen = (props) => {
                                                     ): obj.name === 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
-                                                            <Link to={`/brendovi/${title}/filter/sizeS`}><p>S</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/sizeM`}><p>M</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/sizeL`}><p>L</p></Link>
-                                                            <Link to={`/brendovi/${title}/filter/sizeXL`}><p>XL</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${title}/filter/sizeS`}><p>S</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${title}/filter/sizeM`}><p>M</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${title}/filter/sizeL`}><p>L</p></Link>
+                                                            <Link className='sizeItLink' to={`/brendovi/${title}/filter/sizeXL`}><p>XL</p></Link>
                                                         </div>
                                                     ): obj.name === 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
-                                                            <Link to='/' className='seasonLink'>Jesen-Zima</Link>
-                                                            <Link to='/' className='seasonLink'>Prolece-Leto</Link>
+                                                            <Link to={`/brendovi/${title}/filter/seasonJesen-Zima`} className='seasonLink'>Jesen-Zima</Link>
+                                                            <Link to={`/brendovi/${title}/filter/seasonProlece-Leto`} className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
                                                     ): obj.name === 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
-                                                            <Link to='/' className='seasonLink'>Muskarci</Link>
-                                                            <Link to='/' className='seasonLink'>Zene</Link>
+                                                            <Link to={`/brendovi/${title}/filter/sexMuski`} className='seasonLink'>Muskarci</Link>
+                                                            <Link to={`/brendovi/${title}/filter/sexZenski`} className='seasonLink'>Zene</Link>
                                                         </div>
                                                     ): (<div className='seasonFilter'>
                                                         <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>

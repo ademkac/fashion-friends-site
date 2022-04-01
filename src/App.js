@@ -15,6 +15,9 @@ import LoginScreen from './screens/LoginScreen';
 import MensScreen from './screens/MensScreen';
 import ProductInfoScreen from './screens/ProductInfoScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import BrandScreenWithTwoFilters from './screens/BrandScreenWithParams/BrandScreenWithTwoFilters';
+import BrandScreenSeason from './screens/BrandScreenWithParams/BrandScreenSeason';
+import BrandScreenSex from './screens/BrandScreenWithParams/BrandScreenSex';
 
 const App = () => {
 
@@ -34,9 +37,12 @@ const App = () => {
           <Route path='/deca' element={<HomeScreen />}/>
           <Route path='/brendovi' element={<BrandListScreen />} />
           <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
-          <Route path='/brendovi/:nekibrend/filter/kat:kat' element={<BrandScreenCat />} />
+          <Route path='/brendovi/:nekibrend/filter/category:kat' element={<BrandScreenCat />} />
           <Route path='/brendovi/:nekibrend/filter/size:size' element={<BrandScreenSize />} />
           <Route path='/brendovi/:nekibrend/filter/color:color' element={<BrandScreenColor />} />
+          <Route path='/brendovi/:nekibrend/filter/season:season' element={<BrandScreenSeason />} />
+          <Route path='/brendovi/:nekibrend/filter/sex:sex' element={<BrandScreenSex />} />
+          <Route path='/brendovi/:nekibrend/filter/:first/:second' element={<BrandScreenWithTwoFilters />} />
           <Route path='/zene/:odeca' element={<ChosenCatListScreen />} />
           <Route
         path="*"
