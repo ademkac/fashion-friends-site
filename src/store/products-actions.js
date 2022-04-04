@@ -84,3 +84,52 @@ export const fetchProduct = (id) => {
         }
     }
 }
+
+
+export const sendProductData = (product) => {
+    return async (dispatch) => {
+        dispatch(
+            uiActions.showNotification({
+                status: 'pending',
+                title: 'Sending...',
+                message: 'Slanje proizvoda!'
+            })
+        );
+
+        const sendRequest = async () => {
+            const response = await fetch(
+                'https://localhost:7263/api/ProductControler/',
+                {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        product
+                    })
+                }
+            );
+
+            if(!response.ok){
+                throw new Error('Neuspesno slanje proizvoda!')
+            }
+        }
+
+        try {
+            await sendRequest();
+
+            dispatch(
+                uiActions.showNotification({
+                    status: 'success',
+                    title: 'Success!',
+                    message: 'Uspesno dodat proizvod!'
+                })
+            )
+        } catch (error) {
+            dispatch(
+                uiActions.showNotification({
+                    status: 'error',
+                    title: 'Error!',
+                    message: 'Neuspesno dodat proizvod!'
+                })
+            )
+        }
+    }
+}

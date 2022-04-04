@@ -18,6 +18,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import BrandScreenWithTwoFilters from './screens/BrandScreenWithParams/BrandScreenWithTwoFilters';
 import BrandScreenSeason from './screens/BrandScreenWithParams/BrandScreenSeason';
 import BrandScreenSex from './screens/BrandScreenWithParams/BrandScreenSex';
+import ProductCreate from './admin-screens/ProductCreate';
 
 const App = () => {
 
@@ -43,6 +44,7 @@ const App = () => {
           <Route path='/brendovi/:nekibrend/filter/season:season' element={<BrandScreenSeason />} />
           <Route path='/brendovi/:nekibrend/filter/sex:sex' element={<BrandScreenSex />} />
           <Route path='/brendovi/:nekibrend/filter/:first/:second' element={<BrandScreenWithTwoFilters />} />
+          <Route path='/admin/create' element={<ProductCreate />} />
           <Route path='/zene/:odeca' element={<ChosenCatListScreen />} />
           <Route
         path="*"

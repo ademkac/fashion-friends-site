@@ -12,6 +12,9 @@ import Breadcrumb from '../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProductsData} from '../store/products-actions'
 import { productsActions } from '../store/products-slice';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/HomeScreen/Footer';
+import FooterInfo from '../components/HomeScreen/FooterInfo';
 
 /* const arrayOfFilters = [
      {
@@ -227,6 +230,9 @@ const BrandScreen = (props) => {
                         </div>
                     </div>
             </div>
+            <Newsletter />
+            <Footer />
+            <FooterInfo />
         </div>
     )
 }

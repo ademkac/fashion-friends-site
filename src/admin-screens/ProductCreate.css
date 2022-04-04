@@ -1,0 +1,195 @@
+.productCreateContainer{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.insideProductCreate{
+    width: 70%;
+    height: auto;
+    text-align: center;
+    background-color: rgb(245, 227, 227);
+    margin: 2rem auto;
+}
+
+.inputContainerCreate{
+    width: 60%;
+    margin: 0.3rem auto;
+    height: 100px;
+    display: block;
+}
+
+select.selectCreate {
+    width: 100%;
+    height: 30px;
+    margin: 0.3rem auto;
+    outline: none;
+    border: none;
+}
+
+p.inputLabelCreate{
+    color: gray;
+    font: 14px Poppins, arial, sans-serif;
+    margin-bottom: 5px;
+
+}
+
+input.inputInputCreate{
+    background-color: #fff;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 30px;
+
+}
+
+textarea.inputInputCreate{
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+}
+
+textarea.inputInputCreate::placeholder{
+    color: rgb(172, 169, 169);
+}
+
+input.inputInputCreate::placeholder{
+    color: rgb(172, 169, 169);
+}
+
+.radioContainer{
+    width: 25%;
+    display: inline;
+    float: left;
+    text-align: center;
+}
+
+.radioContainer p{
+    color: gray;
+    font: 14px Poppins, arial, sans-serif
+}
+
+.radioBtn{
+    width: 25px; 
+    height: 25px;
+}
+
+.btnContainer{
+    width: 100%;
+    height: auto;
+    margin-top: 8rem;
+}
+
+.submitBtnCreate{
+    width: 60%;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: rgb(70, 172, 70);
+    margin: 0 auto;
+}
+
+.discCont{
+    width: 50%;
+    display: inline;
+    float: left;
+}
+
+.discCont p{
+    color: gray;
+    font: 14px Poppins, arial, sans-serif
+}
+
+.discountInput{
+    background-color: #fff;
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+.discountInput::placeholder{
+    text-align: right;
+}
+
+.mainDiscountContainer{
+    display: block;
+    width: 100%;
+}
+
+.inputContainerCheckboxes{
+    width: 60%;
+    height: 130px;
+    margin: 15px auto;
+}
+
+.checkCont{
+    display: inline;
+    float: left;
+    width: 25%;
+}
+
+.labelCheck{
+    color: gray;
+    font: 14px Poppins,arial, sans-serif
+}
+
+.checkBox{
+    width: 25px;
+    height: 25px;
+}
+
+.btnCheckSubmit{
+    width: 40%;
+    display: block;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: rgb(70, 172, 70);
+    color: white;
+    margin: 0 auto;
+    height: 30px;
+}
+
+.btnCheckSubmit:hover{
+    background-color: #fff;
+    color: black;
+}
+
+.labelCheckColorBlue{
+    background-color: blue;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.labelCheckColorYellow{
+    background-color: yellow;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.labelCheckColorBlack{
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.labelCheckColorRed{
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}

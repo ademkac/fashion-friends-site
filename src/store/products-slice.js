@@ -24,7 +24,9 @@ const productsSlice = createSlice({
             sex: '',
             material: '' 
         },
-        isLoading: false 
+        isLoading: false ,
+        changed: false,
+        existingProduct: false
     },
     reducers:{
         setProducts(state, action){
@@ -44,6 +46,29 @@ const productsSlice = createSlice({
             state.product.sex = action.payload.product.sex;
             state.product.material = action.payload.product.material; 
 
+        },
+        postProduct(state, action){
+            const newItem = action.payload;
+            const existingItem = state.products.find(item=>item.name === newItem.name);
+            if(!existingItem){
+                state.changed = true;
+                state.products.push({
+                    name: newItem.name,
+                    brand: newItem.brand,
+                    picture: newItem.picture,
+                    price: newItem.price,
+                    discount: newItem.discount,
+                    description: newItem.description,
+                    color: newItem.color,
+                    size: newItem.size,
+                    articleCode: newItem.articleCode,
+                    season: newItem.season,
+                    sex: newItem.sex,
+                    material: newItem.material
+                })
+            }else{
+                state.existingProduct = true
+            }
         },
         findCategoryOfBrand(state, action){
             state.products.map(obj=>{
