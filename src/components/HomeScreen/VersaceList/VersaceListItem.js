@@ -5,7 +5,7 @@ const VersaceListItem = (props) => {
     
 
     return (
-        <div className='versaceItem' id={props.id} key={props.key}>
+        <div className='versaceItem' id={props.id} >
             <img src={props.slika} alt=""/> 
             <p>{props.opis}</p>
              <div className='bottomPiece'>

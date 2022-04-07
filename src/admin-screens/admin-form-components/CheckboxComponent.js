@@ -1,13 +1,6 @@
 import React from 'react'
 import '../ProductCreate.css';
 
-const sizes= [
-    {name: 'S'}, {name: 'M'}, {name: 'L'}, {name: 'XL'}
-]
-
-const colors=[
-    {name: 'plava'}, {name:'crvena'}, {name: 'crna'}, {name:'zuta'},{name: 'zelena'}
-]
 
 const CheckboxComponent = (props) => {
   return (
@@ -51,7 +44,7 @@ const CheckboxComponent = (props) => {
             value='XL'
             checked={props.valueXL === 'XL'}/>
         </div>
-        {props.show && (<button className='btnCheckSubmit'><b>Potvrdi velicine proizvoda</b></button>)}
+        {props.show && (<button onClick={props.sizeBtnHandler} className='btnCheckSubmit'><b>Potvrdi velicine proizvoda</b></button>)}
         </>
         ):(
             <>
@@ -92,7 +85,7 @@ const CheckboxComponent = (props) => {
                 value='crvena'
                 checked={props.valueRed === 'crvena'}/>
             </div>
-            {props.show && (<button className='btnCheckSubmit'><b>Potvrdi boje proizvoda</b></button>)}
+            {props.show && (<button onClick={props.colorBtnHandler} className='btnCheckSubmit'><b>Potvrdi boje proizvoda</b></button>)}
             </>
         )}
     </div>

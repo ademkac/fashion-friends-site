@@ -59,7 +59,7 @@ export const fetchProduct = (id) => {
             )
 
             const data = await response.json();
-            console.log("data from backend: "+data)
+            console.log("data from backend: "+JSON.stringify(data))
             return data;
         };
 
@@ -101,6 +101,10 @@ export const sendProductData = (product) => {
                 'https://localhost:7263/api/ProductControler/',
                 {
                     method: 'POST',
+                    headers: {
+                        "Accept": "text/plain",
+                        "Content-Type": "application/json"
+                    },
                     body: JSON.stringify({
                         product
                     })

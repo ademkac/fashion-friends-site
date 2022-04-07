@@ -107,6 +107,7 @@ const ProductInfoScreen = () => {
     const [recentlyViewedPr2, setrecentlyViewedPr2] = useState(2)
     const [recentlyViewedPr3, setrecentlyViewedPr3] = useState(3)
     const [recentlyViewedPr4, setrecentlyViewedPr4] = useState(4)
+    const [pictures, setPictures]=useState([])
     const dispatch = useDispatch();
     const product = useSelector((state)=>state.product.product);
     const isLoading = useSelector(state=>state.product.isLoading)
@@ -174,6 +175,10 @@ const ProductInfoScreen = () => {
 
     useEffect(()=>{
         dispatch(fetchProduct(1))
+        product.picture.map(obj=>{
+            console.log("picture: "+obj.picture)
+            setPictures(...pictures, URL.createObjectURL(obj.picture))
+        })
     }, [dispatch])
 
     useEffect(()=>{
@@ -250,12 +255,14 @@ const ProductInfoScreen = () => {
                 <div className="productInfoCon">
                 <div className="insideProductInfo">
                     <div className="productiInfoImage"> 
-                        <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt=""/>
+                        <img src={slika} alt=""/>
                         <div className="listOfOtherPic">
                             <button className="prevPic">&#10094;</button>
-                                <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt="" />
-                                <img src={/* product != null ? require(`../assets/${product.product.picture}`) : */ slika} alt="" />
-                               
+                                {product.picture.map((item, idx)=>{
+                                    return(
+                                        <img key={idx} src={item} alt="" />
+                                    )
+                                })}
                             <button className="nextPic">&#10095;</button>
                         </div>
                     </div>

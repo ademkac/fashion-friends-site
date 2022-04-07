@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DropdownMeni from '../components/HomeScreen/DropdownMeni';
 import Footer from '../components/HomeScreen/Footer';
 import FooterInfo from '../components/HomeScreen/FooterInfo';
@@ -52,7 +53,7 @@ const LoginScreen = () => {
                     <p>Kreiranjem naloga u našoj prodavnici bićete u mogućnosti da brže prolazite kroz proces naplate, čuvate veći broj adresa za dostavu,
                         pregledate i pratite porudžbine na Vašem nalogu i još mnogo toga.
                     </p>
-                    <button>Kreirajte korisnicki nalog</button>
+                    <Link to='/customer/register'>Kreirajte korisnicki nalog</Link>
                 </div>
             </div>
         </div>

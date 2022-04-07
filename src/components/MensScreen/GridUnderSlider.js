@@ -107,7 +107,7 @@ const GridUnderSlider = (props) => {
                                    idx={idx} 
                                    itemIndex={itemIndex}
                                    itemIn={itemIn}
-                                   to={`/${obj.opis}`}
+                                   to={`/product/${obj.opis}`}
                                    slika={obj.slika}
                                    opis={obj.opis}
                                    cena = {obj.cena}

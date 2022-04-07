@@ -12,6 +12,7 @@
     text-align: center;
     background-color: rgb(245, 227, 227);
     margin: 2rem auto;
+    padding: 2rem 5px;
 }
 
 .inputContainerCreate{
@@ -192,4 +193,86 @@ input.inputInputCreate::placeholder{
     border: 1px solid transparent;
     border-radius: 50%;
     margin: 0 auto 20px;
+}
+
+.inputPictureCreate{
+    width: 60%;
+    height: auto;
+    margin: 15px auto;
+}
+
+[type="file"] {
+    /* Style the color of the message that says 'No file chosen' */
+      color: #878787;
+    }
+    [type="file"]::-webkit-file-upload-button {
+      background: #ED1C1B;
+      border: 2px solid #ED1C1B;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+      outline: none;
+      padding: 10px 25px;
+      text-transform: uppercase;
+      transition: all 1s ease;
+      height: 40px;
+    }
+    
+    [type="file"]::-webkit-file-upload-button:hover {
+      background: #fff;
+      border: 2px solid #535353;
+      color: #000;
+    }
+
+.four{
+    width: 100%;
+    height: 150px;
+}
+
+.eight{
+    width: 100%;
+    height: 300px;
+}
+
+.imageCont{
+    width: 150px;
+    height: 150px;
+    display: inline;
+    float: left;
+}
+
+.detailsCont{
+    width: 60%;
+    height: 70px;
+    margin: 10px auto;
+}
+
+.detailsItem{
+    width: 20%;
+    display: inline;
+    float: left;
+}
+
+.detailsItem p{
+    color: gray;
+    font: 14px Poppins, arial,sans-serif
+}
+
+.articleInput{
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+}
+
+.selectDetails{
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-right: 1px solid #ddd;
 }

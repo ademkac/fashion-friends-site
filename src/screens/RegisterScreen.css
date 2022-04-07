@@ -236,7 +236,7 @@ button.createAccountBtt:hover{
     color: white;
 }
 
-button.backToBtt{
+a.backToBtt{
     height: 30px;
     border: 3px solid transparent;
     border-radius: 20px;
@@ -247,6 +247,6 @@ button.backToBtt{
     font-weight: bold;
 }
 
-button.backToBtt:hover{
+a.backToBtt:hover{
     background-color: #c2365c;
 }
