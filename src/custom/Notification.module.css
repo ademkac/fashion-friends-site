@@ -7,6 +7,8 @@
     padding: 0.5rem 10%;
     align-items: center;
     color: white;
+    margin: 10px 0;
+    position: relative;
   }
   
   .notification h2,
@@ -20,5 +22,15 @@
   }
   
   .success {
-    background-color: #1ad1b9;
+    background-color: #bbe44c;
+  }
+
+  #closeIcon{
+    top:7px;
+    right: 7px;
+    position: absolute;
+    color: antiquewhite;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
   }

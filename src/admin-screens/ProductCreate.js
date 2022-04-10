@@ -13,7 +13,6 @@ import SelectBrandComponent from "./admin-form-components/SelectBrandComponent";
 import CheckboxComponent from "./admin-form-components/CheckboxComponent";
 import ImageUpload from "./admin-form-components/ImageUpload";
 
-
 const brands = [
     {name: 'Tommy Hilfiger'}, {name: 'Calvin Klein'}, {name: 'Diesel'}
 ]

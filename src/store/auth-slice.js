@@ -3,13 +3,14 @@ import {createSlice} from '@reduxjs/toolkit';
 const authSlice = createSlice({
     name: 'auth',
     initialState:{
-        userRegister:{
+        loading: false,
+        /* userRegister:{
             name: '',
             surname: '',
             email: '',
             password: '',
             confirmPassword: '',
-        }
+        } */ 
     },
     reducers:{
         setUserRegister(state, action){
@@ -18,6 +19,9 @@ const authSlice = createSlice({
             state.userRegister.email = action.payload.user.email;
             state.userRegister.password = action.payload.user.password;
             state.userRegister.confirmPassword = action.payload.user.confirmPassword
+        },
+        setAuthLoading(state, action){
+            state.loading = action.payload
         }
     }
 })

@@ -1,7 +1,12 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../store/ui-slice';
 import classes from './Notification.module.css'
 
 function Notification(props) {
+
+    const dispatch = useDispatch()
+
 
     let specialClasses = '';
 
@@ -16,6 +21,7 @@ function Notification(props) {
 
   return (
     <section className={cssClasses}>
+        <i onClick={()=>dispatch(uiActions.closeNotification(null))} id='closeIcon' className='fa fa-times'></i>
         <h2>{props.title}</h2>
         <p>{props.message}</p>
     </section>
