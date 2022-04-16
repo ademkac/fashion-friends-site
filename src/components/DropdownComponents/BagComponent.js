@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './BagComponent.css';
 import slika from '../../assets/colmarPic.png';
 import { Link } from "react-router-dom";

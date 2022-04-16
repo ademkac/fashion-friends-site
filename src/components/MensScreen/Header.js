@@ -83,13 +83,10 @@ const Header = (props) => {
                         </div>
                     )}
                 <div className="leftNav">
-                    <ul className= "leftList"> 
-                       {/*  <li className="option" ><Link className="item" to="/zene">Zene</Link></li>
-                        <li className="option" ><Link className="item" to="/muskarci">Muskarci</Link></li>
-                        <li className="option" ><Link className="item" to="/deca">Deca</Link></li> */}
+                    <ul className="leftList"> 
                         {
                             leftNavBar.map((obj, idx)=>{
-                                return <li  className="option" key={idx}><Link onClick={()=> toggleClass(idx)} className={`item ${idx == activeNav ? " active" : ""}`} key={idx} to={`/${obj.title}`}>{obj.title}</Link></li>
+                                return <li  className="option" key={idx}><Link onClick={()=> toggleClass(idx)} className={`item ${idx===activeNav ? " active" : ""}`} key={idx} to={`/${obj.title}`}>{obj.title}</Link></li>
                             })
                         }
                     </ul>

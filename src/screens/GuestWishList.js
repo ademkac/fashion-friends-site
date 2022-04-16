@@ -27,8 +27,9 @@ const listOfDesiredProducts = [
 ]
 
 const GuestWishList = () => {
-
+    // eslint-disable-next-line
     const [productDeleted, setProductDeleted] = useState(true)
+    // eslint-disable-next-line
     const [productAddedInCart, setProductAddedInCart] = useState(true)
 
     return(

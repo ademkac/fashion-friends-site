@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
 import Sidebar from "../../custom/Sidebar";
 import './Header.css';
@@ -24,6 +25,7 @@ const Header = (props) => {
     const [stick, setStick] = useState(false)
     const headerClasses = `headerContainer ${stick  ? 'sticky' : ''}`
     const userInfoClasses = `${stick ? 'stickyy' : 'userInfoConn'}`
+    const authDataToken = useSelector(state=>state.auth.token)
 
     useEffect(()=>{
         visible ? document.body.style.overflow = 'hidden'
@@ -81,10 +83,10 @@ const Header = (props) => {
                         </div>
                     )}
                 <div className="leftNav">
-                    <ul className= "leftList"> 
+                    <ul className="leftList"> 
                         {
                             leftNavBar.map((obj, idx)=>{
-                                return <li  className="option" key={idx}><Link onClick={()=> toggleClass(idx)} className={`item ${idx == activeNav ? " active" : ""}`} key={idx} to={`/${obj.title}`}>{obj.title}</Link></li>
+                                return <li  className="option" key={idx}><Link onClick={()=> toggleClass(idx)} className={`item ${idx === activeNav ? " active" : ""}`} key={idx} to={`/${obj.title}`}>{obj.title}</Link></li>
                             })
                         }
                     </ul>
@@ -126,10 +128,13 @@ const Header = (props) => {
                             onMouseEnter={hoverHandler}
                             onMouseLeave={hoverHandlerOut}
                             className={userInfoClasses}>
-                                <Link to='/customer/login'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>
+                                {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>)
+                                :(<Link to='/customer/login'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>)}
                                 <Link to='/guestwishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>
-                                <Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>
-                                <Link to='/customer/login'><p className="paragraphUserInfo">Prijava</p></Link>
+                                {authDataToken !== false ? (<Link to='/customer/logout'><p className="paragraphUserInfo">Odjavite se</p></Link>)
+                                :(<Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>)}
+                                {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moje pozivnice</p></Link>)
+                                :(<Link to='/customer/login'><p className="paragraphUserInfo">Prijava</p></Link>)}
                             </div>
                         )}
         </div>

@@ -63,7 +63,7 @@ const Carousel = (props) => {
             {props.dataSlider.map((obj, index)=>{
                 return(
                     <div id={index} key={obj.id} className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
-                            <img key={index} className="responsiveImg" src={obj.pic} />
+                            <img key={index} className="responsiveImg" src={obj.pic} alt=''/>
                     </div>
                 )
             })}

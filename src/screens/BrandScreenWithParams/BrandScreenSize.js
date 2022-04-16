@@ -54,7 +54,7 @@ const BrandScreenSize = (props) => {
         dispatch(fetchProductsData())
         dispatch(productsActions.backSizeProductsToInitial())
         sizeArray.map(a=>{
-            dispatch(productsActions.findSizeOfBrand(a))
+           return dispatch(productsActions.findSizeOfBrand(a))
         })
     },[dispatch, size])
 
@@ -68,10 +68,10 @@ const BrandScreenSize = (props) => {
         setClicked(!clicked)
         
         name === 'Kategorija' ? setShowK(!showK) 
-        : name == 'Boja' ? setShowB(!showB)
-        : name == 'Velicina' ? setShowV(!showV)
-        : name == 'Cena' ? setShowC(!showC)
-        : name == 'Pol' ? setShowP(!showP)
+        : name === 'Boja' ? setShowB(!showB)
+        : name === 'Velicina' ? setShowV(!showV)
+        : name === 'Cena' ? setShowC(!showC)
+        : name === 'Pol' ? setShowP(!showP)
         : setShowS(!showS)
     }
 
@@ -122,27 +122,27 @@ const BrandScreenSize = (props) => {
                                             <li className='filterBrandItem' key={idx}>
                                                 <div className='dropTitle'>
                                                 <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
-                                                {((showB && obj.name == 'Boja')
-                                                || (showC && obj.name == 'Cena')
+                                                {((showB && obj.name === 'Boja')
+                                                || (showC && obj.name === 'Cena')
                                                 || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name == 'Pol')
-                                                || (showS && obj.name == 'Sezona')
-                                                || (showV && obj.name == 'Velicina')) == false  
+                                                || (showP && obj.name === 'Pol')
+                                                || (showS && obj.name === 'Sezona')
+                                                || (showV && obj.name === 'Velicina')) === false  
                                                 ?(<i className="fas fa-caret-down"></i>)
                                                 :(<i className="fas fa-caret-up"></i>)}
                                                 </div>
-                                                {(  (showB && obj.name == 'Boja')
-                                                || (showC && obj.name == 'Cena')
+                                                {(  (showB && obj.name === 'Boja')
+                                                || (showC && obj.name === 'Cena')
                                                 || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name == 'Pol')
-                                                || (showS && obj.name == 'Sezona')
-                                                || (showV && obj.name == 'Velicina')  )  && (
+                                                || (showP && obj.name === 'Pol')
+                                                || (showS && obj.name === 'Sezona')
+                                                || (showV && obj.name === 'Velicina')  )  && (
                                                     <div className='dropContent'>
                                                     { 
                                                     obj.name === 'Kategorija'? 
                                                     (
                                                         <CategoriesListFilter brend={nekibrend} filter='size' value={size}/>
-                                                    ):obj.name == 'Boja' ?
+                                                    ):obj.name === 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             <Link className='redd' to={`/brendovi/${nekibrend}/filter/size:${size}/color:crvena`}></Link>
@@ -151,7 +151,7 @@ const BrandScreenSize = (props) => {
                                                             <Link className='blackk' to={`/brendovi/${nekibrend}/filter/size:${size}/color:crna`}></Link>
                                                             <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/size:${size}/color:zuta`}></Link>
                                                         </div>
-                                                    ): obj.name == 'Velicina' ?
+                                                    ): obj.name === 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             {!sizeArray.find(it=>it=== 'S') && (<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size${size},S`}><p>S</p></Link>)}
@@ -160,13 +160,13 @@ const BrandScreenSize = (props) => {
                                                             {!sizeArray.find(it=>it=== 'XL') && (<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size${size},XL`}><p>XL</p></Link>)}
                                                             
                                                         </div>
-                                                    ): obj.name == 'Sezona' ?
+                                                    ): obj.name === 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to={`/brendovi/${nekibrend}/filter/size:${size}/season:Jesen-Zima`} className='seasonLink'>Jesen-Zima</Link>
                                                             <Link to={`/brendovi/${nekibrend}/filter/size:${size}/season:Prolece-Leto`} className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
-                                                    ): obj.name == 'Pol' ?
+                                                    ): obj.name === 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to={`/brendovi/${nekibrend}/filter/size:${size}/sex:Muski`} className='seasonLink'>Muskarci</Link>

@@ -72,11 +72,11 @@ const ChosenCatListScreen = (props) => {
         setClicked(!clicked)
         console.log("Ime kategorije: "+name)
         
-        name == 'Kategorija' ? setShowK(!showK) 
-        : name == 'Boja' ? setShowB(!showB)
-        : name == 'Velicina' ? setShowV(!showV)
-        : name == 'Cena' ? setShowC(!showC)
-        : name == 'Pol' ? setShowP(!showP)
+        name === 'Kategorija' ? setShowK(!showK) 
+        : name === 'Boja' ? setShowB(!showB)
+        : name === 'Velicina' ? setShowV(!showV)
+        : name === 'Cena' ? setShowC(!showC)
+        : name === 'Pol' ? setShowP(!showP)
         : setShowS(!showS)
     }
 
@@ -107,26 +107,26 @@ const ChosenCatListScreen = (props) => {
                                             <li className='filterBrandItem' key={idx}>
                                                 <div className='dropTitle'>
                                                 <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
-                                                {((showB && obj.name == 'Boja')
-                                                || (showC && obj.name == 'Cena')
-                                                || (showK && obj.name == 'Kategorija')
-                                                || (showP && obj.name == 'Pol')
-                                                || (showS && obj.name == 'Sezona')
-                                                || (showV && obj.name == 'Velicina')) == false  
+                                                {((showB && obj.name === 'Boja')
+                                                || (showC && obj.name === 'Cena')
+                                                || (showK && obj.name === 'Kategorija')
+                                                || (showP && obj.name === 'Pol')
+                                                || (showS && obj.name === 'Sezona')
+                                                || (showV && obj.name === 'Velicina')) === false  
                                                 ?(<i className="fas fa-caret-down"></i>)
                                                 :(<i className="fas fa-caret-up"></i>)}
                                                 </div>
-                                                {(  (showB && obj.name == 'Boja')
-                                                || (showC && obj.name == 'Cena')
-                                                || (showK && obj.name == 'Kategorija')
-                                                || (showP && obj.name == 'Pol')
-                                                || (showS && obj.name == 'Sezona')
-                                                || (showV && obj.name == 'Velicina')  )  && (
+                                                {(  (showB && obj.name === 'Boja')
+                                                || (showC && obj.name === 'Cena')
+                                                || (showK && obj.name === 'Kategorija')
+                                                || (showP && obj.name === 'Pol')
+                                                || (showS && obj.name === 'Sezona')
+                                                || (showV && obj.name === 'Velicina')  )  && (
                                                     <div className='dropContent'>
-                                                    {obj.name == 'Kategorija'? 
+                                                    {obj.name === 'Kategorija'? 
                                                     (
                                                         <CategoriesListFilter />
-                                                    ): obj.name == 'Boja' ?
+                                                    ): obj.name === 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             <span className='redd'></span>
@@ -134,7 +134,7 @@ const ChosenCatListScreen = (props) => {
                                                             <span className='greenn'></span>
                                                             <span className='blackk'></span>
                                                         </div>
-                                                    ): obj.name == 'Velicina' ?
+                                                    ): obj.name === 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             <p>S</p>
@@ -142,13 +142,13 @@ const ChosenCatListScreen = (props) => {
                                                             <p>L</p>
                                                             <p>XL</p>
                                                         </div>
-                                                    ): obj.name == 'Sezona' ?
+                                                    ): obj.name === 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to='/' className='seasonLink'>Jesen-Zima</Link>
                                                             <Link to='/' className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
-                                                    ): obj.name == 'Pol' ?
+                                                    ): obj.name === 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to='/' className='seasonLink'>Muskarci</Link>

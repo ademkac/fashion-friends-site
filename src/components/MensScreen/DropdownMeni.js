@@ -107,7 +107,7 @@ const DropdownMeni = (props) =>{
     })
 
     return(
-        <>
+        <div>
         <div className={headerClasses}>
                 <div className="insideDropdown">
                 <div
@@ -190,9 +190,9 @@ const DropdownMeni = (props) =>{
                         <div className="modal--overlay">
                             <div ref={modal} className={modalClasses}>
                                 <SearchModalComponent
-                                popularSearch = {popularSearch}
-                                brands ={brands}
-                                products ={products}
+                                popularSearch={popularSearch}
+                                brands={brands}
+                                products={products}
                                 />
                             </div>
                         </div>
@@ -208,7 +208,7 @@ const DropdownMeni = (props) =>{
                         onMouseLeave={()=>setShow1(false)}
                         className={headerClasses2}>
                         <div className="insideDropCont">
-                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika} alt= '' /></Link>
+                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika} alt='' /></Link>
                             </div> 
                         </div>
                      )
@@ -220,7 +220,7 @@ const DropdownMeni = (props) =>{
                         onMouseLeave={()=>setShow2(false)}
                         className={headerClasses2}>
                             <div className="insideDropCont">
-                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika1} alt= '' /></Link>
+                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika1} alt='' /></Link>
                             </div> 
                         </div>
                     )
@@ -322,7 +322,7 @@ const DropdownMeni = (props) =>{
             </li>
         </ul>
         </div>
-        </>
+        </div>
     )
 }
 

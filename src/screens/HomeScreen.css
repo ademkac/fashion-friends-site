@@ -122,3 +122,24 @@ li {
 .fas:hover {
     color: #c2365c;
 }
+
+.rightNameSocial{
+    margin-left: 50%;
+    margin-top: 5px;
+}
+
+@media (max-width: 900px) {
+    .rightNameSocial{
+        margin-left: 40%;
+    }
+}
+
+@media (max-width: 480px) {
+    .rightNameSocial{
+        margin-left: 20%;
+    }
+}
+.leftSocial{
+    display: inline;
+    float: left;
+}

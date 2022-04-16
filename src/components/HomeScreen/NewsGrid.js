@@ -1,3 +1,4 @@
+import React from 'react';
 import './NewsGrid.css'
 import slika from '../../assets/voli.jpg';
 import slika1 from '../../assets/glamur.jpg';

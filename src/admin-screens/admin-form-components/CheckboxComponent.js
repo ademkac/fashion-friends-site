@@ -6,7 +6,7 @@ const CheckboxComponent = (props) => {
   return (
     <div className='inputContainerCheckboxes'>
         {props.name === 'size' ? (
-            <>
+            <div>
         <p>Velicine proizvoda</p>
         <div className='checkCont'>
             <p className='labelCheck'>S</p>
@@ -45,9 +45,9 @@ const CheckboxComponent = (props) => {
             checked={props.valueXL === 'XL'}/>
         </div>
         {props.show && (<button onClick={props.sizeBtnHandler} className='btnCheckSubmit'><b>Potvrdi velicine proizvoda</b></button>)}
-        </>
+        </div>
         ):(
-            <>
+            <div>
             <p>Boje proizvoda</p>
             <div className='checkCont'>
                 <p className='labelCheckColorBlue'></p>
@@ -86,7 +86,7 @@ const CheckboxComponent = (props) => {
                 checked={props.valueRed === 'crvena'}/>
             </div>
             {props.show && (<button onClick={props.colorBtnHandler} className='btnCheckSubmit'><b>Potvrdi boje proizvoda</b></button>)}
-            </>
+            </div>
         )}
     </div>
   )

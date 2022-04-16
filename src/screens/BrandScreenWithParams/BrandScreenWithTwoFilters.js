@@ -49,20 +49,20 @@ const BrandScreenWithTwoFilters = (props) => {
     let secondArray = filterInfo2[1].split(',')
     
     firstArray.map(obj=>{
-        arrayOfObjects.push({filter: filterInfo1[0], info: obj})
+       return arrayOfObjects.push({filter: filterInfo1[0], info: obj})
     })
     secondArray.map(obj=>{
-        arrayOfObjects.push({filter: filterInfo2[0], info: obj})
+       return arrayOfObjects.push({filter: filterInfo2[0], info: obj})
     })
 
-    const allArrays = firstArray.concat(secondArray)
+    /*     const allArrays = firstArray.concat(secondArray)*/    
     const twoFilterProducts = useSelector(state => state.product.twoFilterProducts)
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(fetchProductsData())
         arrayOfObjects.map(obj=>{
-            dispatch(productsActions.filterProductsTwoParams({
+           return dispatch(productsActions.filterProductsTwoParams({
                 filter: obj.filter, info: obj.info
             }))
         })
@@ -80,10 +80,10 @@ const BrandScreenWithTwoFilters = (props) => {
         console.log("Ime kategorije: "+name)
         
         name === 'Kategorija' ? setShowK(!showK) 
-        : name == 'Boja' ? setShowB(!showB)
-        : name == 'Velicina' ? setShowV(!showV)
-        : name == 'Cena' ? setShowC(!showC)
-        : name == 'Pol' ? setShowP(!showP)
+        : name === 'Boja' ? setShowB(!showB)
+        : name === 'Velicina' ? setShowV(!showV)
+        : name === 'Cena' ? setShowC(!showC)
+        : name === 'Pol' ? setShowP(!showP)
         : setShowS(!showS)
     }
 
@@ -135,26 +135,26 @@ const BrandScreenWithTwoFilters = (props) => {
                                             <li className='filterBrandItem' key={idx}>
                                                 <div className='dropTitle'>
                                                 <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
-                                                {((showB && obj.name == 'Boja')
-                                                || (showC && obj.name == 'Cena')
+                                                {((showB && obj.name === 'Boja')
+                                                || (showC && obj.name === 'Cena')
                                                 || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name == 'Pol')
-                                                || (showS && obj.name == 'Sezona')
-                                                || (showV && obj.name == 'Velicina')) == false  
+                                                || (showP && obj.name === 'Pol')
+                                                || (showS && obj.name === 'Sezona')
+                                                || (showV && obj.name === 'Velicina')) === false  
                                                 ?(<i className="fas fa-caret-down"></i>)
                                                 :(<i className="fas fa-caret-up"></i>)}
                                                 </div>
-                                                {(  (showB && obj.name == 'Boja')
-                                                || (showC && obj.name == 'Cena')
+                                                {(  (showB && obj.name === 'Boja')
+                                                || (showC && obj.name === 'Cena')
                                                 || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name == 'Pol')
-                                                || (showS && obj.name == 'Sezona')
-                                                || (showV && obj.name == 'Velicina')  )  && (
+                                                || (showP && obj.name === 'Pol')
+                                                || (showS && obj.name === 'Sezona')
+                                                || (showV && obj.name === 'Velicina')  )  && (
                                                     <div className='dropContent'>
                                                     {obj.name === 'Kategorija'? 
                                                     (
                                                         <CategoriesListFilter brend={nekibrend} />
-                                                    ): obj.name == 'Boja' ?
+                                                    ): obj.name === 'Boja' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             {((filterInfo1[0] === 'color' || filterInfo2[0] === 'color')&&(!secondArray.find(it=>it === 'crvena'))) &&(<Link className='redd' to={`/brendovi/${nekibrend}/filter/${filterInfo1[0]}:${filterInfo1[1]}/color:${filterInfo2[1]},crvena`}></Link>)}
@@ -163,7 +163,7 @@ const BrandScreenWithTwoFilters = (props) => {
                                                             {((filterInfo1[0] === 'color' || filterInfo2[0] === 'color')&&(!secondArray.find(it=>it === 'crna'))) &&(<Link className='blackk' to={`/brendovi/${nekibrend}/filter/${filterInfo1[0]}:${filterInfo1[1]}/color:${filterInfo2[1]},crna`}></Link>)}
                                                             {((filterInfo1[0] === 'color' || filterInfo2[0] === 'color')&&(!secondArray.find(it=>it === 'zuta'))) &&(<Link className='yelloww' to={`/brendovi/${nekibrend}/filter/${filterInfo1[0]}:${filterInfo1[1]}/color:${filterInfo2[1]},zuta`}></Link>)}
                                                         </div>
-                                                    ): obj.name == 'Velicina' ?
+                                                    ): obj.name === 'Velicina' ?
                                                     (
                                                         <div className='sizeFilter'>
                                                             {((filterInfo1[0] === 'size' || filterInfo2[0] === 'size')&&(!firstArray.find(it=>it === 'S'))) &&(<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:${filterInfo1[1]},S/${filterInfo2[0]}:${filterInfo2[1]}`}>S</Link>)}
@@ -171,13 +171,13 @@ const BrandScreenWithTwoFilters = (props) => {
                                                             {((filterInfo1[0] === 'size' || filterInfo2[0] === 'size')&&(!firstArray.find(it=>it === 'L'))) &&(<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:${filterInfo1[1]},L/${filterInfo2[0]}:${filterInfo2[1]}`}>L</Link>)}
                                                             {((filterInfo1[0] === 'size' || filterInfo2[0] === 'size')&&(!firstArray.find(it=>it === 'XL'))) &&(<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:${filterInfo1[1]},XL/${filterInfo2[0]}:${filterInfo2[1]}`}>XL</Link>)}
                                                         </div>
-                                                    ): obj.name == 'Sezona' ?
+                                                    ): obj.name === 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to='/' className='seasonLink'>Jesen-Zima</Link>
                                                             <Link to='/' className='seasonLink'>Prolece-Leto</Link>
                                                         </div>
-                                                    ): obj.name == 'Pol' ?
+                                                    ): obj.name === 'Pol' ?
                                                     (
                                                         <div className='seasonFilter'>
                                                             <Link to='/' className='seasonLink'>Muskarci</Link>

@@ -1,4 +1,4 @@
-
+import React from 'react'
 import './Autoscroll.css'
 import slika from '../assets/disel.jpg'
 import slika1 from '../assets/levisLogo.jpg'

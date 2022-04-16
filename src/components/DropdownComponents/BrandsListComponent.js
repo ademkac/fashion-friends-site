@@ -2,17 +2,9 @@ import React from "react";
 import './BrandsListComponent.css';
 import { Link } from "react-router-dom"; 
 
-const brands = [
-    {name: 'Bata'},{name: 'Bata'},{name: 'Bata'},{name: 'Bata'},{name: 'Bata'},{name: 'Bata'},
-    {name: 'Bata'},{name: 'Bata'},{name: 'Bata'},{name: 'Bata'},{name: 'Bata'},{name: 'Bata'},
-]
-
 const BrandsListComponent = (props) => {
-
-
     return(
-        
-            <div className="insidebrandListContainer">
+          <div className="insidebrandListContainer">
                 <ul id="brandListList">
                     <li><Link className="brandListLink" to='/brendovi/Bata'>Bata </Link></li>  
                     <li><Link className="brandListLink" to='/brendovi/Cesare Paciotti'>Cesare Paciotti </Link></li>

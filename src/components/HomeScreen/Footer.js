@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 import slika from '../../assets/ckLogo.jpg'

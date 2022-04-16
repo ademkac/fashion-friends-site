@@ -1,27 +1,25 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const authSlice = createSlice({
-    name: 'auth',
+    name: 'auth', 
     initialState:{
-        loading: false,
-        /* userRegister:{
-            name: '',
-            surname: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-        } */ 
+         token: false,
+         expires: null,
+         idUser: null,
+         name: null
     },
     reducers:{
-        setUserRegister(state, action){
-            state.userRegister.name = action.payload.user.name;
-            state.userRegister.surname = action.payload.user.surname;
-            state.userRegister.email = action.payload.user.email;
-            state.userRegister.password = action.payload.user.password;
-            state.userRegister.confirmPassword = action.payload.user.confirmPassword
+        login(state, action){
+            state.token = action.payload.token
+            state.expires = action.payload.expires
+            state.name = action.payload.name
+            state.idUser = action.payload.idUser
         },
-        setAuthLoading(state, action){
-            state.loading = action.payload
+        logout(state){
+            state.token = false
+            state.expires =null
+            state.name = null
+            state.idUser = null
         }
     }
 })

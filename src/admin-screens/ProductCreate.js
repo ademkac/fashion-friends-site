@@ -7,7 +7,7 @@ import SocialInfo from "../components/HomeScreen/SocialInfo";
 import Newsletter from "../components/Newsletter";
 import Notification from "../custom/Notification";
 import './ProductCreate.css'
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import DiscountRadioBruttons from "./admin-form-components/DiscountRadioBruttons";
 import SelectBrandComponent from "./admin-form-components/SelectBrandComponent";
 import CheckboxComponent from "./admin-form-components/CheckboxComponent";
@@ -197,8 +197,8 @@ const ProductCreate = () => {
                 body: JSON.stringify({
                     name: nameOfProduct,
                     picture: imageURLs,
-                    price: parseInt(price),
-                    discount: radioValue === 'ne' ? 0 : parseInt(discount),
+                    price: parseInt(price, 0),
+                    discount: radioValue === 'ne' ? 0 : parseInt(discount, 0),
                     description: descriptionOfProduct,
                     brand: brandSelect,
                     size: sizes,

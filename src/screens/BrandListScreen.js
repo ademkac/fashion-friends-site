@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './BrandListScreen.css'
 
 import slika from '../assets/replayLogo.jpg';

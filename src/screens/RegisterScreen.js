@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
 import Footer from "../components/HomeScreen/Footer";
 import FooterInfo from "../components/HomeScreen/FooterInfo";
@@ -8,6 +8,7 @@ import SocialInfo from "../components/HomeScreen/SocialInfo";
 import Newsletter from "../components/Newsletter";
 import './RegisterScreen.css'
 import {uiActions} from '../store/ui-slice'
+import {authActions} from '../store/auth-slice'
 import { useDispatch, useSelector } from "react-redux";
 import Notification from "../custom/Notification";
 import LoadingSpinner from "../custom/LoadingSpinner";
@@ -41,23 +42,23 @@ const RegisterScreen = () => {
     const [confirmedValid, setConfirmedValid]= useState(false)
     const dispatch = useDispatch()
     const notification = useSelector((state) => state.ui.notification);
-
     const createBtnClasses = formValid ? 'createAccountBtt' : 'createAccountBtt disabledBtn'
-
+    let message = ''
+    let navigate = useNavigate()
 
     useEffect(()=>{
-        if(nameInputValid && surnameInputValid && emailInputValid && (password === confirmedPass)){
+        if(nameInputValid && surnameInputValid && emailInputValid && ((password !== '') && (password === confirmedPass))){
             setFormValid(true)
         }else{
             setFormValid(false)
         }
     },[nameInputValid, surnameInputValid, emailInputValid, password, confirmedPass])
 
-    const onCreateHandler =  async (e)=>{
+    const onCreateHandler = async (e)=>{
         e.preventDefault();
-         setLoading(true)
-        try {
-            await fetch('https://localhost:7263/api/UserControler/register',
+        setLoading(true)
+        const sendData = async () => {
+            const response = await fetch('https://localhost:7263/api/UserControler/create',
             {
                 method: 'POST',
                 headers: {
@@ -72,20 +73,44 @@ const RegisterScreen = () => {
                     newsletter: newsletter
                 })
             })
-        setLoading(false)
-        dispatch(uiActions.showNotification({
-            status: 'success',
-            title: 'Uspesno!',
-            message: 'Uspesna registracija!'
-        }))
-
+            setLoading(false)
+            if(!response.ok){
+                const error = await response.json()
+                message = JSON.stringify(error.error)
+            }
+            const data = await response.json()
+            return data;
+         }
+        try {
+           await sendData().then(data=>{
+            localStorage.setItem("userData", JSON.stringify({
+                userId: data.data.id,
+                name: data.data.name,
+                token: data.data.token,
+                expires: data.data.tokenExpirationTime
+            }))
+        }).then(() => {
+            const storedData = JSON.parse(localStorage.getItem('userData'))
+            dispatch(authActions.login(storedData))
+           }).then(()=>{
+            dispatch(uiActions.showNotification({
+                status: 'success',
+                title: 'Uspesna registacija!',
+                message: "Cestitamo! Postali ste nas novi korisnik"
+            }))
+           }).then(()=>{
+                setTimeout(()=>{
+                    dispatch(uiActions.closeNotification(null))
+                    navigate('/', {replace: true})
+                }, 2000)
+           })
         } catch (error) {
-        setLoading(false)
-        dispatch(uiActions.showNotification({
-            status: 'error',
-            title: 'Greska!',
-            message: 'Nije moguca registracija trenutno!'
-        }))
+            setLoading(false)
+            dispatch(uiActions.showNotification({
+                status: 'error',
+                title: 'Neuspesna registracija!',
+                message: message
+            }))
         } 
     }   
 
@@ -168,10 +193,8 @@ const RegisterScreen = () => {
                                 <div className="errorText">
                                     {(emailInputTouched && !emailReq)?(
                                         <p>Molimo vas da popunite ovo polje!</p>
-                                    ): (emailInputTouched && !validEmail) ?(
+                                    ): (emailInputTouched && !validEmail) &&(
                                         <p>Molimo vas da unesete ispravan email!</p>
-                                    ): (
-                                        <></>
                                     )}
                                     
                                 </div>
@@ -197,7 +220,7 @@ const RegisterScreen = () => {
                         onBlur={()=>setPasswordInputTouched(true)}
                         placeholder="Lozinka" 
                         value={password}
-                        onChange={(e)=>{
+                        onChange={(e)=>{ 
                             setPassword(e.target.value)
                             setPasswordReq(validate(e.target.value, [VALIDATOR_REQUIRE()]))
                             setValidPasswordLength(validate(e.target.value, [VALIDATOR_MINLENGTH(8)]))
@@ -213,10 +236,8 @@ const RegisterScreen = () => {
                                         <p>Molimo vas da popunite ovo polje!</p>
                                     ): (passwordInputTouched && !validPasswordLength) ?(
                                         <p>Minimalna dužina ovog polja mora biti jednaka ili veća od 8 znakova.</p>
-                                    ): (passwordInputTouched && validPasswordLength && !validPassword) ?(
+                                    ): (passwordInputTouched && validPasswordLength && !validPassword) &&(
                                         <p>Minimalno različitih tipova znakova u lozinci je 3. Tipovi znakova: mala slova, velika slova, brojevi.</p>
-                                    ) : (
-                                        <></>
                                     )}
                                     
                                 </div>
@@ -237,11 +258,11 @@ const RegisterScreen = () => {
                                 <div className="errorText">
                                     <p>Molimo vas popunite ovo polje!</p>
                                 </div>
-                            ) : (confirmedTouched && confirmedValid && confirmedPass !== password) ? (
+                            ) : (confirmedTouched && confirmedValid && confirmedPass !== password) && (
                                 <div className="errorText">
                                     <p>Molimo vas da potvrdite sifru koju ste vec uneli!</p>
                                 </div>
-                            ) : (<></>)}
+                            )}
                     </div>
                     <div className="checkInputCon">
                         <input 
@@ -257,13 +278,12 @@ const RegisterScreen = () => {
                         }} />
                         <span>Saglasan sam sa uslovima koriscenja</span>
                     </div>
-                    {/* <div className="checkInputCon">
-                        <input type='checkbox' />
-                        <span>Zapamti me</span>
-                        <div className='spanIcon'><i className='fa fa-info'></i></div>
-                    </div> */}
                 </div>
-                <button onClick={onCreateHandler} disabled={formValid} className={createBtnClasses}>Kreirajte korisnicki nalog</button>
+                {
+                    !formValid ? (
+                        <button  disabled className={createBtnClasses}>Kreirajte korisnicki nalog</button>
+                    ) : (<button onClick={onCreateHandler} className={createBtnClasses}>Kreirajte korisnicki nalog</button>)
+                }
                  {loading && (
                     <LoadingSpinner asOverlay />
                 )} 

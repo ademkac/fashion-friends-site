@@ -45,14 +45,14 @@ const GridUnderSlider = (props) => {
     const [itemIn, setItemIn] = useState(2)
 
     useEffect(()=>{
-        if(itemIn == listOfItems.length){
+        if(itemIn === listOfItems.length){
             document.getElementById('bttFor').style.display = 'none'
-        }else if(itemIn != listOfItems.length){
+        }else if(itemIn !== listOfItems.length){
             document.getElementById('bttFor').style.display = 'inline'
         }
-        if(itemIndex == 1){
+        if(itemIndex === 1){
             document.getElementById('bttBack').style.display = 'none'
-        }else if(itemIndex != 1){
+        }else if(itemIndex !== 1){
             document.getElementById('bttBack').style.display = 'inline'
         }
     },[itemIn, itemIndex])
@@ -110,7 +110,7 @@ const GridUnderSlider = (props) => {
                                    to={`/product/${obj.opis}`}
                                    slika={obj.slika}
                                    opis={obj.opis}
-                                   cena = {obj.cena}
+                                   cena={obj.cena}
                                    />
                                 )
                             })}

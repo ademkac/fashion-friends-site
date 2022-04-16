@@ -1,0 +1,55 @@
+.mainNotification {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 10000;
+    transition: 2s;
+    transition-delay: 0.2s;
+    display: block;
+  }
+
+  .notification {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    background: linear-gradient(#fff, #ccc);
+  }
+  
+  .notification h2 {
+    font-size: 2rem;
+    margin: 10px;
+  }
+
+  .notification p{
+    font-size: 18px;
+    color: black;
+    margin-left: 6px;
+  }
+  
+  .error {
+    background: linear-gradient(red, rgb(145, 41, 41));
+  }
+  
+  .success {
+    background: linear-gradient(green, rgb(42, 251, 42));
+  }
+
+  #closeIcon{
+    top:17px;
+    right: 7px;
+    position: absolute;
+    color: black;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+
+  #messageP{
+    color: black;
+  }

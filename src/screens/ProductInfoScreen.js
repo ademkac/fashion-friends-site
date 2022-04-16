@@ -95,9 +95,11 @@ const ProductInfoScreen = () => {
     const nameOfProduct = useParams().productInfo
     const [chosenSize, setChosenSize] = useState('')
     const [kolicina, setKolicina] = useState(10)
+    // eslint-disable-next-line
     const [productAddedInCart, setProductAddedInCart] = useState(false)
     const [openedDetails, setOpenedDetails] = useState(false)
     const [openedInfo, setOpenedInfo] = useState(false)
+    // eslint-disable-next-line
     const [paused, setPaused] = useState(false)
     const [linkedPr1, setLinkedPr1] = useState(1)
     const [linkedPr2, setLinkedPr2] = useState(2)
@@ -127,7 +129,7 @@ const ProductInfoScreen = () => {
 
     const detailsHandler = () => {
         setOpenedDetails(!openedDetails)
-        openedInfo == true ? setOpenedInfo(false) : setOpenedInfo(false)
+        openedInfo === true ? setOpenedInfo(false) : setOpenedInfo(false)
     }
 
     const infoHandler = () => {
@@ -176,39 +178,38 @@ const ProductInfoScreen = () => {
     useEffect(()=>{
         dispatch(fetchProduct(1))
         product.picture.map(obj=>{
-            console.log("picture: "+obj.picture)
-            setPictures(...pictures, URL.createObjectURL(obj.picture))
+           return setPictures(...pictures, URL.createObjectURL(obj.picture))
         })
     }, [dispatch])
 
     useEffect(()=>{
-        if(chosenSize != ''){
-            const chosen = listOfSizes.find((obj)=>obj.name == chosenSize);
+        if(chosenSize !== ''){
+            const chosen = listOfSizes.find((obj)=>obj.name === chosenSize);
             setKolicina(chosen.quantity)
         }
 
-        if(linkedPr1 == 1) {
+        if(linkedPr1 === 1) {
             document.getElementById('bttback').style.display = 'none'
-        }else if(linkedPr1 != 1){
+        }else if(linkedPr1 !== 1){
             document.getElementById('bttback').style.display = 'inline'
         }
 
-        if(linkedPr4 == listOfLinkedProducts.length) {
+        if(linkedPr4 === listOfLinkedProducts.length) {
             document.getElementById('bttfor').style.display = 'none'
-        }else if(linkedPr4 != listOfLinkedProducts.length){
+        }else if(linkedPr4 !== listOfLinkedProducts.length){
             document.getElementById('bttfor').style.display = 'inline'
         }
 
         if(listOfRecentlyViewed.length > 0){
-            if((recentlyViewedPr1 == 1) || (listOfRecentlyViewed.length <= 4)){
+            if((recentlyViewedPr1 === 1) || (listOfRecentlyViewed.length <= 4)){
                 document.getElementById('bttback1').style.display = 'none'
-            }else if(recentlyViewedPr2 != 1 && (listOfRecentlyViewed.length > 4)){
+            }else if(recentlyViewedPr2 !== 1 && (listOfRecentlyViewed.length > 4)){
                 document.getElementById('bttback1').style.display = 'inline'
             }
     
-            if((recentlyViewedPr4 == listOfRecentlyViewed.length) || (listOfRecentlyViewed.length <= 4)){
+            if((recentlyViewedPr4 === listOfRecentlyViewed.length) || (listOfRecentlyViewed.length <= 4)){
                 document.getElementById('bttfor1').style.display = 'none'
-            }else if(recentlyViewedPr4 != listOfRecentlyViewed.length && (listOfRecentlyViewed.length > 4)){
+            }else if(recentlyViewedPr4 !== listOfRecentlyViewed.length && (listOfRecentlyViewed.length > 4)){
                 document.getElementById('bttfor1').style.display = 'inline'
             }
         }
@@ -244,8 +245,8 @@ const ProductInfoScreen = () => {
             {isLoading && (
                 <LoadingSpinner asOverlay />
             )}
-            { product != null && (
-                <>
+            { product !== null && (
+                <div>
                 {notification && (
                     <Notification
                     status={notification.status}
@@ -362,7 +363,7 @@ const ProductInfoScreen = () => {
                          </div>
                      )}
             </div>
-           </> )}
+           </div> )}
 
             <div className="linkedProducts">
                 <div className="insideLinkedProducts">
@@ -379,10 +380,10 @@ const ProductInfoScreen = () => {
                                     <div 
                                     key={idx} 
                                     className={
-                                    (idx+1 == linkedPr1 
-                                    || idx+1 == linkedPr2
-                                    || idx+1 == linkedPr3
-                                    || idx+1 == linkedPr4) ? 'linkedProudctItem' : 'nonActiveLink1'}>
+                                    (idx+1 === linkedPr1 
+                                    || idx+1 === linkedPr2
+                                    || idx+1 === linkedPr3
+                                    || idx+1 === linkedPr4) ? 'linkedProudctItem' : 'nonActiveLink1'}>
                                         <Link  to={`/${obj.opis}`}>
                                         <img src={obj.slika} alt='' />
                                         <div className="linkedProudctInfo">

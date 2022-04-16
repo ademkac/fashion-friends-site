@@ -1,9 +1,7 @@
+import React from 'react';
 import './VersaceListItem.css'
 
 const VersaceListItem = (props) => {
-
-    
-
     return (
         <div className='versaceItem' id={props.id} >
             <img src={props.slika} alt=""/> 

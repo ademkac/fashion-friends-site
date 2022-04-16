@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './HomeScreen.css';
 import SocialInfo from "../components/HomeScreen/SocialInfo";
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";

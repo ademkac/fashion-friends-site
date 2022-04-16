@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import BrandListScreen from './screens/BrandListScreen';
 import BrandScreen from './screens/BrandScreen';
@@ -9,9 +10,11 @@ import BrandScreenColor from './screens/BrandScreenWithParams/BrandScreenColor';
 import CheckoutCartScreen from './screens/CheckoutCartScreen';
 import ChosenCatListScreen from './screens/ChosenCatListScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
+import UserAccountScreen from './screens/UserAccountScreen';
 import GuestWishList from './screens/GuestWishList';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import LogoutScreen from './screens/LogoutScreen';
 import MensScreen from './screens/MensScreen';
 import ProductInfoScreen from './screens/ProductInfoScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -19,8 +22,22 @@ import BrandScreenWithTwoFilters from './screens/BrandScreenWithParams/BrandScre
 import BrandScreenSeason from './screens/BrandScreenWithParams/BrandScreenSeason';
 import BrandScreenSex from './screens/BrandScreenWithParams/BrandScreenSex';
 import ProductCreate from './admin-screens/ProductCreate';
+import { authActions } from './store/auth-slice';
 
 const App = () => {
+
+  const dispatch = useDispatch()
+  const authState = useSelector(state=>state.auth)
+
+  useEffect(()=>{
+    /* Auto login */
+    if(localStorage.getItem("userData") !== null){
+      const storedData = JSON.parse(localStorage.getItem('userData'))
+      dispatch(authActions.login(storedData))
+    }
+    console.log("tokennnnn: "+authState.token);
+    console.log("nameeee: "+authState.name);
+  },[dispatch])
 
   return (
     <main className='main'>
@@ -29,6 +46,8 @@ const App = () => {
           <Route path='/' element={<HomeScreen />} />
           <Route path='/customer/login' element={<LoginScreen />} />
           <Route path='/customer/register' element={<RegisterScreen />} />
+          <Route path='/customer/logout' element={<LogoutScreen />} />
+          <Route path='/customer/account' element={<UserAccountScreen />} />
           <Route path='/customer/forgotpassword' element={<ForgotPasswordScreen />}/>
           <Route path='/guestwishlist' element={<GuestWishList />}/>
           <Route path='/checkout/cart' element={<CheckoutCartScreen />} />

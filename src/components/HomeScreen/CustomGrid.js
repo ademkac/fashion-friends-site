@@ -1,3 +1,4 @@
+import React from 'react';
 import './CustomGrid.css'
 import slika from '../../assets/customGrid.png';
 import slika1 from '../../assets/customDisign.png';

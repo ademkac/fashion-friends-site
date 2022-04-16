@@ -101,11 +101,11 @@ const KidsSidebarContent = (props) => {
     }
 
     const dropHandler = (name) => {
-        if(name == 'Aksesoari'){
+        if(name === 'Aksesoari'){
             setShowFirstDropdown(!showFirstDropdown);
             setShowSecondDropdown(false)
             setShowThirdDropdown(false)
-        } else if (name == 'Obuca'){
+        } else if (name === 'Obuca'){
             setShowFirstDropdown(false)
             setShowSecondDropdown(!showSecondDropdown)
             setShowThirdDropdown(false)
@@ -121,7 +121,7 @@ const KidsSidebarContent = (props) => {
 
 
     return(
-        <>
+        <div>
             {(itemClicked === 1) && (
                 <div className="itemClickedHeader" onClick={()=>backToSidebarContent()}>
                     <i  className="fas fa-caret-left"></i>
@@ -172,7 +172,7 @@ const KidsSidebarContent = (props) => {
                                  || (showSecondDropdown && obj.name === 'Obuca')
                                  || (showThirdDropdown && obj.name === 'Odeca')) && (
                                     <div className='dropContentKids'>
-                                    {obj.name == 'Aksesoari' ?
+                                    {obj.name === 'Aksesoari' ?
                                     (
                                         <ul className='aksesoariList'>
                                             {aksesoariList.map((obj, idx)=> {
@@ -183,7 +183,7 @@ const KidsSidebarContent = (props) => {
                                                 )
                                             })}
                                         </ul>
-                                    ): obj.name == 'Obuca' ?
+                                    ): obj.name === 'Obuca' ?
                                     (
                                         <ul className='obucaList'>
                                         {obucaList.map((obj, idx)=> {
@@ -238,7 +238,7 @@ const KidsSidebarContent = (props) => {
                                  || (showSecondDropdown && obj.name === 'Obuca')
                                  || (showThirdDropdown && obj.name === 'Odeca')) && (
                                     <div className='dropContentKids'>
-                                    {obj.name == 'Aksesoari' ?
+                                    {obj.name === 'Aksesoari' ?
                                     (
                                         <ul className='aksesoariList'>
                                             {aksesoariList.map((obj, idx)=> {
@@ -249,7 +249,7 @@ const KidsSidebarContent = (props) => {
                                                 )
                                             })}
                                         </ul>
-                                    ): obj.name == 'Obuca' ?
+                                    ): obj.name === 'Obuca' ?
                                     (
                                         <ul className='obucaList'>
                                         {obucaListDecaci.map((obj, idx)=> {
@@ -279,7 +279,7 @@ const KidsSidebarContent = (props) => {
                     }
                 </ul>
                 )}
-        </>
+        </div>
     )
 }
 
