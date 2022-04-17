@@ -4,7 +4,7 @@ import '../ProductCreate.css'
 const SelectBrandComponent = (props) => {
   return (
     <div className="inputContainerCreate">
-        <p className="inputLabelCreate">Brend proizvoda</p>
+        <p className="inputLabelCreate">{props.title}</p>
             <select className="selectCreate" value={props.brandSelect} onChange={props.selectInputHandler}>
                 {props.brands.map((obj, idx)=>{
                     return(

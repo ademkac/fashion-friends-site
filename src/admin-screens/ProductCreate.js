@@ -7,14 +7,20 @@ import SocialInfo from "../components/HomeScreen/SocialInfo";
 import Newsletter from "../components/Newsletter";
 import Notification from "../custom/Notification";
 import './ProductCreate.css'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DiscountRadioBruttons from "./admin-form-components/DiscountRadioBruttons";
 import SelectBrandComponent from "./admin-form-components/SelectBrandComponent";
 import CheckboxComponent from "./admin-form-components/CheckboxComponent";
 import ImageUpload from "./admin-form-components/ImageUpload";
+import { uiActions } from "../store/ui-slice";
+import LoadingSpinner from "../custom/LoadingSpinner";
 
 const brands = [
     {name: 'Tommy Hilfiger'}, {name: 'Calvin Klein'}, {name: 'Diesel'}
+]
+
+const kategorije = [
+    {name: 'Obuca'}, {name: 'Odeca'}
 ]
 
 const ProductCreate = () => {
@@ -22,6 +28,7 @@ const ProductCreate = () => {
     const [nameOfProduct, setNameOfProduct] = useState('')
     const [descriptionOfProduct, setDescriptionOfProduct] = useState('')
     const [brandSelect, setBrandSelect] = useState('Tommy Hilfiger')
+    const [cat, setCat] = useState('Obuca')
     const [price, setPrice] = useState('')
     const [radioValue, setRadioValue] = useState('ne')
     const [discount, setDiscount]=useState('')
@@ -44,9 +51,41 @@ const ProductCreate = () => {
     const [material, setMaterial]=useState('Koza')
     const [colors, setColors] = useState([])
     const [sizes, setSizes] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [sizeSuccess, setSizeSuccess] = useState(false)
+    const [colorSuccess, setColorSuccess] = useState(false)
     const notification = useSelector(state=>state.ui.notification)
     const imagesContClass =  (imageURLs.length<=4 && imageURLs.length > 0)? 'imagesContainer four' : imageURLs.length === 0 ? 'imagesContainer' : 'imagesContainer eight';
     const colorArray = [], sizeArray = []
+
+    const dispatch = useDispatch();
+
+    const resetForm =()=>{
+        setNameOfProduct('')
+        setDescriptionOfProduct('')
+        setPrice('')
+        setRadioValue('ne')
+        setDiscount('')
+        setCheckS('')
+        setCheckM('')
+        setCheckL('')
+        setCheckXL('')
+        setCheckBlue('')
+        setCheckBlack('')
+        setCheckYellow('')
+        setCheckRed('')
+        setImages([])
+        setImageURLs([])
+        setArticleCode('')
+        setSeason('Prolece-Leto')
+        setSex('Muski')
+        setCategory('Jakne')
+        setMaterial('Koza')
+        setColors([])
+        setSizes([])
+        setColorSuccess(false)
+        setSizeSuccess(false)
+    }
 
     useEffect(()=>{
         if(checkL !== '' || checkM !== '' || checkS !== '' || checkXL !== ''){
@@ -164,7 +203,8 @@ const ProductCreate = () => {
             colorArray.push({color: checkYellow})
         }
         setColors(colorArray)
-        console.log("colorArray 1: "+colorArray[0].color)
+        setColorSuccess(true)
+        
     }
 
     const sizeBtnHandler = (e)=>{
@@ -182,11 +222,13 @@ const ProductCreate = () => {
             sizeArray.push({size: checkXL})
         }
         setSizes(sizeArray)
-        console.log("sizeArray: "+sizeArray[0].size)
+        setSizeSuccess(true)
+        
     }
     
     const submitButtonHandler = async (e) => {
         e.preventDefault();
+        setLoading(true)
              try {
                 await fetch('https://localhost:7263/api/ProductControler/', {
                 method: 'POST',
@@ -209,9 +251,21 @@ const ProductCreate = () => {
                     material: material,
                     category: category,
                     mainCategory: 'Odeca'})
-            })
+            }).then(()=>{
+                setLoading(false)
+                dispatch(uiActions.showNotification({
+                    status: 'success',
+                    title: "Odlicno!",
+                    message: "Uspesno ste kreirali proizvod"
+                }))
+            }).then(resetForm)
             } catch (error) {
-                
+                setLoading(false)
+                dispatch(uiActions.showNotification({
+                    status: 'error',
+                    title: 'Neuspesno',
+                    message: 'Trenutno nije moguce kreirati proizvod!'
+                }))
             } 
     }
 
@@ -227,6 +281,7 @@ const ProductCreate = () => {
                     title={notification.title}
                     message={notification.message} />
                 )}
+                
                 <h2>Dodajte novi proizvod</h2>
                 <div className="inputContainerCreate">
                     <p className="inputLabelCreate">Ime proizvoda</p>
@@ -240,6 +295,7 @@ const ProductCreate = () => {
                 <SelectBrandComponent 
                 brands={brands}
                 brandSelect={brandSelect}
+                title='Brend proizvoda'
                 selectInputHandler={(e)=>setBrandSelect(e.target.value)}
                 />
                 <div className="inputContainerCreate">
@@ -260,13 +316,19 @@ const ProductCreate = () => {
                     value={price}
                     onChange={(e)=>setPrice(e.target.value)}/>
                 </div>
+                <SelectBrandComponent 
+                brands={kategorije}
+                brandSelect={cat}
+                title='Kategorija proizvoda'
+                selectInputHandler={(e)=>setCat(e.target.value)}
+                />
                    <DiscountRadioBruttons
                    onChangeRadioHandler={(e)=>setRadioValue(e.target.value)}
                    radioValue={radioValue}
                    discount={discount}
                    discountHandler={(e)=>setDiscount(e.target.value)} />
                    <CheckboxComponent
-                   name='size'
+                   name={cat === 'Odeca' ? 'sizeClothes' : 'sizeShoes'}
                    checkHandlerS={setCheckSHandler}
                    checkHandlerM={setCheckMHandler}
                    checkHandlerL={setCheckLHandler}
@@ -277,6 +339,7 @@ const ProductCreate = () => {
                    valueXL={checkXL}
                    show={showButtonCheckSubmit}
                    sizeBtnHandler={sizeBtnHandler}
+                   showNotification={sizeSuccess}
                    />    
                    <CheckboxComponent
                    name='color'
@@ -290,6 +353,7 @@ const ProductCreate = () => {
                    valueYellow={checkYellow}
                    show={showButtonCheckSubmitColor}
                    colorBtnHandler={colorBtnHandler}
+                   showNotification={colorSuccess}
                    />
                    <ImageUpload 
                    onImageChange={onImageChange}
@@ -348,9 +412,13 @@ const ProductCreate = () => {
                                 <option value='Patike'>Patike</option>
                             </select>
                         </div>
-                    </div>  
+                    </div> 
+                     
                <div className="btnContainer">
                     <button onClick={submitButtonHandler} type='button' className="submitBtnCreate">Potvrdi</button>
+                    {loading && (
+                    <LoadingSpinner  />
+                )}
                </div>
             </div>
             <Newsletter />

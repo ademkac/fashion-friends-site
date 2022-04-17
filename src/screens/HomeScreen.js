@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './HomeScreen.css';
 import SocialInfo from "../components/HomeScreen/SocialInfo";
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
@@ -19,6 +19,7 @@ import logo2 from '../assets/versace.jpg';
 import logo3 from '../assets/hugo.jpg';
 import logo4 from '../assets/colmar.jpg';
 import logo5 from '../assets/scotchsoda.jpg';
+import ChatInfoModal from "../custom/ChatInfoModal";
 
 const dataSlider = [
     {
@@ -61,7 +62,8 @@ const dataSlider = [
 
 const HomeScreen = () => {
 
-
+    const [visible, setVisible] = useState(false)
+    const [show, setShow] = useState(false)
 
     return(
         <div id="home" className="container">
@@ -77,6 +79,9 @@ const HomeScreen = () => {
             <Newsletter />
             <Footer />
             <FooterInfo /> 
+            {show && (<ChatInfoModal clickHandler={()=>setShow(false)} />)}
+            <button onClick={()=>setShow(!show)} className="btnMessage"><i id="messIcon" className="fa fa-comment"></i></button>
+            {visible && (<button className="btnMessage"><i className="fab fab-comment"></i></button>)}
         </div>
     )
 }

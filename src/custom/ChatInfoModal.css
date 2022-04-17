@@ -1,0 +1,204 @@
+.chatInfoCon{
+    height: 400px;
+    width: 350px;
+    background: linear-gradient(#fff, #ccc) ;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    padding: 15px;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 99999;
+}
+
+.insideChatInfo{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.chatInfoHeader{
+    width: 100%;
+    height: 25px;
+}
+
+.leftChatInfoHeader{
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.chatImgContainer{
+    height: 100%;
+    width: 50px;
+}
+
+.chatImgContainer img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.rightChatInfoHeader{
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding-left: 14px;
+}
+
+.leftMargin{
+    padding-left: 50px;
+}
+
+.picSpan{
+    display: inline;
+    float: left;
+    width: 40px;
+    height: 25px;
+    background-color: rgb(241, 237, 237);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.picSpan:hover{
+    background-color: #ddd;
+}
+
+.picSpan img{
+    height: 100%;
+    width: 50%;
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+
+ #downCarr{
+    font-size: 20px;
+    color: black;
+} 
+
+.spanCircle{
+    background-color: rgb(241, 237, 237);
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 30px;
+    height: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    padding-left: 3px;
+    display: inline;
+    float: left;
+}
+
+.spanCircle:hover{
+    background-color: #ddd;
+}
+
+.spanCircle i{
+    font-size: 12px;
+    color: black;
+    margin: 5px;
+}
+
+.chatInfoBodyCont{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.chatInfoBodyCont p{
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.asUserName{
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: #c2365c;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.asUserName:hover{
+    background-color: #a32d4c;
+}
+
+.asGuest{
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: rgb(175, 173, 173);
+    color: black;
+}
+
+.asGuest:hover{
+    background-color: rgb(148, 144, 144);
+}
+
+.chatInfoFooterCon{
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.chatInfoFooterCon p{
+    font-size: 12px;
+    color: rgb(101, 100, 100);
+}
+
+.dotsContainer{
+    position: absolute;
+    top: 40px;
+    width: 95%;
+    height: 60px;
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: 0 0 4px #000;
+    background-color: white;
+    z-index: 100000;
+}
+
+.dotsContainer a{
+    text-decoration: none;
+    width: 100%;
+    height: 25px;
+    color: #000;
+    font-size: 14px;
+    display: block;
+    margin-top: 3px;
+}
+
+.switchAcc{
+    height: 40px;
+    width: 140px;
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: 0 0 4px #000;
+    background-color: white;
+    z-index: 100000;
+}
+
+.switchBtn{
+    width: 100%;
+    height: 100%;
+}

@@ -5,7 +5,7 @@ import '../ProductCreate.css';
 const CheckboxComponent = (props) => {
   return (
     <div className='inputContainerCheckboxes'>
-        {props.name === 'size' ? (
+        {props.name === 'sizeClothes' ? (
             <div>
         <p>Velicine proizvoda</p>
         <div className='checkCont'>
@@ -46,6 +46,47 @@ const CheckboxComponent = (props) => {
         </div>
         {props.show && (<button onClick={props.sizeBtnHandler} className='btnCheckSubmit'><b>Potvrdi velicine proizvoda</b></button>)}
         </div>
+        ): props.name === 'sizeShoes' ? (
+            <div>
+                <p>Velicine proizvoda</p>
+                <div className='checkCont'>
+                    <p className='labelCheck'>41</p>
+                    <input 
+                    className='checkBox'
+                    type='checkbox' 
+                    onChange={props.checkHandlerS}
+                    value='41'
+                    checked={props.valueS === '41'}/>
+                </div>
+                <div className='checkCont'>
+                    <p className='labelCheck'>42</p>
+                    <input 
+                    className='checkBox'
+                    type='checkbox' 
+                    onChange={props.checkHandlerM}
+                    value='42'
+                    checked={props.valueM === '42'}/>
+                </div>
+                <div className='checkCont'>
+                    <p className='labelCheck'>43</p>
+                    <input 
+                    className='checkBox'
+                    type='checkbox' 
+                    onChange={props.checkHandlerL}
+                    value='43'
+                    checked={props.valueL === '43'}/>
+                </div>
+                <div className='checkCont'>
+                    <p className='labelCheck'>44</p>
+                    <input 
+                    className='checkBox'
+                    type='checkbox' 
+                    onChange={props.checkHandlerXL}
+                    value='44'
+                    checked={props.valueXL === '44'}/>
+                </div>
+                {props.show && (<button onClick={props.sizeBtnHandler} className='btnCheckSubmit'><b>Potvrdi velicine proizvoda</b></button>)}
+            </div>
         ):(
             <div>
             <p>Boje proizvoda</p>
@@ -86,6 +127,11 @@ const CheckboxComponent = (props) => {
                 checked={props.valueRed === 'crvena'}/>
             </div>
             {props.show && (<button onClick={props.colorBtnHandler} className='btnCheckSubmit'><b>Potvrdi boje proizvoda</b></button>)}
+            {props.showNotification &&(
+                            <div className="successText">
+                                <p>Uspesna potvrda!</p>
+                            </div>
+                        )}
             </div>
         )}
     </div>

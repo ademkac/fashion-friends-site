@@ -40,6 +40,7 @@ const RegisterScreen = () => {
     const [validPasswordLength, setValidPasswordLength] = useState(false)
     const [confirmedTouched, setConfirmedTouched]= useState(false)
     const [confirmedValid, setConfirmedValid]= useState(false)
+    const [termErr, setTermErr] = useState(false)
     const dispatch = useDispatch()
     const notification = useSelector((state) => state.ui.notification);
     const createBtnClasses = formValid ? 'createAccountBtt' : 'createAccountBtt disabledBtn'
@@ -270,6 +271,7 @@ const RegisterScreen = () => {
                         type='checkbox'
                         value='da'
                         checked={term === 'da'}
+
                         onChange={(e)=>{
                             if(term === ''){
                                 setTerm(e.target.value)
@@ -277,13 +279,19 @@ const RegisterScreen = () => {
                                 setTerm('')
                             }
                         }} />
+                        {(termErr && term !== 'da') && (
+                            <div className="errorText">
+                                <p>Morate da se slozite sa uslovima koriscenja</p>
+                            </div>
+                        )}
                         <span>Saglasan sam sa uslovima koriscenja</span>
                     </div>
                 </div>
                 {
                     !formValid ? (
                         <button  disabled className={createBtnClasses}>Kreirajte korisnicki nalog</button>
-                    ) : (<button onClick={onCreateHandler} className={createBtnClasses}>Kreirajte korisnicki nalog</button>)
+                    ) : (term !== 'da' && formValid) ? (<button onClick={()=>setTermErr(true)} className={createBtnClasses}>Kreirajte korisnicki nalog</button>) 
+                    :(<button onClick={onCreateHandler} className={createBtnClasses}>Kreirajte korisnicki nalog</button>)
                 }
                  {loading && (
                     <LoadingSpinner asOverlay />
