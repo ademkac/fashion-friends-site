@@ -87,7 +87,8 @@ const RegisterScreen = () => {
                 userId: data.data.id,
                 name: data.data.name,
                 token: data.data.token,
-                expires: data.data.tokenExpirationTime
+                expires: data.data.tokenExpirationTime,
+                email: data.data.email
             }))
         }).then(() => {
             const storedData = JSON.parse(localStorage.getItem('userData'))

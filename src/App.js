@@ -10,7 +10,9 @@ import BrandScreenColor from './screens/BrandScreenWithParams/BrandScreenColor';
 import CheckoutCartScreen from './screens/CheckoutCartScreen';
 import ChosenCatListScreen from './screens/ChosenCatListScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
-import UserAccountScreen from './screens/UserAccountScreen';
+import UserAccountScreen from './screens/UserAccount/UserAccountScreen';
+import UserOrdersScreen from './screens/UserAccount/UserOrdersScreen';
+import UserWishList from './screens/UserAccount/UserWishList';
 import GuestWishList from './screens/GuestWishList';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -23,6 +25,13 @@ import BrandScreenSeason from './screens/BrandScreenWithParams/BrandScreenSeason
 import BrandScreenSex from './screens/BrandScreenWithParams/BrandScreenSex';
 import ProductCreate from './admin-screens/ProductCreate';
 import { authActions } from './store/auth-slice';
+import UserDirectory from './screens/UserAccount/UserDirectory';
+import UserAccountInfo from './screens/UserAccount/UserAccountInfo';
+import UserPrivacyScreen from './screens/UserAccount/UserPrivacyScreen';
+import UserCreditScreen from './screens/UserAccount/UserCreditScreen';
+import UserNewsletterManageScreen from './screens/UserAccount/UserNewsletterManageScreen';
+import UserInvitationScreen from './screens/UserAccount/UserInvitationScreen';
+import UserReturnsScreen from './screens/UserAccount/UserReturnsScreen';
 
 const App = () => {
 
@@ -48,6 +57,15 @@ const App = () => {
           <Route path='/customer/register' element={<RegisterScreen />} />
           <Route path='/customer/logout' element={<LogoutScreen />} />
           <Route path='/customer/account' element={<UserAccountScreen />} />
+          <Route path='/customer/orders' element={<UserOrdersScreen />} />
+          <Route path='/customer/wishlist' element={<UserWishList />} />
+          <Route path='/customer/accountInfo' element={<UserAccountInfo />} />
+          <Route path='/customer/privacy' element={<UserPrivacyScreen />} />
+          <Route path='/customer/directory' element={<UserDirectory />} />
+          <Route path='/customer/storecredit' element={<UserCreditScreen />} />
+          <Route path='/customer/newslettermanage' element={<UserNewsletterManageScreen />} />
+          <Route path='/customer/returns' element={<UserReturnsScreen />} />
+          <Route path='/customer/invitation' element={<UserInvitationScreen />} />
           <Route path='/customer/forgotpassword' element={<ForgotPasswordScreen />}/>
           <Route path='/guestwishlist' element={<GuestWishList />}/>
           <Route path='/checkout/cart' element={<CheckoutCartScreen />} />

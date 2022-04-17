@@ -1,0 +1,54 @@
+.mainUserAccount{
+    width: 100%;
+    height: auto;
+}
+
+.insideUserAccount{
+    width: 60%;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.mainContentAcc{
+    width: 80%;
+    height: 100%;
+    display: inline;
+    float: left;
+    overflow: hidden;
+    padding-left: 40px;
+}
+.mainContentAcc h2{
+    width: 100%;
+}
+
+.infoModal{
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    height: 35px;
+    padding: 5px 15px;
+    background-color: lightblue;
+    margin-bottom: 20px;
+}
+
+.infoModal i{
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+    color: rgb(22, 22, 92);
+}
+
+.backBtn{
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0 20px;
+    background-color: black;
+    color: white;
+}
+
+.backBtn:hover{
+    background-color: #c2365c;
+}
