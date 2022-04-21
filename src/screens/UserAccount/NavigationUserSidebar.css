@@ -1,0 +1,20 @@
+.navUserSidebarActive{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    background: rgba(0,0,0,.7);
+    opacity: 1;
+    display: flex;
+}
+
+.navSidebarContent{
+  height: 100%;
+  width: 80%;
+  background-color: white;
+  padding: 20px
+}

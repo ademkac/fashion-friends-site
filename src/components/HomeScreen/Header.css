@@ -13,6 +13,7 @@
 }
 .mobile-menu {
     display: none;
+    cursor: pointer;
 }
 
 .sidebar-active{
@@ -222,6 +223,7 @@ li {
         right: 25px;
         font-size: 30px;
         color: white;
+        cursor: pointer;
     }
     
     .leftNav{

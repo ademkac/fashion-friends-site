@@ -20,6 +20,7 @@ import logo3 from '../assets/hugo.jpg';
 import logo4 from '../assets/colmar.jpg';
 import logo5 from '../assets/scotchsoda.jpg';
 import ChatInfoModal from "../custom/ChatInfoModal";
+import Chat from "../custom/ChatComponents/Chat";
 
 const dataSlider = [
     {
@@ -62,8 +63,14 @@ const dataSlider = [
 
 const HomeScreen = () => {
 
-    const [visible, setVisible] = useState(false)
     const [show, setShow] = useState(false)
+    const [showChat, setShowChat] = useState(false)
+    const [pom, setPom] = useState(false)
+    const clickAsGuest = () => {
+      setShowChat(true)
+      setPom(true)
+      setShow(false)
+    }
 
     return(
         <div id="home" className="container">
@@ -79,9 +86,18 @@ const HomeScreen = () => {
             <Newsletter />
             <Footer />
             <FooterInfo /> 
-            {show && (<ChatInfoModal clickHandler={()=>setShow(false)} />)}
-            <button onClick={()=>setShow(!show)} className="btnMessage"><i id="messIcon" className="fa fa-comment"></i></button>
-            {visible && (<button className="btnMessage"><i className="fab fab-comment"></i></button>)}
+            {show && (<ChatInfoModal 
+            clickHandler={()=>setShow(false)}
+            clickAsGuest={clickAsGuest} />)}
+            { showChat  && (<Chat clickHandler={()=>setShowChat(false)}/>)}
+            <button onClick={()=>{
+              if(pom){
+                setShowChat(!showChat)
+              }else{
+                setShow(!show)
+              }
+            }} className="btnMessage"><i id="messIcon" className="fa fa-comment"></i></button>
+            
         </div>
     )
 }

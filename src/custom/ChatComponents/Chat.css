@@ -1,0 +1,243 @@
+.chatContainer{
+    height: 550px;
+    width: 320px;
+    background: linear-gradient(#fff, #ccc) ;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    padding: 11px 0;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 99999;
+}
+
+.insideChatContainer{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.chatInfoHeaderr{
+    width: 100%;
+    height: 25px;
+    padding-left: 15px;
+}
+
+.leftChatInfoHeaderr{
+    display: inline;
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+.chatImgContainer{
+    height: 100%;
+    width: 50px;
+    display: inline;
+    float: left;
+    margin-right: 14px;
+}
+
+.chatImgContainer img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.chatPContainer{
+    height: 100%;
+    display: inline;
+    float: left;
+    margin-top: -14px;
+}
+
+p.ffP{
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+}
+
+p.pbA{
+    font-size: 10px;
+    color: gray;
+    margin-top: -8px;
+}
+
+.rightChatInfoHeaderr{
+    display: inline;
+    float: left;
+    width: 40%;
+    height: 100%;
+    padding-left: 24px;
+}
+
+.spanCircle{
+    background-color: rgb(241, 237, 237);
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 30px;
+    height: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    padding-left: 3px;
+    display: inline;
+    float: left;
+}
+
+.spanCircle:hover{
+    background-color: #ddd;
+}
+
+.spanCircle i{
+    font-size: 12px;
+    color: black;
+    margin: 5px;
+}
+
+.dotsContainerr{
+    position: absolute;
+    top: 40px;
+    width: 95%;
+    height: 160px;
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: 0 0 4px #000;
+    background-color: white;
+    z-index: 100000;
+}
+
+.dotsContainerr a{
+    text-decoration: none;
+    width: 100%;
+    height: 25px;
+    color: #000;
+    font-size: 14px;
+    display: block;
+    margin-top: 3px;
+}
+
+.dotsContainerr a:hover{
+   color: #ddd;
+}
+
+.chatOptionsContainer{
+    width: 100%;
+    height: 33px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.iconContainerr{
+    width: 10%;
+    height: 100%;
+    display: inline;
+    float: left;
+}
+
+.chatInlineSpan{
+    width: 90%;
+    height: 100%;
+    display: inline;
+    float: left;
+    padding: 2px; 
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.chatInlineSpan:hover{
+    color: #ddd;
+}
+
+.chatOption{
+    width: 100%;
+    height: 33px;
+    display: block;
+}
+
+.paragraphItem{
+    display: inline;
+    float: left;
+    font-size: 14px;
+    color: #222222;
+    margin-left: 15px;
+}
+
+.bodyChatContainer{
+    background-color: transparent;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    height: 460px;
+    text-align: center;
+    margin-top: 5px;
+    overflow-y: auto;
+}
+
+p.pTime{
+    color: grey;
+    font-size: 10px;
+}
+
+p.pInfo{
+    color: grey;
+    font-size: 10px;
+}
+
+.messagesContainer{
+    width: 100%;
+    text-align: right;
+    margin: 5px 0;
+}
+
+p.pMessText{
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: 0 2px 0 rgb(99, 98, 98);
+    color: #222222;
+    font-size: 14px;
+    width: auto;
+    padding: 5px;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.chatInputContainer{
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.chatInput{
+    width: 80%;
+    height: 100%;
+    display: inline;
+    float: left;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.chatInput::placeholder{
+    color: rgb(161, 159, 159);
+
+}
+
+.spanSend{
+    width: 10%;
+    height: 100%;
+    display: inline;
+    float: left;
+    cursor: pointer;
+}
+
+img.sendImg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

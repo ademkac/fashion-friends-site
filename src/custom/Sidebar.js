@@ -131,7 +131,14 @@ const Sidebar = (props) => {
                         <ul className="ulList">
                             {
                                 sidebarTabTitle.map((obj, idx) =>{
-                                    return <li className="sidebarTabItem" key={idx}><button key={idx} onClick={()=>setActiveSidebarTab(idx)} className={`tabButton ${idx === activeSidebarTab ? " active": ""}`}>{obj.title}</button></li>
+                                    return <li className="sidebarTabItem" key={idx}>
+                                        <button 
+                                        key={idx} 
+                                        onClick={()=>setActiveSidebarTab(idx)} 
+                                        className={`tabButton ${idx === activeSidebarTab ? " active": ""}`}>
+                                            {obj.title}
+                                            </button>
+                                        </li>
                                         })
                             }
                         </ul>

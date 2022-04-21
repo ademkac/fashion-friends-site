@@ -11,7 +11,7 @@ const ChatInfoBody = (props) => {
       {((props.switchAcc === true) || (authUserName === null)) ? (
           <button className='asUserName'>Log into Messenger</button>
       ): (<button className='asUserName'>Continue as {authUserName}</button>)}
-      <button className='asGuest'>Continue as guest</button>
+      <button onClick={props.clickAsGuest} className='asGuest'>Continue as guest</button>
     </div>
   )
 }

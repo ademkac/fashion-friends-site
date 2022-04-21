@@ -47,7 +47,7 @@
     float: left;
     width: 50%;
     height: 100%;
-    padding-left: 14px;
+    padding-left: 10px;
 }
 
 .leftMargin{
@@ -76,6 +76,7 @@
     width: 50%;
     border: 1px solid transparent;
     border-radius: 50%;
+    object-fit: contain;
 }
 
  #downCarr{
@@ -182,6 +183,10 @@
     font-size: 14px;
     display: block;
     margin-top: 3px;
+}
+
+.dotsContainer a:hover{
+   color: #ddd;
 }
 
 .switchAcc{

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import DropdownMeni from '../../components/HomeScreen/DropdownMeni'
 import Footer from '../../components/HomeScreen/Footer'
@@ -14,6 +14,12 @@ import './UserAccountScreen.css'
 const UserAccountScreen = () => {
 
   const authData = useSelector(state=>state.auth);
+  const [show, setShow] = useState(false)
+
+
+  const openSidebar = () => {
+    setShow(!show)
+  }
 
   return (
     <div>
@@ -23,7 +29,11 @@ const UserAccountScreen = () => {
       <div className='mainUserAccount'>
         <div className='insideUserAccount'>
           
-          <NavigationUserAccount type="Moj korisnicki nalog" />
+          <NavigationUserAccount 
+          type="Moj korisnicki nalog"
+          onSpanMenuClick={openSidebar}
+          closeSidebar={()=>setShow(false)}
+          show={show}/>
           <div className='mainContentAcc'>
               <h2>Moj korsnicki nalog</h2>
               <div className='leftMainContent'>

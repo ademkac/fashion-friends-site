@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import slika from '../../assets/logo2.png'
+import slikaa from '../../assets/glamur.jpg'
 import '../ChatInfoModal.css'
 
 const ChatInfoHeader = (props) => {
@@ -22,7 +23,7 @@ const ChatInfoHeader = (props) => {
                             setShow(!show)
                         }
                     }} className='picSpan'>
-                        <img alt=''/>
+                        <img src={slikaa} alt=''/>
                         <i id='downCarr' className="fas fa-caret-down"></i>
                     </span>
                 )}

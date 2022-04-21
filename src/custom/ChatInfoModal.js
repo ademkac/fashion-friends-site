@@ -13,6 +13,8 @@ const ChatInfoModal = (props) => {
         setSwitchAcc(true)
         setClicked(true)
     }
+
+    
   return (
     <div className='chatInfoCon'>
       <div className='insideChatInfo'>
@@ -21,7 +23,9 @@ const ChatInfoModal = (props) => {
         switchHandler={switchHandler} 
         switchAcc={switchAcc}
         clicked={clicked}/>
-        <ChatInfoBody switchAcc={switchAcc}/>
+        <ChatInfoBody 
+        switchAcc={switchAcc}
+        clickAsGuest={props.clickAsGuest}/>
         <ChatInfoFooter />
       </div>
     </div>

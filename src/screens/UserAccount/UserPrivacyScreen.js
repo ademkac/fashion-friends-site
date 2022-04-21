@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import DropdownMeni from '../../components/HomeScreen/DropdownMeni'
 import Footer from '../../components/HomeScreen/Footer'
 import FooterInfo from '../../components/HomeScreen/FooterInfo'
@@ -6,9 +6,15 @@ import Header from '../../components/HomeScreen/Header'
 import SocialInfo from '../../components/HomeScreen/SocialInfo'
 import Newsletter from '../../components/Newsletter'
 import NavigationUserAccount from './NavigationUserAccount'
-import './UserPrivacyScreen.css'
+import './UserAccountScreen.css'
 
 const UserPrivacyScreen = () => {
+
+  const [show, setShow] = useState(false)
+
+  const openSidebar = () => {
+    setShow(!show)
+  }
   return (
     <div>
         <SocialInfo />
@@ -16,7 +22,11 @@ const UserPrivacyScreen = () => {
         <DropdownMeni />
         <div className='mainUserAccount'>
             <div className='insideUserAccount'>
-                <NavigationUserAccount type="Privatnost"/>
+                <NavigationUserAccount 
+                type="Privatnost"
+                onSpanMenuClick={openSidebar}
+                closeSidebar={()=>setShow(false)}
+                show={show}/>
                 <div className='mainContentAcc'>
                     <h2>Privatnost</h2>
                     <div className='infoModal'>

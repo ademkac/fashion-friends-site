@@ -2,7 +2,7 @@
     margin: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     overflow-y: hidden;
 }
 
@@ -175,13 +175,6 @@ span.labelSpan{
     font-style: normal;
 }
 
-.insideRight{
-    width: 50%;
-    margin-top: 7.5rem;
-    display: inline;
-    float: right;
-}
-
 .insideRight a{
     height: 30px;
     border: 2px solid black;
@@ -206,4 +199,52 @@ span.labelSpan{
     font: 14px Poppins, arial, sans-serif;
     color: red;
     margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .insideLoginScreenContainer{
+        width: 80%;
+    }
+}
+
+@media (max-width: 710px) {
+    .insideLoginScreenContainer{
+        width: 94%;
+    }
+}
+
+@media (max-width: 600px) {
+    .insideLoginScreenContainer{
+        width: 94%;
+    }
+
+    .insideLeft{
+        display: block;
+        width: 90%;
+        float: none;
+        margin: 0 auto;
+    }
+    
+    .insideRight{
+        display: block;
+        width: 90%;
+        float: none;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .insideLoginScreenContainer{
+        width: 94%;
+    }
+
+    .insideLeft{
+        width: 100%;
+        margin: 0;
+    }
+    
+    .insideRight{
+        width: 100%;
+        margin: 0;
+    }
 }
