@@ -1,0 +1,244 @@
+.filterCon{
+    height: 100%;
+}
+
+ul.filterBrandList{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li.filterBrandItem{
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.dropTitle {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    font-size: 14px;
+}
+
+.dropTitle a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.dropTitle i{
+    font-size: 10px;
+}
+
+.dropContent {
+    width: 100%;
+    height: auto;
+    color: gray;
+    font-size: 12px;
+    margin-top: 0.5rem;
+    transition: 0.5s;
+}
+
+.sizeFilter{
+    width: 100%;
+    height: auto;
+    display: flex;
+    float: left;
+    
+}
+
+.sizeItLink p{
+    margin-top: -2px;
+}
+
+.sizeFilter .sizeItLink{
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 3px;
+    margin-right: 5px;
+    text-align: center;
+    color: grey;
+    cursor: pointer;
+}
+
+.sizeFilter .sizeItLink:hover{
+    color: black;
+    border: 1px solid black;
+}
+
+.sizeFilter a{
+    width: 22px;
+    height: 22px;
+    border: 1px solid inherit;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sizeFilter a:hover{
+    border: 1px solid black;
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+a.redd{
+    background-color: red;
+}
+
+a.bluee{
+    background-color: blue;
+}
+
+a.greenn{
+    background-color: green;
+}
+
+a.blackk{
+    background-color: black;
+}
+
+a.yelloww{
+    background-color: yellow;
+}
+
+.sliderPrice{
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+input[type='range']::-webkit-slider-thumb{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #c2365c;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #43e5f7; 
+  }
+  input[type="range"]::-moz-range-track {  
+    background-color: #9a905d;
+  }
+  /* IE*/
+  input[type="range"]::-ms-fill-lower {
+    background-color: #43e5f7; 
+  }
+  input[type="range"]::-ms-fill-upper {  
+    background-color: #9a905d;
+  }
+
+  .arrayOfFilters{
+      width: 100%;
+      height: auto;
+      
+  }
+
+  .arrayOfFilters h4{
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 0.5rem;
+  }
+
+  .insideArrayOfFilters{
+      width: 100%;
+      min-height: 100px;
+      padding: 10px 15px;
+  }
+
+  .itemOfArray{
+      height: 30px;
+      width: auto;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 5px 12px;
+      display: inline;
+      float: left;
+      margin: 6px 10px;
+      cursor: pointer;
+  }
+
+  .itemOfArray:hover{
+      border: 1px solid black;
+  }
+
+  .itemOfArray span{
+      font-size: 14px;
+      display: inline;
+      float: left;
+      color: gray;
+  }
+
+  #itemOfArr{
+      font-size: 14px;
+      display: inline;
+      float: left;
+      color: #333333;
+      margin-left: 10px;
+      margin-top: 2px;
+      position: static;
+  }
+
+  .menuContainerVisiblee{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.spanOptionsConn{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    position: absolute;
+    left: 25px;
+}
+
+.optionsIconImgg{
+    width: 100%;
+    height: 100%;
+}
+
+.navProductsSidebarActivee{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    background: rgba(0,0,0,.7);
+    opacity: 1;
+    display: flex;
+}
+
+.navSidebarContentt{
+  height: 100%;
+  width: 250px;
+  background-color: white;
+  padding: 20px
+}
+
+.itemContainerNav{
+    width: 100%;
+    overflow: hidden;
+}
+
+.itemContainerNav p{
+    color: #333333;
+    font-size: 14px;
+}
+
+.seasonFilter a{
+    font-size: 12px;
+}

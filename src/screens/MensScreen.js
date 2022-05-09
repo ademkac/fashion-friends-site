@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Footer from "../components/HomeScreen/Footer";
 import FooterInfo from "../components/HomeScreen/FooterInfo";
 import Header from "../components/MensScreen/Header";
@@ -63,11 +63,16 @@ const dataSlider = [
   ];
 
 const MensScreen = () => {
+
+  const [showBtn, setShowBtn] = useState(false)
+  const showChatButtonHandler = (el) =>{
+    setShowBtn(el)
+  }
     return(
         <div className="container">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Carousel dataSlider={dataSlider} />
             <GridUnderSlider />
             <Newsletter />

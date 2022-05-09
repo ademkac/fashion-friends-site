@@ -12,6 +12,10 @@ import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {productsActions} from '../../store/products-slice';
 import { fetchProductsData } from '../../store/products-actions';
+import GenderFilter from '../ProductsNavigation/NavListComponents/GenderFilter';
+import ColorFilter from '../ProductsNavigation/NavListComponents/ColorFilter';
+import SeasonFIlter from '../ProductsNavigation/NavListComponents/SeasonFIlter';
+import SizeFilter from '../ProductsNavigation/NavListComponents/SizeFilter';
 
 const filterItems = [
     {
@@ -42,11 +46,13 @@ const BrandScreenSex = (props) => {
     const [showP, setShowP] = useState(false)
     const [showC, setShowC] = useState(false)
     const [sliderValue, setSliderValue] = useState(1)
+    const [showBtn, setShowBtn] = useState(false)
 
     const [clicked, setClicked] = useState(false)
     const {nekibrend, sex} = useParams();
     const sexProducts = useSelector(state => state.product.sexProducts)
     const dispatch = useDispatch();
+    
 
     useEffect(()=>{
         dispatch(fetchProductsData())
@@ -77,11 +83,15 @@ const BrandScreenSex = (props) => {
         
     }
 
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
+
     return(
         <div className="brandMainContainer">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>
@@ -141,33 +151,16 @@ const BrandScreenSex = (props) => {
                                                         <CategoriesListFilter brend={nekibrend} filter='sex' value={sex} />
                                                     ): obj.name === 'Boja' ?
                                                     (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='redd' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:crvena`}></Link>
-                                                            <Link className='bluee' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:plava`}></Link>
-                                                            <Link className='greenn' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:zelena`}></Link>
-                                                            <Link className='blackk' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:crna`}></Link>
-                                                            <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/sex:${sex}/color:zuta`}></Link>
-                                                        </div>
+                                                        <ColorFilter title={nekibrend} type="sex" sex={sex} />
                                                     ): obj.name === 'Velicina' ?
                                                     (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:S/sex:${sex}`}><p>S</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:M/sex:${sex}`}><p>M</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:L/sex:${sex}`}><p>L</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:XL/sex:${sex}`}><p>XL</p></Link>
-                                                        </div>
+                                                        <SizeFilter type="sex" title={nekibrend} sex={sex} />
                                                     ): obj.name === 'Sezona' ?
                                                     (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Jesen-Zima/sex:${sex}`} className='seasonLink'>Jesen-Zima</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Prolece-Leto/sex:${sex}`} className='seasonLink'>Prolece-Leto</Link>
-                                                        </div>
+                                                        <SeasonFIlter type="sex" title={nekibrend} sex={sex} />
                                                     ): obj.name === 'Pol' ?
                                                     (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sexMuski`} className='seasonLink'>Muskarci</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sexZenski`} className='seasonLink'>Zene</Link>
-                                                        </div>
+                                                        <GenderFilter title={nekibrend} />
                                                     ): (<div className='seasonFilter'>
                                                         <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>
                                                     </div>)}

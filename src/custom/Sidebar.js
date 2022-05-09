@@ -2,7 +2,10 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom"
 import './Sidebar.css';
 import slika from '../assets/drop1.png';
+import slika1 from '../assets/user-solid.svg'
+import slika2 from '../assets/bag-shopping-solid.svg'
 import KidsSidebarContent from "./KidsSidebarContent";
+import { useSelector } from "react-redux";
 
 const sidebarTabTitle = [
     {
@@ -18,48 +21,114 @@ const sidebarTabTitle = [
 
 const sidebarContentList = [
     {
-        title: "ZENE POCETNA",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">ZENE POCETNA</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "NOVITETI",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">NOVITETI</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "LUXURY",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">LUXURY</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "ODECA",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">ODECA</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "OBUCA",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">OBUCA</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "BRENDOVI",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">BRENDOVI</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "TORBE",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">TORBE</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "AKSESOARI",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">AKSESOARI</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "KOZMETIKA",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">KOZMETIKA</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "PRODAVNICE",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">EDITORIJAL</span>
+                    <img className="picItem" src={slika} alt="" />
+                </li>,
+        to: '/',
     },
     {
-        title: "EDITORIJAL",
-        slika: slika
+        element: <li className="listSidebarItem">
+                    <img className="overlayPicItem" src={slika} alt="" />
+                </li>,
+        to: '/',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <img className="overlayPicItem" src={slika} alt="" />
+                </li>,
+        to: '/',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <span className="spanTxt">PRODAVNICE</span>
+                    <img className="picItemHalf" src={slika} alt="" />
+                </li>,
+        to: '/',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <img className="picItemLeft" src={slika1} alt="" />
+                    <span className="spanTxt">Moj korisnicki nalog</span>
+                </li>,
+        to: '/customer/login',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <span className="heartSpan"><i className="far fa-heart"></i>&</span>
+                    <span className="spanTxt">Liste zelja</span>
+                </li>,
+        to: '/guestwishlist',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <img className="picItemLeft" src={slika2} alt="" />
+                    <span className="spanTxt">Korpa</span>
+                </li>,
+        to: '/checkout/cart',
     },
 ]
 
@@ -118,6 +187,7 @@ const Sidebar = (props) => {
 
     const [activeSidebarTab, setActiveSidebarTab] = useState(0)
     const [itemClicked, setItemClicked] = useState(null)
+    const authDataToken = useSelector(state=>state.auth.token)
 
     const handleItem = (val) => {
         setItemClicked(val)
@@ -149,12 +219,13 @@ const Sidebar = (props) => {
                         <ul className="listSidebarContent">
                                  {
                                      sidebarContentList.map((obj, idx)=>{
-                                         return <Link className="linkSidebarItem" key={idx} to='zene'>
-                                                    <li className="listSidebarItem" key={idx}>
-                                                        {obj.title}
-                                                        <img src={obj.slika} alt="" />
-                                                    </li>
-                                                </Link>
+                                            return <Link 
+                                            className="linkSidebarItem" 
+                                            key={idx} 
+                                            to={(authDataToken && obj.to === '/customer/login') ? '/customer/account'
+                                            :(authDataToken && obj.to === '/guestwishlist') ? '/customer/wishlist' : obj.to}>
+                                                        {obj.element}
+                                                    </Link>
                                      })
                                  }       
                         </ul>

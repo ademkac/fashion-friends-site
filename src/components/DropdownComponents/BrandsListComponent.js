@@ -32,7 +32,7 @@ const BrandsListComponent = (props) => {
                     <li><Link className="brandListLink" to='/brendovi/UGG'>UGG</Link></li>
                 </ul>
                 <ul id="brandListList2">
-                    <li><Link className="brandListLink" to='/brendovi/Boss'>Calvin Klein </Link></li>  
+                    <li><Link className="brandListLink" to='/brendovi/Calvin Klein'>Calvin Klein </Link></li>  
                     <li><Link className="brandListLink" to='/brendovi/Colmar'>Crime London</Link></li>
                     <li><Link className="brandListLink" to='/brendovi/Fedeli'>Franklin&Marshall </Link></li>
                     <li><Link className="brandListLink" to='/brendovi/Guess'>Havaianas</Link></li>

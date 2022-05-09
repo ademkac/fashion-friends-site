@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './BrandListScreen.css'
 
 import slika from '../assets/replayLogo.jpg';
@@ -76,11 +76,17 @@ const breadcrumbList = [
 ]
 
 const BrandListScreen = () => {
+
+    const [showBtn, setShowBtn] = useState(false)
+
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
     return (
         <div className='container'>
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Breadcrumb list={breadcrumbList} />
             <div className='titleCon'>
                 <div className='insideTitleCon'>

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
 import './CheckoutCartScreen.css'
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
 import Footer from "../components/HomeScreen/Footer";
@@ -7,8 +6,10 @@ import FooterInfo from "../components/HomeScreen/FooterInfo";
 import Header from "../components/HomeScreen/Header";
 import SocialInfo from "../components/HomeScreen/SocialInfo";
 import Newsletter from "../components/Newsletter";
-import slika from '../assets/colmarPic.png'
 import Breadcrumb from "../custom/Breadcrumb";
+import { useSelector } from "react-redux";
+import CheckoutCartItem from "./CheckoutCartItem";
+import { Link } from "react-router-dom";
 
 const breadcrumbList = [
     {name: 'Pocetna' , to: '/'},
@@ -16,23 +17,39 @@ const breadcrumbList = [
 ]
 
 const CheckoutCartScreen = () => {
+    const [showBtn, setShowBtn] = useState(false)
+    const [totalPrice, setTotalPrice] = useState(null)
+    const cartItems = useSelector(state=>state.cart.items)
+    let price = 0;
 
-    const [inputValue, setInputValue] = useState(1)
+    useEffect(()=>{
+        cartItems.map(item=>{
+            return price+=item.price*item.quantity
+         })
+         console.log("price: "+price)
+         setTotalPrice(price)
+    }, [cartItems])
 
-    const inputHandler =(e) => {
-        setInputValue(e.target.value)
-    }
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
 
     return(
     <div className="mainCheckoutContainer">
         <SocialInfo />
-        <Header />
-        <DropdownMeni />
+        <Header showChatButton={showChatButtonHandler} />
+        <DropdownMeni showSearchBtn={showBtn}/>
         <Breadcrumb list={breadcrumbList} />
         <div className="h2Container">
             <h2>Korpa za kupovinu</h2>
         </div>
-        <div className="checkoutContainer">
+        {cartItems.length === 0 ? (
+            <div className="noItemsContainer">
+                <p>Nemate proizvoda u vašoj korpi za kupovinu.</p>
+                <p>Kliknite <span className="inlineSpanText"><Link to='/'>ovde</Link></span> kako biste nastavili kupovinu.</p>
+            </div>
+        ): (
+            <div className="checkoutContainer">
             <div className="insideCheckoutContainer">
                 <div className="insideLeftCheckoutCon">
                     <div className="cartInfo">
@@ -46,64 +63,17 @@ const CheckoutCartScreen = () => {
                                 <p>Ukupno</p>
                             </div>
                         </div>
-
-                        <div className="cartInfoBody">
-                            <div className="leftCartInfoBody">
-                                <div className="insideLeftCartInfoBody">
-                                    <div className="imageContainer">
-                                       <Link to='/Guess'><img src={slika} alt=""/></Link> 
-                                    </div>
-                                    <div className="iconsContainer">
-                                        <span><i id='pen' className="fa fa-pen"></i></span>
-                                        <span><i id="xMark" className='fa fa-times'></i></span>
-                                    </div>
-                                </div>
-
-                                <div className="productInfoContain">
-                                    <p>Guess - 2u1 muška jakna i prsluk</p>
-                                    <p><b>Velicina</b>: M</p>
-                                    <p><b>Boja</b>: Multikolor</p>
-                                </div>
-                            </div>
-                            <div className="rightCartInfoBody">
-                                <p><span id="phoneSpan">Cena: </span>22.690,00 RSD</p>
-                                <div className="inlineDiv"><span id="phoneSpan">Kolicina: </span><input type='number' value={inputValue} onChange={inputHandler}/></div>
-                                <p><span id="phoneSpan">Ukupno: </span>22.690,00 RSD</p>
-                            </div>
-                            <div className="phone">
-                                <span><i id='pen' className="fa fa-pen"></i></span>
-                                <span><i id="xMark" className='fa fa-times'></i></span>
-                            </div>
-                        </div>
-
-                        <div className="cartInfoBody">
-                            <div className="leftCartInfoBody">
-                                <div className="insideLeftCartInfoBody">
-                                    <div className="imageContainer">
-                                    <Link to='/Guess'><img src={slika} alt=""/></Link> 
-                                    </div>
-                                    <div className="iconsContainer">
-                                        <span><i id='pen' className="fa fa-pen"></i></span>
-                                        <span><i id="xMark" className='fa fa-times'></i></span>
-                                    </div>
-                                </div>
-
-                                <div className="productInfoContain">
-                                    <p>Guess - 2u1 muška jakna i prsluk</p>
-                                    <p><b>Velicina</b>: M</p>
-                                    <p><b>Boja</b>: Multikolor</p>
-                                </div>
-                            </div>
-                            <div className="rightCartInfoBody">
-                                <p><span id="phoneSpan">Cena: </span>22.690,00 RSD</p>
-                                <div className="inlineDiv"><span id="phoneSpan">Kolicina: </span><input type='number' value={inputValue} onChange={inputHandler}/></div>
-                                <p><span id="phoneSpan">Ukupno: </span>22.690,00 RSD</p>
-                            </div>
-                            <div className="phone">
-                                <span><i id='pen' className="fa fa-pen"></i></span>
-                                <span><i id="xMark" className='fa fa-times'></i></span>
-                            </div>
-                        </div>
+                        {cartItems.map((obj, idx)=>{
+                            return <CheckoutCartItem 
+                            key={idx} 
+                            id={obj.id}
+                            slika={obj.slika}
+                            title={obj.title}
+                            size={obj.size}
+                            color={obj.color}
+                            price={obj.price}
+                            />
+                        })}
                         <div className="buttonsContainer">
                             <div className="leftButtonCont">
                                 <button>Nastavi sa kupovinom</button>
@@ -126,19 +96,20 @@ const CheckoutCartScreen = () => {
                     <div className="priceInCart">
                         <div className="topPriceCont">
                             <p>Ukupno</p>
-                            <p>38.083,00 RSD</p>
+                            <p>{totalPrice},00 RSD</p>
                             <p>Dostava</p>
                             <p>0,00 RSD</p>
                         </div>
                         <div className="bottomPriceCont">
                             <p><b>Ukupno</b> <span className="pSpan">sa PDV-om</span></p>
-                            <p>38.083,00 RSD</p>
+                            <p>{totalPrice},00 RSD</p>
                         </div>
                     </div>
                     <button>NASTAVI NA PLACANJE</button>
                 </div>
             </div>
         </div>
+        )}
         <Newsletter />
         <Footer />
         <FooterInfo />

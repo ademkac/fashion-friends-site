@@ -1,8 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
+import {useSelector} from 'react-redux'
 import { Link } from "react-router-dom"
 import Sidebar from "../../custom/Sidebar";
 import '../HomeScreen/Header.css';
-
+import CartSidebar from "../../custom/CartSidebar";
 
 const leftNavBar = [
     {
@@ -24,6 +25,8 @@ const Header = (props) => {
     const [stick, setStick] = useState(false)
     const headerClasses = `headerContainer ${stick  ? 'sticky' : ''}`
     const userInfoClasses = `${stick ? 'stickyy' : 'userInfoConn'}`
+    const authDataToken = useSelector(state=>state.auth.token)
+    const [showCartSidebar, setShowCartSidebar] = useState(false)
 
     useEffect(()=>{
         visible ? document.body.style.overflow = 'hidden'
@@ -40,6 +43,10 @@ const Header = (props) => {
 
     const closeSidebar = () => {
         setVisible(false)
+    }
+
+    const closeCartSidebar = () =>{
+        setShowCartSidebar(false)
     }
 
     const handleScroll = () => {
@@ -73,6 +80,7 @@ const Header = (props) => {
         });
       });
     
+      props.showChatButton(showCartSidebar)
 
     return(
         <div className={headerClasses}>
@@ -105,14 +113,14 @@ const Header = (props) => {
                                 <i className="far fa-heart"></i><span className="heartSpan">&</span>
                             </div>
                         </Link>
-                        <div className="farr">
+                        <div onClick={()=>setShowCartSidebar(!showCartSidebar)} className="farr">
                             <i className="fas fa-shopping-bag"></i>
                         </div>
                     </div>
                 
                 </div>
                 <div className="mobileRight">
-                    <div className="farr">
+                    <div onClick={()=>setShowCartSidebar(!showCartSidebar)} className="farr">
                         <i className="fas fa-shopping-bag cart-icon"></i>
                     </div>
                 </div>
@@ -121,15 +129,22 @@ const Header = (props) => {
                     <Sidebar closeSidebar={closeSidebar}/>
                    )
                 }
+                {showCartSidebar && (
+                    <CartSidebar closeSidebar={closeCartSidebar} />
+                )}
                 {showUserInfo && (
                             <div
                             onMouseEnter={hoverHandler}
                             onMouseLeave={hoverHandlerOut}
                             className={userInfoClasses}>
-                                <p className="paragraphUserInfo">Moj korisnicki nalog</p>
-                                <p className="paragraphUserInfo">Moja lista zelja</p>
-                                <p className="paragraphUserInfo">Kreirajte korisnicki nalog</p>
-                                <p className="paragraphUserInfo">Prijava</p>
+                                {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>)
+                                :(<Link to='/customer/login'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>)}
+                                {authDataToken !== false ? (<Link to='/customer/wishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>)
+                                :(<Link to='/guestwishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>)}
+                                {authDataToken !== false ? (<Link to='/customer/logout'><p className="paragraphUserInfo">Odjavite se</p></Link>)
+                                :(<Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>)}
+                                {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moje pozivnice</p></Link>)
+                                :(<Link to='/customer/login'><p className="paragraphUserInfo">Prijava</p></Link>)}
                             </div>
                         )}
             

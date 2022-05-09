@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
+import CartSidebar from "../../custom/CartSidebar";
 import Sidebar from "../../custom/Sidebar";
 import './Header.css';
 
@@ -26,6 +27,7 @@ const Header = (props) => {
     const headerClasses = `headerContainer ${stick  ? 'sticky' : ''}`
     const userInfoClasses = `${stick ? 'stickyy' : 'userInfoConn'}`
     const authDataToken = useSelector(state=>state.auth.token)
+    const [showCartSidebar, setShowCartSidebar] = useState(false)
 
     useEffect(()=>{
         visible ? document.body.style.overflow = 'hidden'
@@ -42,6 +44,10 @@ const Header = (props) => {
 
     const closeSidebar = () => {
         setVisible(false)
+    }
+
+    const closeCartSidebar = () =>{
+        setShowCartSidebar(false)
     }
 
     const handleScroll = () => {
@@ -74,6 +80,8 @@ const Header = (props) => {
         });
       });
     
+      props.showChatButton(showCartSidebar)
+
     return(
         <div className={headerClasses}>
                 {!visible && 
@@ -105,16 +113,16 @@ const Header = (props) => {
                                 <i className="far fa-heart"></i><span className="heartSpan">&</span>
                             </div>
                         </Link>
-                        <Link to='/checkout/cart'>
-                        <div className="farr">
+                        {/* <Link to='/checkout/cart'> */}
+                        <div onClick={()=>setShowCartSidebar(!showCartSidebar)} className="farr">
                             <i className="fas fa-shopping-bag"></i>
                         </div>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 
                 </div>
                 <div className="mobileRight">
-                    <div className="farr">
+                    <div onClick={()=>setShowCartSidebar(!showCartSidebar)} className="farr">
                         <i className="fas fa-shopping-bag cart-icon"></i>
                     </div>
                 </div>
@@ -123,6 +131,9 @@ const Header = (props) => {
                     <Sidebar closeSidebar={closeSidebar}/>
                    )
                 }
+                {showCartSidebar && (
+                    <CartSidebar closeSidebar={closeCartSidebar} />
+                )}
                 {showUserInfo && (
                             <div
                             onMouseEnter={hoverHandler}
@@ -130,7 +141,8 @@ const Header = (props) => {
                             className={userInfoClasses}>
                                 {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>)
                                 :(<Link to='/customer/login'><p className="paragraphUserInfo">Moj korisnicki nalog</p></Link>)}
-                                <Link to='/guestwishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>
+                                {authDataToken !== false ? (<Link to='/customer/wishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>)
+                                :(<Link to='/guestwishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>)}
                                 {authDataToken !== false ? (<Link to='/customer/logout'><p className="paragraphUserInfo">Odjavite se</p></Link>)
                                 :(<Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>)}
                                 {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moje pozivnice</p></Link>)

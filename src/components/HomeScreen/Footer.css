@@ -207,8 +207,15 @@
 
 @media (max-width:460px) {
     .footerInfoCon{
-        
         padding-left: 10px;
-        
+    }
+
+    .footerInfoCon p{
+        font-size: 10px;
+        margin-left: 25px;
+    }
+
+    .socialList{
+        margin-left: 50px;
     }
 }

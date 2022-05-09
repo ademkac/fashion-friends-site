@@ -6,9 +6,10 @@ const productsSlice = createSlice({
     initialState: {
         products: [],
         categoryProducts: [],
+        brandProducts: [],
         sizeProducts: [],
         colorProducts: [],
-        twoFilterProducts: [],
+        twoFilterProducts: [], 
         seasonProducts: [],
         sexProducts: [],
         product: {
@@ -49,6 +50,13 @@ const productsSlice = createSlice({
             state.product.category = action.payload.product.category;
             state.product.mainCategory =action.payload.product.mainCategory;
 
+        },
+        setBrandsProducts(state, action){
+            state.products.map(obj=>{
+                if(obj.brand === action.payload){
+                    state.brandProducts.push(obj)
+                }
+            })
         },
         findCategoryOfBrand(state, action){
             state.products.map(obj=>{

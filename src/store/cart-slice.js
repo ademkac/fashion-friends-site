@@ -1,38 +1,48 @@
 import {createSlice} from '@reduxjs/toolkit';
+import slika from '../assets/glamur.jpg'
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: [],
-        totalQuantity: 0
+        items: [
+            {
+                id: 1,
+                name: 'Tommy Hilfiger',
+                slika: slika,
+                title: 'Jakna sa dva lica',
+                size: 'M',
+                color: 'Plava',
+                price: 15500,
+                quantity: 1
+            },
+            {
+                id: 2,
+                name: 'Calvin Klein',
+                slika: slika,
+                title: 'Jakna sa dva lica',
+                size: 'M',
+                color: 'Plava',
+                price: 15500,
+                quantity: 1
+            }
+        ]
     },
     reducers: {
         addItemToCart(state, action){
-            const newItem = action.payload;
-            const existingItem = state.items.find(item => item.id === newItem.id);
-            if(!existingItem){
-                state.items.push({
-                    itemId: newItem.id,
-                    price: newItem.price,
-                    quantity: 1,
-                    totalPrice: newItem.price,
-                    size: newItem.size,
-                    color: newItem.color,
-                    name: newItem.name
-                })
-            }else{
-                existingItem.quantity++;
-                existingItem.totalPrice += newItem.price;
-            }
-        },
+        const existingItem = state.items.find(item=> item.id === action.payload.id)
+        if(existingItem){
+            existingItem.quantity = action.payload.value
+        }else{
+            console.log("Nisi uneo dobre parametre");
+        }
+    },
         removeItemFromCart(state, action){
             const id = action.payload;
             const existingItem = state.items.find(item => item.id === id);
-            if(existingItem.quantity === 1){
+            if(existingItem){
                 state.items = state.items.filter(item => item.id !== id);
             }else{
-                existingItem.quantity--;
-                existingItem.totalPrice -= existingItem.price;
+                console.log("Nesto nije u redu");
             }
         }
     }

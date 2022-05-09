@@ -40,3 +40,16 @@ li .itemContainerCategories{
 .seasonLink:hover{
     color: #c2365c;
 }
+
+@media (max-width: 800px) {
+    li.itemContainerCategories{
+        width: 100%;
+        height: 18px;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    a.itemLinkCat{
+        font-size: 12px;
+    }
+}

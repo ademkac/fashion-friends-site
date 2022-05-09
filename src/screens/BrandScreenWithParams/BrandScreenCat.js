@@ -11,6 +11,11 @@ import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {productsActions} from '../../store/products-slice';
 import { fetchProductsData } from '../../store/products-actions';
+import GenderFilter from '../ProductsNavigation/NavListComponents/GenderFilter';
+import ColorFilter from '../ProductsNavigation/NavListComponents/ColorFilter';
+import SeasonFIlter from '../ProductsNavigation/NavListComponents/SeasonFIlter';
+import SizeFilter from '../ProductsNavigation/NavListComponents/SizeFilter';
+import ProductsNav from '../ProductsNavigation/ProductsNav';
 
 const filterItems = [
     {
@@ -32,17 +37,15 @@ const filterItems = [
 
 const BrandScreenCat = (props) => {
 
-    const [showV, setShowV] = useState(false)
-    const [showB, setShowB] = useState(false)
-    const [showS, setShowS] = useState(false)
-    const [showP, setShowP] = useState(false)
-    const [showC, setShowC] = useState(false)
-    const [sliderValue, setSliderValue] = useState(1)
-
-    const [clicked, setClicked] = useState(false)
+    const [show, setShow] = useState(false)
+    const [showBtn, setShowBtn] = useState(false)
     const {nekibrend, kat} = useParams();
     const categoryProducts = useSelector(state => state.product.categoryProducts)
     const dispatch = useDispatch();
+
+    const openSidebar = () => {
+        setShow(!show)
+      }
 
     useEffect(()=>{
         dispatch(fetchProductsData())
@@ -55,26 +58,15 @@ const BrandScreenCat = (props) => {
         {name: nekibrend, to: '#'},
     ]
 
-    const dropdownHandler = (name) => {
-        setClicked(!clicked)
-        console.log("Ime kategorije: "+name)
-        
-         name === 'Boja' ? setShowB(!showB)
-        : name === 'Velicina' ? setShowV(!showV)
-        : name === 'Cena' ? setShowC(!showC)
-        : name === 'Pol' ? setShowP(!showP)
-        : setShowS(!showS)
-    }
-
-    const sliderHandler = (evt) => {
-        setSliderValue(evt.target.value);
-    }
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
 
     return(
         <div className="brandMainContainer">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler} />
+            <DropdownMeni showSearchBtn={showBtn} />
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>
@@ -104,69 +96,13 @@ const BrandScreenCat = (props) => {
             </div>
             <div className='mainBrandContainer'>
                     <div className='brandTwoCol'>
-                        <div className='filterCon'>
-                            <ul className='filterBrandList'>
-
-                                {
-                                    filterItems.map((obj, idx)=> {
-                                        return (
-                                            <li className='filterBrandItem' key={idx}>
-                                                <div className='dropTitle'>
-                                                <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
-                                                {((showB && obj.name === 'Boja')
-                                                || (showC && obj.name === 'Cena')
-                                                || (showP && obj.name === 'Pol')
-                                                || (showS && obj.name === 'Sezona')
-                                                || (showV && obj.name === 'Velicina')) === false  
-                                                ?(<i className="fas fa-caret-down"></i>)
-                                                :(<i className="fas fa-caret-up"></i>)}
-                                                </div>
-                                                {(  (showB && obj.name === 'Boja')
-                                                || (showC && obj.name === 'Cena')
-                                                || (showP && obj.name === 'Pol')
-                                                || (showS && obj.name === 'Sezona')
-                                                || (showV && obj.name === 'Velicina')  )  && (
-                                                    <div className='dropContent'>
-                                                    { obj.name === 'Boja' ?
-                                                    (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='redd' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:crvena`}></Link>
-                                                            <Link className='bluee' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:plava`}></Link>
-                                                            <Link className='greenn' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:zelena`}></Link>
-                                                            <Link className='blackk' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:crna`}></Link>
-                                                            <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/category:${kat}/color:zuta`}></Link>
-                                                        </div>
-                                                    ): obj.name === 'Velicina' ?
-                                                    (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:S/category:${kat}`}><p>S</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:M/category:${kat}`}><p>M</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:L/category:${kat}`}><p>L</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:XL/category:${kat}`}><p>XL</p></Link>
-                                                        </div>
-                                                    ): obj.name === 'Sezona' ?
-                                                    (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Jesen-Zima/category:${kat}`} className='seasonLink'>Jesen-Zima</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/season:Prolece-Leto/category:${kat}`} className='seasonLink'>Prolece-Leto</Link>
-                                                        </div>
-                                                    ): obj.name === 'Pol' ?
-                                                    (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Muski/category:${kat}`} className='seasonLink'>Muskarci</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Zenski/category:${kat}`} className='seasonLink'>Zene</Link>
-                                                        </div>
-                                                    ): (<div className='seasonFilter'>
-                                                        <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>
-                                                    </div>)}
-                                                </div>
-                                                )}
-                                            </li>
-                                        )
-                                    })
-                                }
-                            </ul>
-                        </div>
+                        <ProductsNav 
+                        type='category'
+                        title={nekibrend}
+                        closeSidebar={()=>setShow(false)}
+                        onSpanMenuClick={openSidebar}
+                        show={show}
+                        value={kat}/>
                         <div className='listOfProducts'>
                            
                                 <div className='arrayOfFilters'>

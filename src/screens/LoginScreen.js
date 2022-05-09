@@ -13,6 +13,8 @@ import LoadingSpinner from "../custom/LoadingSpinner";
 import {validate, VALIDATOR_EMAIL, VALIDATOR_REQUIRE} from '../util/validators'
 import './LoginScreen.css';
 import { authActions } from '../store/auth-slice';
+import ChatInfoModal from "../custom/ChatInfoModal";
+import Chat from "../custom/ChatComponents/Chat";
 
 const LoginScreen = () => {
 
@@ -25,12 +27,23 @@ const LoginScreen = () => {
     const [validEmail, setValidEmail] = useState(false)
     const [emailReq, setEmailReq] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [showBtn, setShowBtn] = useState(false)
+    const [show, setShow] = useState(false)
+    const [showChat, setShowChat] = useState(false)
     const dispatch = useDispatch()
     const notification = useSelector((state)=>state.ui.notification)
     let mess = '';
     let navigate = useNavigate()
+    const [pom, setPom] = useState(false)
+    const clickAsGuest = () => {
+      setShowChat(true)
+      setPom(true)
+      setShow(false)
+    }
 
-
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
 
     const loginBtnHandler = async (e) => {
         e.preventDefault();
@@ -96,8 +109,8 @@ const LoginScreen = () => {
     return(
     <div className='mainLoginContainer'>
         <SocialInfo />
-        <Header />
-        <DropdownMeni />
+        <Header showChatButton={showChatButtonHandler}/>
+        <DropdownMeni showSearchBtn={showBtn}/>
         <div className="loginScreenContainer">
             <div className="insideLoginScreenContainer">
                 <div className="insideLeft">
@@ -186,6 +199,19 @@ const LoginScreen = () => {
         <Newsletter />
         <Footer />
         <FooterInfo />
+        {show && (<ChatInfoModal 
+            clickHandler={()=>setShow(false)}
+            clickAsGuest={clickAsGuest} />)}
+            { showChat  && (<Chat clickHandler={()=>setShowChat(false)}/>)}
+            {!showBtn && (
+              <button onClick={()=>{
+                if(pom){
+                  setShowChat(!showChat)
+                }else{
+                  setShow(!show)
+                }
+              }} className="btnMessage"><i id="messIcon" className="fa fa-comment"></i></button>
+            )}
     </div>
     )
 }

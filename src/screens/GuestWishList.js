@@ -31,12 +31,17 @@ const GuestWishList = () => {
     const [productDeleted, setProductDeleted] = useState(true)
     // eslint-disable-next-line
     const [productAddedInCart, setProductAddedInCart] = useState(true)
+    const [showBtn, setShowBtn] = useState(false)
+    
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
 
     return(
     <div className="mainGuestWishCOn">
         <SocialInfo />
-        <Header />
-        <DropdownMeni />
+        <Header showChatButton={showChatButtonHandler}/>
+        <DropdownMeni showSearchBtn={showBtn}/>
         <div className="guestWishContainer">
             <div className="insideGuestWishContainer">
                 <h3>LISTA ZELJA GOSTA</h3>

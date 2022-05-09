@@ -12,6 +12,9 @@ import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {productsActions} from '../../store/products-slice';
 import { fetchProductsData } from '../../store/products-actions';
+import GenderFilter from '../ProductsNavigation/NavListComponents/GenderFilter';
+import ColorFilter from '../ProductsNavigation/NavListComponents/ColorFilter';
+import SizeFilter from '../ProductsNavigation/NavListComponents/SizeFilter';
 
 const filterItems = [
     {
@@ -42,6 +45,7 @@ const BrandScreenSeason = (props) => {
     const [showP, setShowP] = useState(false)
     const [showC, setShowC] = useState(false)
     const [sliderValue, setSliderValue] = useState(1)
+    const [showBtn, setShowBtn] = useState(false)
 
     const [clicked, setClicked] = useState(false)
     const {nekibrend, season} = useParams();
@@ -77,11 +81,15 @@ const BrandScreenSeason = (props) => {
         
     }
 
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
+
     return(
         <div className="brandMainContainer">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>
@@ -141,21 +149,10 @@ const BrandScreenSeason = (props) => {
                                                         <CategoriesListFilter brend={nekibrend} filter='season' value={season} />
                                                     ): obj.name === 'Boja' ?
                                                     (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='redd' to={`/brendovi/${nekibrend}/filter/season:${season}/color:crvena`}></Link>
-                                                            <Link className='bluee' to={`/brendovi/${nekibrend}/filter/season:${season}/color:plava`}></Link>
-                                                            <Link className='greenn' to={`/brendovi/${nekibrend}/filter/season:${season}/color:zelena`}></Link>
-                                                            <Link className='blackk' to={`/brendovi/${nekibrend}/filter/season:${season}/color:crna`}></Link>
-                                                            <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/season:${season}/color:zuta`}></Link>
-                                                        </div>
+                                                        <ColorFilter type="season" title={nekibrend} season={season} />
                                                     ): obj.name === 'Velicina' ?
                                                     (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:S/season:${season}`}><p>S</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:M/season:${season}`}><p>M</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:L/season:${season}`}><p>L</p></Link>
-                                                            <Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size:XL/season:${season}`}><p>XL</p></Link>
-                                                        </div>
+                                                        <SizeFilter type="season" title={nekibrend} season={season} />
                                                     ): obj.name === 'Sezona' ?
                                                     (
                                                         <div className='seasonFilter'>
@@ -164,10 +161,7 @@ const BrandScreenSeason = (props) => {
                                                         </div>
                                                     ): obj.name === 'Pol' ?
                                                     (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Muski/season:${season}`} className='seasonLink'>Muskarci</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/sex:Zenski/season:${season}`} className='seasonLink'>Zene</Link>
-                                                        </div>
+                                                        <GenderFilter type='season' title={nekibrend} season={season} />
                                                     ): (<div className='seasonFilter'>
                                                         <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>
                                                     </div>)}

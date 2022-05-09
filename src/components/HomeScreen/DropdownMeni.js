@@ -17,6 +17,7 @@ import CosmeticsComponent from "../DropdownComponents/Cosmetics";
 import OutletComponent from "../DropdownComponents/OutletComponent";
 import EditorialComponent from "../DropdownComponents/EditorialComponent";
 import SearchModalComponent from "../DropdownComponents/SearchModalComponent";
+import Buttons from "../DropdownComponents/DropdownButtons/Buttons";
 
 const popularSearch = [
     {name: 'Replay'},{name: 'Premiata'},{name: 'Diesel'},{name: 'Torbe'},
@@ -83,12 +84,12 @@ const DropdownMeni = (props) =>{
             growingSearch.current && 
         growingSearch.current.contains(e.target)
         )) {
-        return setLongSearch(!longSearch);
+        return setLongSearch(true);
        }
     
     //if modal is open and click is outside modal, close it
     if(modal.current && 
-      !modal.current.contains(e.target) && !inputSearch.current.contains(e.target)) {
+      !modal.current.contains(e.target) && !inputSearch.current.contains(e.target) && !growingSearch.current.contains(e.target)) {
         return setLongSearch(false);
       }
     }
@@ -116,98 +117,39 @@ const DropdownMeni = (props) =>{
     return(
         <div>
         <div className={headerClasses}>
-                <div className="insideDropdown">
-                    <div
-                    onMouseOver={()=>setShow1(true)}
-                    onMouseLeave={()=>setShow1(false)}
-                    className="dropdown">
-                        <Link to='/zene/noviteti'><button className="dropbtn">Noviteti<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow2(true)}
-                    onMouseLeave={()=>setShow2(false)}
-                    className="dropdown">
-                        <Link to='/brendovi/dsquared2'><button className="dropbtn">Luxury<i className="fas fa-caret-down"></i></button></Link>
-                    </div>
-                    <div 
-                    onMouseOver={()=>setShow3(true)}
-                     onMouseLeave={()=>setShow3(false)}
-                    className="dropdown">
-                        <Link to='/zene/odeca'><button className="dropbtn">Odeca<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow4(true)}
-                    onMouseLeave={()=>setShow4(false)}
-                    className="dropdown">
-                        <Link to='/zene/obuca'><button className="dropbtn">Obuca<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div> 
-                    <div
-                    onMouseOver={()=>setShow5(true)}
-                    onMouseLeave={()=>setShow5(false)}
-                    className="dropdown">
-                        <Link to='/brendovi'><button className="dropbtn">Brendovi<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow6(true)}
-                    onMouseLeave={()=>setShow6(false)}
-                    className="dropdown">
-                        <Link to='/zene/torbe'><button className="dropbtn">Torbe<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow7(true)}
-                    onMouseLeave={()=>setShow7(false)}
-                    className="dropdown">
-                        <Link to='/zene/aksesoari'><button className="dropbtn">Aksesoari<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow8(true)}
-                    onMouseLeave={()=>setShow8(false)}
-                    className="dropdown">
-                        <Link to='/zene/kozmetika'><button className="dropbtn">Kozmetika<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow9(true)}
-                    onMouseLeave={()=>setShow9(false)}
-                    className="dropdown">
-                        <Link to='/zene/outlet'><button className="dropbtn">Outlet<i className="fas fa-caret-down"></i></button></Link>
-                        
-                    </div>
-                    <div
-                    onMouseOver={()=>setShow10(true)}
-                    onMouseLeave={()=>setShow10(false)}
-                    className="dropdown">
-                        <button className="dropbtn">Editorial<i className="fas fa-caret-down"></i></button>
-                        
-                    </div>
-                    {longSearch ? (
-                        <span ref={inputSearch} className={longButtonSearch}>
-                            <input type='text' placeholder="Trazite"/>
-                            <i className="fa fa-search"></i>
-                        </span>
-                    ) : (<span ref={trigger} className={buttonSearch}><i className="fa fa-search"></i></span>)}
-                
-                    {longSearch && (
-                        <div className="modal--overlay">
-                            <div ref={modal} className={modalClasses}>
-                                <SearchModalComponent
-                                popularSearch={popularSearch}
-                                brands={brands}
-                                products={products}
-                                />
-                            </div>
-                        </div>
-                    )}
-                    {longSearch && (
-                        <i id={triangle} className="fas fa-caret-up"></i>
-                    )}
-                </div>
+                <Buttons 
+                onMouseOver1={()=>setShow1(true)}
+                onMouseLeave1={()=>setShow1(false)}
+                onMouseOver2={()=>setShow2(true)} 
+                onMouseLeave2={()=>setShow2(false)}
+                onMouseOver3={()=>setShow3(true)}
+                onMouseLeave3={()=>setShow3(false)} 
+                onMouseOver4={()=>setShow4(true)}
+                onMouseLeave4={()=>setShow4(false)}
+                onMouseOver5={()=>setShow5(true)}
+                onMouseLeave5={()=>setShow5(false)}
+                onMouseOver6={()=>setShow6(true)}
+                onMouseLeave6={()=>setShow6(false)}
+                onMouseOver7={()=>setShow7(true)}
+                onMouseLeave7={()=>setShow7(false)}
+                onMouseOver8={()=>setShow8(true)}
+                onMouseLeave8={()=>setShow8(false)}
+                onMouseOver9={()=>setShow9(true)}
+                onMouseLeave9={()=>setShow9(false)}
+                onMouseLeave10={()=>setShow10(false)}
+                onMouseOver10={()=>setShow10(true)}
+                longSearch={longSearch}
+                inputSearch={inputSearch}
+                longButtonSearch={longButtonSearch}
+                trigger={trigger}
+                modal={modal}
+                modalClasses={modalClasses}
+                buttonSearch={buttonSearch}
+                popularSearch={popularSearch}
+                brands={brands}
+                products={products}
+                triangle={triangle}
+                showBtnSearch={props.showSearchBtn}/>
                  {
                     show1 && ( 
                         <div
@@ -314,9 +256,9 @@ const DropdownMeni = (props) =>{
                 }
         </div>
         <div className={headerClasses1}>
-        <ul className="growing-list" id="growing-search-freebie">
+        <ul ref={growingSearch} className="growing-list" id="growing-search-freebie">
             <li>
-                <div ref={growingSearch} className="growing-search">
+                <div  className="growing-search">
                     <div className="input">
                         <input type='text' placeholder="Trazite..." name="search"/>
                     </div>

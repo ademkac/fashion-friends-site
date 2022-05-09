@@ -114,6 +114,7 @@ const ProductInfoScreen = () => {
     const product = useSelector((state)=>state.product.product);
     const isLoading = useSelector(state=>state.product.isLoading)
     const notification = useSelector(state=>state.ui.notification)
+    const [showBtn, setShowBtn] = useState(false)
 
     const breadcrumbList = [
         {name: 'Pocetna', to: '/'},
@@ -175,6 +176,10 @@ const ProductInfoScreen = () => {
         onSwipedRight: ()=> prevItemHandler1()
     })
 
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
+
     useEffect(()=>{
         dispatch(fetchProduct(1))
         product.picture.map(obj=>{
@@ -222,8 +227,8 @@ const ProductInfoScreen = () => {
     return(
         <div className="productInfoContainer">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Breadcrumb list={breadcrumbList} />
             {productAddedInCart ? (
                 <div className='divSuccess'>

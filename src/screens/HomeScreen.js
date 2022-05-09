@@ -61,10 +61,11 @@ const dataSlider = [
       },
   ];
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
 
     const [show, setShow] = useState(false)
     const [showChat, setShowChat] = useState(false)
+    const [showBtn, setShowBtn] = useState(false)
     const [pom, setPom] = useState(false)
     const clickAsGuest = () => {
       setShowChat(true)
@@ -72,11 +73,15 @@ const HomeScreen = () => {
       setShow(false)
     }
 
+    const showChatButtonHandler = (el) =>{
+      setShowBtn(el)
+    }
+
     return(
         <div id="home" className="container">
             <SocialInfo />
-            <Header  />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler} />
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Carousel dataSlider={dataSlider} />
             <Autoscroll />
             <GridCards />
@@ -90,13 +95,15 @@ const HomeScreen = () => {
             clickHandler={()=>setShow(false)}
             clickAsGuest={clickAsGuest} />)}
             { showChat  && (<Chat clickHandler={()=>setShowChat(false)}/>)}
-            <button onClick={()=>{
-              if(pom){
-                setShowChat(!showChat)
-              }else{
-                setShow(!show)
-              }
-            }} className="btnMessage"><i id="messIcon" className="fa fa-comment"></i></button>
+            {!showBtn && (
+              <button onClick={()=>{
+                if(pom){
+                  setShowChat(!showChat)
+                }else{
+                  setShow(!show)
+                }
+              }} className="btnMessage"><i id="messIcon" className="fa fa-comment"></i></button>
+            )}
             
         </div>
     )

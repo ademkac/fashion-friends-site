@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import DropdownMeni from '../../components/HomeScreen/DropdownMeni';
 import Header from '../../components/HomeScreen/Header';
 import SocialInfo from '../../components/HomeScreen/SocialInfo';
-import CategoriesListFilter from '../../custom/CategoriesListFilter';
 import '../BrandScreen.css'
 import slika1 from '../../assets/ckGrid.png'
 import slika2 from '../../assets/ckGridB.png'
@@ -12,43 +11,16 @@ import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {productsActions} from '../../store/products-slice';
 import { fetchProductsData } from '../../store/products-actions';
+import ProductsNav from '../ProductsNavigation/ProductsNav';
 
-
-const filterItems = [
-    {
-        name: 'Kategorija'
-    },
-    {
-        name: 'Boja'
-    },
-    {
-        name: 'Velicina'
-    },
-    {
-        name: 'Sezona'
-    },
-    {
-        name: 'Pol'
-    },
-    {
-        name: 'Cena'
-    },
-]
 
 const BrandScreenSize = (props) => {
-    const [showK, setShowK] = useState(false)
-    const [showV, setShowV] = useState(false)
-    const [showB, setShowB] = useState(false)
-    const [showS, setShowS] = useState(false)
-    const [showP, setShowP] = useState(false)
-    const [showC, setShowC] = useState(false)
-    const [sliderValue, setSliderValue] = useState(1)
-
-    const [clicked, setClicked] = useState(false)
+    const [show, setShow] = useState(false)
     const {nekibrend, size} = useParams();
     let sizeArray = size.split(',');
     const sizeProducts = useSelector(state => state.product.sizeProducts)
     const dispatch = useDispatch();
+    const [showBtn, setShowBtn] = useState(false)
 
     useEffect(()=>{
         dispatch(fetchProductsData())
@@ -64,26 +36,19 @@ const BrandScreenSize = (props) => {
         {name: nekibrend, to: '#'},
     ]
 
-    const dropdownHandler = (name) => {
-        setClicked(!clicked)
-        
-        name === 'Kategorija' ? setShowK(!showK) 
-        : name === 'Boja' ? setShowB(!showB)
-        : name === 'Velicina' ? setShowV(!showV)
-        : name === 'Cena' ? setShowC(!showC)
-        : name === 'Pol' ? setShowP(!showP)
-        : setShowS(!showS)
+    const openSidebar = () =>{
+        setShow(!show)
     }
 
-    const sliderHandler = (evt) => {
-        setSliderValue(evt.target.value);
-    }
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
 
     return(
         <div className="brandMainContainer">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>
@@ -113,76 +78,15 @@ const BrandScreenSize = (props) => {
             </div>
             <div className='mainBrandContainer'>
                     <div className='brandTwoCol'>
-                        <div className='filterCon'>
-                            <ul className='filterBrandList'>
-
-                                {
-                                    filterItems.map((obj, idx)=> {
-                                        return (
-                                            <li className='filterBrandItem' key={idx}>
-                                                <div className='dropTitle'>
-                                                <a onClick={()=> dropdownHandler(obj.name)}>{obj.name}</a>
-                                                {((showB && obj.name === 'Boja')
-                                                || (showC && obj.name === 'Cena')
-                                                || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name === 'Pol')
-                                                || (showS && obj.name === 'Sezona')
-                                                || (showV && obj.name === 'Velicina')) === false  
-                                                ?(<i className="fas fa-caret-down"></i>)
-                                                :(<i className="fas fa-caret-up"></i>)}
-                                                </div>
-                                                {(  (showB && obj.name === 'Boja')
-                                                || (showC && obj.name === 'Cena')
-                                                || (showK && obj.name === 'Kategorija')
-                                                || (showP && obj.name === 'Pol')
-                                                || (showS && obj.name === 'Sezona')
-                                                || (showV && obj.name === 'Velicina')  )  && (
-                                                    <div className='dropContent'>
-                                                    { 
-                                                    obj.name === 'Kategorija'? 
-                                                    (
-                                                        <CategoriesListFilter brend={nekibrend} filter='size' value={size}/>
-                                                    ):obj.name === 'Boja' ?
-                                                    (
-                                                        <div className='sizeFilter'>
-                                                            <Link className='redd' to={`/brendovi/${nekibrend}/filter/size:${size}/color:crvena`}></Link>
-                                                            <Link className='bluee' to={`/brendovi/${nekibrend}/filter/size:${size}/color:plava`}></Link>
-                                                            <Link className='greenn' to={`/brendovi/${nekibrend}/filter/size:${size}/color:zelena`}></Link>
-                                                            <Link className='blackk' to={`/brendovi/${nekibrend}/filter/size:${size}/color:crna`}></Link>
-                                                            <Link className='yelloww' to={`/brendovi/${nekibrend}/filter/size:${size}/color:zuta`}></Link>
-                                                        </div>
-                                                    ): obj.name === 'Velicina' ?
-                                                    (
-                                                        <div className='sizeFilter'>
-                                                            {!sizeArray.find(it=>it=== 'S') && (<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size${size},S`}><p>S</p></Link>)}
-                                                            {!sizeArray.find(it=>it=== 'M') && (<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size${size},M`}><p>M</p></Link>)}
-                                                            {!sizeArray.find(it=>it=== 'L') && (<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size${size},L`}><p>L</p></Link>)}
-                                                            {!sizeArray.find(it=>it=== 'XL') && (<Link className='sizeItLink' to={`/brendovi/${nekibrend}/filter/size${size},XL`}><p>XL</p></Link>)}
-                                                            
-                                                        </div>
-                                                    ): obj.name === 'Sezona' ?
-                                                    (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/size:${size}/season:Jesen-Zima`} className='seasonLink'>Jesen-Zima</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/size:${size}/season:Prolece-Leto`} className='seasonLink'>Prolece-Leto</Link>
-                                                        </div>
-                                                    ): obj.name === 'Pol' ?
-                                                    (
-                                                        <div className='seasonFilter'>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/size:${size}/sex:Muski`} className='seasonLink'>Muskarci</Link>
-                                                            <Link to={`/brendovi/${nekibrend}/filter/size:${size}/sex:Zenski`} className='seasonLink'>Zene</Link>
-                                                        </div>
-                                                    ): (<div className='seasonFilter'>
-                                                        <input className='sliderPrice' onChange={sliderHandler} type='range' min='1' max='100' value={sliderValue}/>
-                                                    </div>)}
-                                                </div>
-                                                )}
-                                            </li>
-                                        )
-                                    })
-                                }
-                            </ul>
-                        </div>
+                        <ProductsNav 
+                        type="size"
+                        title={nekibrend}
+                        closeSidebar={()=>setShow(false)}
+                        onSpanMenuClick={openSidebar}
+                        show={show}
+                        value={size}
+                        array={sizeArray}
+                        />
                         <div className='listOfProducts'>
                                 <div className='arrayOfFilters'>
                                 <h4>Trenutna kupovina po</h4>

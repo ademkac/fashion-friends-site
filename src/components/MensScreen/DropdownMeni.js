@@ -71,6 +71,7 @@ const DropdownMeni = (props) =>{
     let modal = useRef(null)
     let trigger = useRef(null)
     let inputSearch = useRef(null)
+    let growingSearch = useRef(null)
 
     const handleScroll = () =>{
         setStick(window.scrollY > 0);
@@ -78,8 +79,11 @@ const DropdownMeni = (props) =>{
 
     const handleOutsideModalClick = (e) => {
         //if click is on trigger element, toggle modal
-         if(trigger.current && 
-            trigger.current.contains(e.target)) {
+        if((trigger.current && 
+            trigger.current.contains(e.target)) || (
+                growingSearch.current && 
+            growingSearch.current.contains(e.target)
+            )) {
             return setLongSearch(!longSearch);
            }
         
@@ -110,7 +114,7 @@ const DropdownMeni = (props) =>{
         <div>
         <div className={headerClasses}>
                 <div className="insideDropdown">
-                <div
+                    <div
                     onMouseOver={()=>setShow1(true)}
                     onMouseLeave={()=>setShow1(false)}
                     className="dropdown">
@@ -158,13 +162,13 @@ const DropdownMeni = (props) =>{
                         <button className="dropbtn">Aksesoari<i className="fas fa-caret-down"></i></button>
                         
                     </div>
-                    <div
+                    {/* <div
                     onMouseOver={()=>setShow8(true)}
                     onMouseLeave={()=>setShow8(false)}
                     className="dropdown">
                         <button className="dropbtn">Kozmetika<i className="fas fa-caret-down"></i></button>
                         
-                    </div>
+                    </div> */}
                     <div
                     onMouseOver={()=>setShow9(true)}
                     onMouseLeave={()=>setShow9(false)}
@@ -172,13 +176,13 @@ const DropdownMeni = (props) =>{
                         <button className="dropbtn">Outlet<i className="fas fa-caret-down"></i></button>
                         
                     </div>
-                    <div
+                    {/* <div
                     onMouseOver={()=>setShow10(true)}
                     onMouseLeave={()=>setShow10(false)}
                     className="dropdown">
                         <button className="dropbtn">Editorial<i className="fas fa-caret-down"></i></button>
                         
-                    </div>
+                    </div> */}
                     {longSearch ? (
                         <span ref={inputSearch} className={longButtonSearch}>
                             <input type='text' placeholder="Trazite"/>
@@ -307,9 +311,9 @@ const DropdownMeni = (props) =>{
                 }
         </div>
         <div className={headerClasses1}>
-        <ul id="growing-search-freebie">
+        <ul className="growing-list" id="growing-search-freebie">
             <li>
-                <div className="growing-search">
+                <div ref={growingSearch} className="growing-search">
                     <div className="input">
                         <input type='text' placeholder="Trazite..." name="search"/>
                     </div>

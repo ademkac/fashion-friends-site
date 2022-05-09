@@ -80,8 +80,6 @@
 }
 
 .listSidebarContent li{
-  display: grid;
-  grid-template-columns: repeat(2, auto);
   justify-content: space-between;
   width: 100%;
   height: auto;
@@ -89,13 +87,51 @@
   background-image: linear-gradient(to right, #dbdcde , #f6f6f8);
   margin-bottom: 15px;
   align-items: center;
-  padding-left: 15px;
   font: 14px Poppins, Arial, Tahoma;
 }
 
-.listSidebarItem img {
+.spanTxt{
+  display: inline;
+  float: left;
+  height: 70px;
+  padding-top: 25px;
+  margin-left: 15px;
+}
+
+.picItem {
+  display: inline;
+  float: right;
   width: 60px;
-  height: 60px;
+  height: 70px;
+}
+
+.picItemHalf {
+  display: inline;
+  float: right;
+  width: 100px;
+  height: 70px;
+}
+
+.heartSpan{
+  display: inline;
+  float: left;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.picItemLeft {
+  display: inline;
+  float: left;
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.overlayPicItem{
+  width: 100%;
+  height: 65px;
 }
 
 .linkSidebarItem{

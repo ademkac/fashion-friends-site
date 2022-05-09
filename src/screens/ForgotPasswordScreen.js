@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import DropdownMeni from "../components/HomeScreen/DropdownMeni";
 import Footer from "../components/HomeScreen/Footer";
 import FooterInfo from "../components/HomeScreen/FooterInfo";
@@ -8,11 +8,18 @@ import Newsletter from "../components/Newsletter";
 import './ForgotPasswordScreen.css'
 
 const ForgotPasswordScreen = () => {
+
+    const [showBtn, setShowBtn] = useState(false)
+
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
+
     return(
     <div className="mainForgotPasswordContainer">
         <SocialInfo />
-        <Header />
-        <DropdownMeni />
+        <Header showChatButton={showChatButtonHandler}/>
+        <DropdownMeni showSearchBtn={showBtn}/>
         <div className="forgotPassScreenContainer">
             <div className="insideForgotPass">
                 <h3>Zaboravljena lozinka</h3>

@@ -59,6 +59,7 @@ const ChosenCatListScreen = (props) => {
     const [showP, setShowP] = useState(false)
     const [showC, setShowC] = useState(false)
     const [sliderValue, setSliderValue] = useState(1)
+    const [showBtn, setShowBtn] = useState(false)
 
     const [clicked, setClicked] = useState(false)
     const title = useParams().odeca;
@@ -85,11 +86,15 @@ const ChosenCatListScreen = (props) => {
         console.log("slider value: "+sliderValue)
     }
 
+    const showChatButtonHandler = (el) =>{
+        setShowBtn(el)
+      }
+
     return(
         <div className="brandMainContainer">
             <SocialInfo />
-            <Header />
-            <DropdownMeni />
+            <Header showChatButton={showChatButtonHandler}/>
+            <DropdownMeni showSearchBtn={showBtn}/>
             <Breadcrumb list={breadcrumbList} />
             <div className='brandDescription'>
                     <div className='insideDesc'>

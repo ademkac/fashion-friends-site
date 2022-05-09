@@ -11,15 +11,21 @@ import './UserAccountScreen.css'
 const UserReturnsScreen = () => {
 
   const [show, setShow] = useState(false)
+  const [showBtn, setShowBtn] = useState(false)
 
   const openSidebar = () => {
     setShow(!show)
   }
+
+  const showChatButtonHandler = (el) =>{
+    setShowBtn(el)
+  }
+
   return (
     <div>
       <SocialInfo />
-        <Header />
-        <DropdownMeni />
+        <Header showChatButton={showChatButtonHandler}/>
+        <DropdownMeni showSearchBtn={showBtn}/>
         <div className='mainUserAccount'>
             <div className='insideUserAccount'>
                 <NavigationUserAccount 
