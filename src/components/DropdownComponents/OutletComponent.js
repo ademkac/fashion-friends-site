@@ -1,6 +1,6 @@
 import React from "react";
 import './OutletComponent.css';
-import slika from '../../assets/colmarPic.png';
+import slika from '../../assets/outletDrop.png';
 import { Link } from "react-router-dom";
 
 const OutletComponent = (props) => {

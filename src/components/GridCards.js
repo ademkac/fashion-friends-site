@@ -16,20 +16,20 @@ const GridCards = () => {
                         <h1>Brend</h1>
                     </div>
                 </Link>
-                <div className="imgContainer">
+                <Link to='/editorial' className="imgContainer">
                     <img src={slika1} alt="" />
                     <div className="content">
                         <p>Vidi</p>
                         <h1>EDITORIJAL</h1>
                     </div>
-                </div>
-                <div className="imgContainer">
+                </Link>
+                <Link to='/noviteti' className="imgContainer">
                     <img src={slika} alt="" />
                     <div className="content">
                         <p>Vidi</p>
                         <h1>Noviteti</h1>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     )

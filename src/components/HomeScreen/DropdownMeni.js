@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState} from "react";
 import { Link } from "react-router-dom";
-import slika from '../../assets/drop1.png';
+import slika from '../../assets/dropDsq.png';
 import slika1 from '../../assets/colmarPic.png'
 import slika2 from '../../assets/disel.jpg'
 import slika3 from '../../assets/replayLogo.jpg'
@@ -157,7 +157,7 @@ const DropdownMeni = (props) =>{
                         onMouseLeave={()=>setShow1(false)}
                         className={headerClasses2}>
                             <div className="insideDropCont">
-                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika} alt='' /></Link>
+                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika1} alt='' /></Link>
                             </div>
                         </div>
                      )
@@ -169,7 +169,7 @@ const DropdownMeni = (props) =>{
                         onMouseLeave={()=>setShow2(false)}
                         className={headerClasses2}>
                             <div className="insideDropCont">
-                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika1} alt='' /></Link>
+                                <Link className="linkContent" to='/zene'><img id="imgDropCont" src={slika} alt='' /></Link>
                             </div>                        
                         </div>
                     )

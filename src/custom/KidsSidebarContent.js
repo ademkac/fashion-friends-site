@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import './Sidebar.css';
-import slika from '../assets/drop1.png';
+import slika from '../assets/kidsSidebar.png';
+import slika1 from '../assets/kidsSidebar1.png';
+import slika2 from '../assets/kidsSidebar2.png';
+import slika3 from '../assets/user-solid.svg'
+import slika4 from '../assets/bag-shopping-solid.svg'
 import { Link } from "react-router-dom"
 
 const kidsItem1 = [
@@ -35,19 +39,46 @@ const kidsItem2 = [
 
 const sidebarContentListKids = [
     {
-        title: 'DECA POCETNA',
-        slika: slika,
+        element: <li className="listSidebarItem">
+                    <span className='spanTxt'>DECA POCETNA</span>
+                    <img className='picItem' src={slika} alt="" />
+                </li>,
         to: '/deca'
     },
     {
-        title: 'DEVOJCICE',
-        slika: slika,
+        element: <li className="listSidebarItem">
+                    <span className='spanTxt'>DEVOJCICE</span>
+                    <img className='picItem' src={slika1} alt="" />
+                </li>,
         to: '#'
     },
     {
-        title: 'DECACI',
-        slika: slika,
+        element: <li className="listSidebarItem">
+                    <span className='spanTxt'>DECACI</span>
+                    <img className='picItem' src={slika2} alt="" />
+                </li>,
         to: '#'
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <img className="picItemLeft" src={slika3} alt="" />
+                    <span className="spanTxt">Moj korisnicki nalog</span>
+                </li>,
+        to: '/customer/login',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <span className="heartSpanSidebar"><i className="far fa-heart"></i>&</span>
+                    <span className="spanTxt">Liste zelja</span>
+                </li>,
+        to: '/guestwishlist',
+    },
+    {
+        element: <li className="listSidebarItem">
+                    <img className="picItemLeft" src={slika4} alt="" />
+                    <span className="spanTxt">Korpa</span>
+                </li>,
+        to: '/checkout/cart',
     },
 ]
 
@@ -92,12 +123,10 @@ const KidsSidebarContent = (props) => {
 
     const itemClickHandler = (idx) => {
         setItemClicked(idx)
-        console.log("index of item: "+idx)
     }
 
     const backToSidebarContent = () => {
         setItemClicked(null)
-        console.log("event se desio!!!!")
     }
 
     const dropHandler = (name) => {
@@ -138,11 +167,10 @@ const KidsSidebarContent = (props) => {
                 <ul className="listSidebarContent">
                     {
                     sidebarContentListKids.map((obj, idx)=>{
-                        return <Link className="linkSidebarItem" key={idx} to={obj.to} onClick={()=>itemClickHandler(idx)}>
-                                    <li className="listSidebarItem" key={idx}>
-                                        {obj.title}
-                                        <img src={obj.slika} alt="" />
-                                    </li>
+                        return <Link className="linkSidebarItem" key={idx} to={obj.to} onClick={
+                            obj.to === '/deca' ? props.closeSidebar : ()=>itemClickHandler(idx)
+                        }>
+                                    {obj.element}
                                 </Link>
                                 })
                     }       

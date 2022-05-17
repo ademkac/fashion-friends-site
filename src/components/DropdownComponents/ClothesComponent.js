@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './ClothesComponent.css';
-import slika from '../../assets/colmarPic.png';
+import slika from '../../assets/odecaDrop.png';
 import { Link } from "react-router-dom";
 
 const jakneIkaputi = [

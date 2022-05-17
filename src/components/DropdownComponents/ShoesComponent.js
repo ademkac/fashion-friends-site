@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './ShoesComponent.css';
-import slika from '../../assets/colmarPic.png';
+import slika from '../../assets/obucaDrop.png';
 import { Link } from "react-router-dom";
 
 const patike = [

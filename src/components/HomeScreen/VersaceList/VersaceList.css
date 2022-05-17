@@ -6,55 +6,47 @@
 }
 
 .listItems{
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    grid-gap: 20px;
-    overflow: auto;
+    position: relative;
+    overflow: hidden;
     white-space:nowrap;
     width: 100%;
+    height: 400px;
 }
 
-.prevv, .nextt {
+.backItem, .forwardItem {
     display: none;
 }
 
 @media (max-width: 1200px) {
-    .listItems{
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        grid-gap: 20px;
-        overflow: hidden;
-    }
 
-    .prevv, .nextt {
-        display: flex;
+    .backItem {
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: 33%;
         cursor: pointer;
-
+        width: 35px;
+        height: 35px;
     }
 
-    .nextt {
-        margin-left: 5px;
+    .forwardItem {
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 33%;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        
     }
 
-    .prevv{
-        margin-right: 5px;
-    }
-
-    .prevv:hover, .nextt:hover{
+    .backItem:hover, .forwardItem:hover{
         color: white;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(216, 213, 213, 0.8);
+        border-radius: 50%;
     }
 }
 
-@media (max-width: 990px) {
-    .listItems{
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        grid-gap: 20px;
-        overflow: hidden;
-    }
-}
 
 
   

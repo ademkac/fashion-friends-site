@@ -1,6 +1,6 @@
 import React from "react";
 import './BagComponent.css';
-import slika from '../../assets/colmarPic.png';
+import slika from '../../assets/torbeDrop.png';
 import { Link } from "react-router-dom";
 
 const BagComponent = (props) => {

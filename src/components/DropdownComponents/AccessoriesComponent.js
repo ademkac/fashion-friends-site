@@ -1,6 +1,6 @@
 import React from "react";
 import './AccessoriesComponent.css';
-import slika from '../../assets/colmarPic.png';
+import slika from '../../assets/aksesoariDrop.png';
 import { Link } from "react-router-dom";
 
 const AccessoriesComponent = (props) => {

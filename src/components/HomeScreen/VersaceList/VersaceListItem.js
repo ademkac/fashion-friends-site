@@ -2,8 +2,9 @@ import React from 'react';
 import './VersaceListItem.css'
 
 const VersaceListItem = (props) => {
+
     return (
-        <div className='versaceItem' id={props.id} >
+        <div className={((props.id === props.firstActive) || (props.id === props.secondActive) || (props.id === props.thirdActive) || window.innerWidth >= 1200) ? 'versaceItem' : 'noneItem'} id={props.id} >
             <img src={props.slika} alt=""/> 
             <p>{props.opis}</p>
              <div className='bottomPiece'>

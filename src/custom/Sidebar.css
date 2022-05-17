@@ -112,11 +112,17 @@
   height: 70px;
 }
 
-.heartSpan{
+.heartSpanSidebar{
   display: inline;
   float: left;
   padding-top: 20px;
   padding-left: 10px;
+  color: #c2365c;
+  font-size: 20px;
+}
+
+.heartSpanSidebar i{
+  font-size: 20px;
 }
 
 .picItemLeft {
@@ -246,3 +252,13 @@ li.obucaListItem{
   color: #222222;
   font: 14px Poppins, Arial, Tahoma;
 } 
+
+#editorialColor{
+  background-color: #e47f88;
+  background-image: linear-gradient(to right, #e47f88, #dc747c );
+}
+
+.overlayyy{
+  background-image: none;
+  background-color: #fff;
+}

@@ -70,5 +70,6 @@ button {
         float: left;
         margin-right: 2rem;
         margin-bottom: 1rem;
+        height: 30px;
     }
 }

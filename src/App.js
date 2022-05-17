@@ -32,6 +32,7 @@ import UserCreditScreen from './screens/UserAccount/UserCreditScreen';
 import UserNewsletterManageScreen from './screens/UserAccount/UserNewsletterManageScreen';
 import UserInvitationScreen from './screens/UserAccount/UserInvitationScreen';
 import UserReturnsScreen from './screens/UserAccount/UserReturnsScreen';
+import Editorial from './screens/Editorial';
 
 const App = () => {
 
@@ -73,6 +74,7 @@ const App = () => {
           <Route path='/zene' element={<HomeScreen />}/>
           <Route path='/muskarci' element={<MensScreen />}/>
           <Route path='/deca' element={<HomeScreen />}/>
+          <Route path='/editorial' element={<Editorial />} />
           <Route path='/brendovi' element={<BrandListScreen />} />
           <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
           <Route path='/brendovi/:nekibrend/filter/category:kat' element={<BrandScreenCat />} />
