@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './ProductsNav.css'
 import CategoriesListFilter from '../../custom/CategoriesListFilter'
 import ColorFilter from './NavListComponents/ColorFilter'

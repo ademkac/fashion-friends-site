@@ -1,10 +1,8 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom"
 import './Sidebar.css';
-import slika from '../assets/sidebarPic5.png';
-
 import KidsSidebarContent from "./KidsSidebarContent";
 import WomensSidebarContent from "./sidebarComponents/WomensSidebarContent";
+import MensSidebarContent from "./sidebarComponents/MensSidebarContent";
 
 const sidebarTabTitle = [
     {
@@ -17,59 +15,6 @@ const sidebarTabTitle = [
         title: "DECA"
     }
 ]
-
-
-
-const sidebarContentListMens = [
-    {
-        title: "MUSKARCI POCETNA",
-        slika: slika
-    },
-    {
-        title: "NOVITETI",
-        slika: slika
-    },
-    {
-        title: "LUXURY",
-        slika: slika
-    },
-    {
-        title: "ODECA",
-        slika: slika
-    },
-    {
-        title: "OBUCA",
-        slika: slika
-    },
-    {
-        title: "BRENDOVI",
-        slika: slika
-    },
-    {
-        title: "TORBE",
-        slika: slika
-    },
-    {
-        title: "AKSESOARI",
-        slika: slika
-    },
-    {
-        title: "KOZMETIKA", 
-        slika: slika
-    },
-    {
-        title: "PRODAVNICE",
-        slika: slika
-    },
-    {
-        title: "EDITORIJAL",
-        slika: slika
-    },
-]
-
-
-
-
 
 const Sidebar = (props) => {
 
@@ -106,20 +51,7 @@ const Sidebar = (props) => {
                     {activeSidebarTab === 0 ? (
                         <WomensSidebarContent itemClicked={handleItem} closeSidebar={props.closeSidebar} />
                     ) : activeSidebarTab === 1 ? (
-                                <div>
-                                <ul className="listSidebarContent">
-                                         {
-                                             sidebarContentListMens.map((obj, idx)=>{
-                                                 return <Link className="linkSidebarItem" key={idx} to='zene'>
-                                                            <li className="listSidebarItem" key={idx}>
-                                                                {obj.title}
-                                                                <img src={obj.slika} alt="" />
-                                                            </li>
-                                                        </Link>
-                                             })
-                                         }       
-                                </ul>
-                                    </div>
+                                <MensSidebarContent itemClicked={handleItem} closeSidebar={props.closeSidebar} />
                             ) : activeSidebarTab === 2 ? (
                                 <KidsSidebarContent itemClicked={handleItem} closeSidebar={props.closeSidebar}/>
                             ) : null }

@@ -11,31 +11,11 @@ import Breadcrumb from '../../custom/Breadcrumb';
 import { useDispatch, useSelector } from 'react-redux';
 import {productsActions} from '../../store/products-slice';
 import { fetchProductsData } from '../../store/products-actions';
-import GenderFilter from '../ProductsNavigation/NavListComponents/GenderFilter';
-import ColorFilter from '../ProductsNavigation/NavListComponents/ColorFilter';
-import SeasonFIlter from '../ProductsNavigation/NavListComponents/SeasonFIlter';
-import SizeFilter from '../ProductsNavigation/NavListComponents/SizeFilter';
 import ProductsNav from '../ProductsNavigation/ProductsNav';
 
-const filterItems = [
-    {
-        name: 'Boja'
-    },
-    {
-        name: 'Velicina'
-    },
-    {
-        name: 'Sezona'
-    },
-    {
-        name: 'Pol'
-    },
-    {
-        name: 'Cena'
-    },
-]
 
-const BrandScreenCat = (props) => {
+
+const BrandScreenCat = () => {
 
     const [show, setShow] = useState(false)
     const [showBtn, setShowBtn] = useState(false)

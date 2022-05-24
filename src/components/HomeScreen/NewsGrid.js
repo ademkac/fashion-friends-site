@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewsGrid.css'
-import slika from '../../assets/urban.png';
+import slika from '../../assets/premiata_1gif_1.gif';
 import slika1 from '../../assets/moda.png';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ const NewsGrid = () => {
                     <div className='twoCards'>
                         <img src={slika} alt="" />
                         <h1>URBANI SPORTSKI STIL</h1>
-                        <p>Za aktivne dame koje vole udobnu & trendi odeću ...</p>
+                        <p>MATCHING PREMIATA PATIKE ZA NJU I NJEGA</p>
                         <Link to='/'>Procitajte vise</Link>
                     </div>
                 </div>

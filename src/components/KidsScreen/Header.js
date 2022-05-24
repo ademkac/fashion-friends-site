@@ -1,10 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import {useSelector} from 'react-redux'
 import { Link } from "react-router-dom"
-import CartSidebar from "../../custom/CartSidebar";
 import Sidebar from "../../custom/Sidebar";
-import './Header.css';
-
+import '../HomeScreen/Header.css';
+import CartSidebar from "../../custom/CartSidebar";
 
 const leftNavBar = [
     {
@@ -20,7 +19,7 @@ const leftNavBar = [
 
 const Header = (props) => {
 
-    const [activeNav, setActiveNav] = useState(0)
+    const [activeNav, setActiveNav] = useState(2)
     const [visible, setVisible] = useState(false)
     const [showUserInfo, setShowUserInfo] = useState(false)
     const [stick, setStick] = useState(false)
@@ -65,6 +64,7 @@ const Header = (props) => {
         setShowUserInfo(false)
     }
 
+
     useLayoutEffect(()=> {
         window.addEventListener('resize', handleResize)
         return(()=> {
@@ -94,7 +94,7 @@ const Header = (props) => {
                     <ul className="leftList"> 
                         {
                             leftNavBar.map((obj, idx)=>{
-                                return <li  className="option" key={idx}><Link onClick={()=> toggleClass(idx)} className={`item ${idx === activeNav ? " active" : ""}`} key={idx} to={`/${obj.title}`}>{obj.title}</Link></li>
+                                return <li  className="option" key={idx}><Link onClick={()=> toggleClass(idx)} className={`item ${idx===activeNav ? " active" : ""}`} key={idx} to={`/${obj.title}`}>{obj.title}</Link></li>
                             })
                         }
                     </ul>
@@ -102,7 +102,7 @@ const Header = (props) => {
                 <div className="titleNav"><Link className="titleLink" to='/'>FASHION<span className="titleSpan">&</span>FRIENDS</Link></div>
                 <div className="rightNav">
                     <div className="userInfo">
-                        <div 
+                        <div
                         onMouseOver={hoverHandler}
                         onMouseLeave={hoverHandlerOut}
                         className="farr">
@@ -113,11 +113,9 @@ const Header = (props) => {
                                 <i className="far fa-heart"></i><span className="heartSpan">&</span>
                             </div>
                         </Link>
-                        {/* <Link to='/checkout/cart'> */}
                         <div onClick={()=>setShowCartSidebar(!showCartSidebar)} className="farr">
                             <i className="fas fa-shopping-bag"></i>
                         </div>
-                        {/* </Link> */}
                     </div>
                 
                 </div>
@@ -145,10 +143,11 @@ const Header = (props) => {
                                 :(<Link to='/guestwishlist'><p className="paragraphUserInfo">Moja lista zelja</p></Link>)}
                                 {authDataToken !== false ? (<Link to='/customer/logout'><p className="paragraphUserInfo">Odjavite se</p></Link>)
                                 :(<Link to='/customer/register'><p className="paragraphUserInfo">Kreirajte korisnicki nalog</p></Link>)}
-                                {authDataToken !== false ? (<Link to='/customer/invitation'><p className="paragraphUserInfo">Moje pozivnice</p></Link>)
+                                {authDataToken !== false ? (<Link to='/customer/account'><p className="paragraphUserInfo">Moje pozivnice</p></Link>)
                                 :(<Link to='/customer/login'><p className="paragraphUserInfo">Prijava</p></Link>)}
                             </div>
                         )}
+            
         </div>
     )
 }

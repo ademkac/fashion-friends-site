@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { Link, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import DropdownMeni from '../components/HomeScreen/DropdownMeni';
 import Header from '../components/HomeScreen/Header';
 import SocialInfo from '../components/HomeScreen/SocialInfo';
-import CategoriesListFilter from '../custom/CategoriesListFilter';
 import './BrandScreen.css'
 import slika1 from '../assets/ckGrid.png'
 import slika2 from '../assets/ckGridB.png'

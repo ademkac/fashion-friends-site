@@ -33,6 +33,7 @@ import UserNewsletterManageScreen from './screens/UserAccount/UserNewsletterMana
 import UserInvitationScreen from './screens/UserAccount/UserInvitationScreen';
 import UserReturnsScreen from './screens/UserAccount/UserReturnsScreen';
 import Editorial from './screens/Editorial';
+import KidsScreen from './screens/KidsScreen';
 
 const App = () => {
 
@@ -73,7 +74,7 @@ const App = () => {
           <Route path='/product/:productInfo' element={<ProductInfoScreen />}/>
           <Route path='/zene' element={<HomeScreen />}/>
           <Route path='/muskarci' element={<MensScreen />}/>
-          <Route path='/deca' element={<HomeScreen />}/>
+          <Route path='/deca' element={<KidsScreen />}/>
           <Route path='/editorial' element={<Editorial />} />
           <Route path='/brendovi' element={<BrandListScreen />} />
           <Route path='/brendovi/:nekibrend' element={<BrandScreen />} />
